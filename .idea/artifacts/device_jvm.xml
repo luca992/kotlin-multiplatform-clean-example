@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="device-jvm">
+    <output-path>$PROJECT_DIR$/device/build/libs</output-path>
+    <root id="archive" name="device-jvm.jar" />
+  </artifact>
+</component>

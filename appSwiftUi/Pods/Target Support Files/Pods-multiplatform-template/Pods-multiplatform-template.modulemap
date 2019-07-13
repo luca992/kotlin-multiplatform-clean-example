@@ -1,0 +1,6 @@
+framework module Pods_multiplatform_template {
+  umbrella header "Pods-multiplatform-template-umbrella.h"
+
+  export *
+  module * { export * }
+}
