@@ -23,13 +23,13 @@ android {
     }
     sourceSets {
         val main by getting
-        main.java.srcDirs("src/androidMain/kotlin")
+        main.java.srcDir("src/androidMain/kotlin")
         main.manifest.srcFile("src/androidMain/AndroidManifest.xml")
         main.res.srcDir("src/androidMain/res")
         val test by getting
-        test.java.srcDirs("src/jvmTest/kotlin")
+        test.java.srcDir("src/androidTest/kotlin")
         val androidTest by getting
-        test.java.srcDirs("src/androidTest/kotlin")
+        androidTest.java.srcDir("src/androidAndroidTest/kotlin")
     }
 }
 
@@ -48,7 +48,6 @@ kotlin {
 
 
     targets {
-        jvm()
         android()
         macosX64()
         iosArm32()
@@ -73,30 +72,34 @@ kotlin {
             }
         }
 
-        val jvmMain by getting {
-            dependencies {
-                implementation(Libraries.kotlinStdLib)
-            }
-        }
-
         val androidMain by getting {
             dependencies {
+                implementation(Libraries.kotlinStdLib)
                 implementation(Libraries.appCompat)
                 implementation(Libraries.ktxCore)
                 implementation(Libraries.constraintLayout)
             }
         }
 
-        val jvmTest by getting {
+        val commonTest by getting {
             dependencies {
-                implementation (TestLibraries.junit4)
+                implementation(TestLibraries.kotlinTestCommon)
+                implementation(TestLibraries.kotlinTestAnnotationsCommon)
             }
         }
 
         val androidTest by getting {
             dependencies {
-                implementation (TestLibraries.testExtJUnit)
-                implementation (TestLibraries.espresso)
+                implementation(TestLibraries.kotlinTestJvm)
+                implementation(TestLibraries.kotlinTestJUnit)
+            }
+        }
+
+        val androidAndroidTest by getting {
+            dependencies {
+                implementation(TestLibraries.kotlinTestJvm)
+                implementation(TestLibraries.androidxTestExtJUnit)
+                implementation(TestLibraries.espresso)
             }
         }
 

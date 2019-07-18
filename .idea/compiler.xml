@@ -2,6 +2,8 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="multiplatform-template.app.jvmMain" target="1.6" />
+      <module name="multiplatform-template.app.jvmTest" target="1.6" />
       <module name="nexashop.appCommon.jvmMain" target="1.6" />
       <module name="nexashop.appCommon.jvmTest" target="1.6" />
     </bytecodeTargetLevel>

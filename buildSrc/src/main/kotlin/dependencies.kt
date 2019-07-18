@@ -4,7 +4,7 @@ const val kotlinVersion = "1.3.41"
 object BuildPlugins {
 
     object Versions {
-        const val buildToolsVersion = "3.5.0-beta05"
+        const val buildToolsVersion = "3.5.0-rc01"
     }
 
     const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.buildToolsVersion}"
@@ -39,11 +39,14 @@ object Libraries {
 
 object TestLibraries {
     private object Versions {
-        const val junit4 = "4.12"
-        const val testExtJUnit = "1.1.0"
+        const val testExtJUnit = "1.1.1"
         const val espresso = "3.2.0"
     }
-    const val junit4     = "junit:junit:${Versions.junit4}"
-    const val testExtJUnit = "androidx.test.ext:junit:${Versions.testExtJUnit}"
+    const val androidxTestExtJUnit = "androidx.test.ext:junit-ktx:${Versions.testExtJUnit}"
     const val espresso   = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+
+    const val kotlinTestCommon     = "org.jetbrains.kotlin:kotlin-test-common:$kotlinVersion"
+    const val kotlinTestJvm     = "org.jetbrains.kotlin:kotlin-test:$kotlinVersion"
+    const val kotlinTestAnnotationsCommon = "org.jetbrains.kotlin:kotlin-test-annotations-common:$kotlinVersion"
+    const val kotlinTestJUnit     = "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion"
 }
