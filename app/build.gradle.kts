@@ -76,7 +76,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(Libraries.kotlinStdLibCommon)
+                implementation(Libs.kotlin_stdlib_common)
                 implementation(project(":domain"))
                 implementation(project(":data"))
                 implementation(project(":device"))
@@ -85,32 +85,32 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
-                implementation(Libraries.kotlinStdLib)
-                implementation(Libraries.appCompat)
-                implementation(Libraries.ktxCore)
-                implementation(Libraries.constraintLayout)
+                implementation(Libs.kotlin_stdlib_jdk8)
+                implementation(Libs.appcompat)
+                implementation(Libs.core_ktx)
+                implementation(Libs.constraintlayout)
             }
         }
 
         val commonTest by getting {
             dependencies {
-                implementation(TestLibraries.kotlinTestCommon)
-                implementation(TestLibraries.kotlinTestAnnotationsCommon)
+                implementation(Libs.kotlin_test_common)
+                implementation(Libs.kotlin_test_annotations_common)
             }
         }
 
         val androidTest by getting {
             dependencies {
-                implementation(TestLibraries.kotlinTestJvm)
-                implementation(TestLibraries.kotlinTestJUnit)
+                implementation(Libs.kotlin_test)
+                implementation(Libs.kotlin_test_junit)
             }
         }
 
         val androidAndroidTest by getting {
             dependencies {
-                implementation(TestLibraries.kotlinTestJvm)
-                implementation(TestLibraries.androidxTestExtJUnit)
-                implementation(TestLibraries.espresso)
+                implementation(Libs.kotlin_test)
+                implementation(Libs.junit_ktx)
+                implementation(Libs.espresso_core)
             }
         }
 

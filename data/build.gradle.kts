@@ -16,14 +16,14 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(Libraries.kotlinStdLibCommon)
+                implementation(Libs.kotlin_stdlib_common)
                 implementation(project(":domain"))
             }
         }
 
         val jvmMain by getting {
             dependencies {
-                implementation(Libraries.kotlinStdLib)
+                implementation(Libs.kotlin_stdlib_jdk8)
             }
         }
 
