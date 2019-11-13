@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="multiplatform-template/app" />
+      <module fileurl="file://$PROJECT_DIR$/appSwiftUi/appSwiftUi.iml" filepath="$PROJECT_DIR$/appSwiftUi/appSwiftUi.iml" group="multiplatform-template/appSwiftUi" />
+      <module fileurl="file://$PROJECT_DIR$/app/app_commonMain.iml" filepath="$PROJECT_DIR$/app/app_commonMain.iml" group="app" />
+      <module fileurl="file://$PROJECT_DIR$/app/app_commonTest.iml" filepath="$PROJECT_DIR$/app/app_commonTest.iml" group="app" />
+      <module fileurl="file://$PROJECT_DIR$/app/app_iosArm32Main.iml" filepath="$PROJECT_DIR$/app/app_iosArm32Main.iml" group="app" />
+      <module fileurl="file://$PROJECT_DIR$/app/app_iosArm32Test.iml" filepath="$PROJECT_DIR$/app/app_iosArm32Test.iml" group="app" />
+      <module fileurl="file://$PROJECT_DIR$/app/app_iosArm64Main.iml" filepath="$PROJECT_DIR$/app/app_iosArm64Main.iml" group="app" />
+      <module fileurl="file://$PROJECT_DIR$/app/app_iosArm64Test.iml" filepath="$PROJECT_DIR$/app/app_iosArm64Test.iml" group="app" />
+      <module fileurl="file://$PROJECT_DIR$/app/app_iosX64Main.iml" filepath="$PROJECT_DIR$/app/app_iosX64Main.iml" group="app" />
+      <module fileurl="file://$PROJECT_DIR$/app/app_iosX64Test.iml" filepath="$PROJECT_DIR$/app/app_iosX64Test.iml" group="app" />
+      <module fileurl="file://$PROJECT_DIR$/app/app_macosX64Main.iml" filepath="$PROJECT_DIR$/app/app_macosX64Main.iml" group="app" />
+      <module fileurl="file://$PROJECT_DIR$/app/app_macosX64Test.iml" filepath="$PROJECT_DIR$/app/app_macosX64Test.iml" group="app" />
+      <module fileurl="file://$PROJECT_DIR$/buildSrc/buildSrc.iml" filepath="$PROJECT_DIR$/buildSrc/buildSrc.iml" group="multiplatform-template/buildSrc" />
+      <module fileurl="file://$PROJECT_DIR$/data/data.iml" filepath="$PROJECT_DIR$/data/data.iml" group="multiplatform-template/data" />
+      <module fileurl="file://$PROJECT_DIR$/data/data_commonMain.iml" filepath="$PROJECT_DIR$/data/data_commonMain.iml" group="data" />
+      <module fileurl="file://$PROJECT_DIR$/data/data_commonTest.iml" filepath="$PROJECT_DIR$/data/data_commonTest.iml" group="data" />
+      <module fileurl="file://$PROJECT_DIR$/data/data_iosArm32Main.iml" filepath="$PROJECT_DIR$/data/data_iosArm32Main.iml" group="data" />
+      <module fileurl="file://$PROJECT_DIR$/data/data_iosArm32Test.iml" filepath="$PROJECT_DIR$/data/data_iosArm32Test.iml" group="data" />
+      <module fileurl="file://$PROJECT_DIR$/data/data_iosArm64Main.iml" filepath="$PROJECT_DIR$/data/data_iosArm64Main.iml" group="data" />
+      <module fileurl="file://$PROJECT_DIR$/data/data_iosArm64Test.iml" filepath="$PROJECT_DIR$/data/data_iosArm64Test.iml" group="data" />
+      <module fileurl="file://$PROJECT_DIR$/data/data_iosX64Main.iml" filepath="$PROJECT_DIR$/data/data_iosX64Main.iml" group="data" />
+      <module fileurl="file://$PROJECT_DIR$/data/data_iosX64Test.iml" filepath="$PROJECT_DIR$/data/data_iosX64Test.iml" group="data" />
+      <module fileurl="file://$PROJECT_DIR$/data/data_jvmMain.iml" filepath="$PROJECT_DIR$/data/data_jvmMain.iml" group="data" />
+      <module fileurl="file://$PROJECT_DIR$/data/data_jvmTest.iml" filepath="$PROJECT_DIR$/data/data_jvmTest.iml" group="data" />
+      <module fileurl="file://$PROJECT_DIR$/data/data_macosX64Main.iml" filepath="$PROJECT_DIR$/data/data_macosX64Main.iml" group="data" />
+      <module fileurl="file://$PROJECT_DIR$/data/data_macosX64Test.iml" filepath="$PROJECT_DIR$/data/data_macosX64Test.iml" group="data" />
+      <module fileurl="file://$PROJECT_DIR$/device/device.iml" filepath="$PROJECT_DIR$/device/device.iml" group="multiplatform-template/device" />
+      <module fileurl="file://$PROJECT_DIR$/device/device_commonMain.iml" filepath="$PROJECT_DIR$/device/device_commonMain.iml" group="device" />
+      <module fileurl="file://$PROJECT_DIR$/device/device_commonTest.iml" filepath="$PROJECT_DIR$/device/device_commonTest.iml" group="device" />
+      <module fileurl="file://$PROJECT_DIR$/device/device_iosArm32Main.iml" filepath="$PROJECT_DIR$/device/device_iosArm32Main.iml" group="device" />
+      <module fileurl="file://$PROJECT_DIR$/device/device_iosArm32Test.iml" filepath="$PROJECT_DIR$/device/device_iosArm32Test.iml" group="device" />
+      <module fileurl="file://$PROJECT_DIR$/device/device_iosArm64Main.iml" filepath="$PROJECT_DIR$/device/device_iosArm64Main.iml" group="device" />
+      <module fileurl="file://$PROJECT_DIR$/device/device_iosArm64Test.iml" filepath="$PROJECT_DIR$/device/device_iosArm64Test.iml" group="device" />
+      <module fileurl="file://$PROJECT_DIR$/device/device_iosX64Main.iml" filepath="$PROJECT_DIR$/device/device_iosX64Main.iml" group="device" />
+      <module fileurl="file://$PROJECT_DIR$/device/device_iosX64Test.iml" filepath="$PROJECT_DIR$/device/device_iosX64Test.iml" group="device" />
+      <module fileurl="file://$PROJECT_DIR$/device/device_macosX64Main.iml" filepath="$PROJECT_DIR$/device/device_macosX64Main.iml" group="device" />
+      <module fileurl="file://$PROJECT_DIR$/device/device_macosX64Test.iml" filepath="$PROJECT_DIR$/device/device_macosX64Test.iml" group="device" />
+      <module fileurl="file://$PROJECT_DIR$/domain/domain.iml" filepath="$PROJECT_DIR$/domain/domain.iml" group="multiplatform-template/domain" />
+      <module fileurl="file://$PROJECT_DIR$/domain/domain_commonMain.iml" filepath="$PROJECT_DIR$/domain/domain_commonMain.iml" group="domain" />
+      <module fileurl="file://$PROJECT_DIR$/domain/domain_commonTest.iml" filepath="$PROJECT_DIR$/domain/domain_commonTest.iml" group="domain" />
+      <module fileurl="file://$PROJECT_DIR$/domain/domain_iosArm32Main.iml" filepath="$PROJECT_DIR$/domain/domain_iosArm32Main.iml" group="domain" />
+      <module fileurl="file://$PROJECT_DIR$/domain/domain_iosArm32Test.iml" filepath="$PROJECT_DIR$/domain/domain_iosArm32Test.iml" group="domain" />
+      <module fileurl="file://$PROJECT_DIR$/domain/domain_iosArm64Main.iml" filepath="$PROJECT_DIR$/domain/domain_iosArm64Main.iml" group="domain" />
+      <module fileurl="file://$PROJECT_DIR$/domain/domain_iosArm64Test.iml" filepath="$PROJECT_DIR$/domain/domain_iosArm64Test.iml" group="domain" />
+      <module fileurl="file://$PROJECT_DIR$/domain/domain_iosX64Main.iml" filepath="$PROJECT_DIR$/domain/domain_iosX64Main.iml" group="domain" />
+      <module fileurl="file://$PROJECT_DIR$/domain/domain_iosX64Test.iml" filepath="$PROJECT_DIR$/domain/domain_iosX64Test.iml" group="domain" />
+      <module fileurl="file://$PROJECT_DIR$/domain/domain_jvmMain.iml" filepath="$PROJECT_DIR$/domain/domain_jvmMain.iml" group="domain" />
+      <module fileurl="file://$PROJECT_DIR$/domain/domain_jvmTest.iml" filepath="$PROJECT_DIR$/domain/domain_jvmTest.iml" group="domain" />
+      <module fileurl="file://$PROJECT_DIR$/domain/domain_macosX64Main.iml" filepath="$PROJECT_DIR$/domain/domain_macosX64Main.iml" group="domain" />
+      <module fileurl="file://$PROJECT_DIR$/domain/domain_macosX64Test.iml" filepath="$PROJECT_DIR$/domain/domain_macosX64Test.iml" group="domain" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/kotlin-multiplatform-clean-template.iml" filepath="$PROJECT_DIR$/.idea/kotlin-multiplatform-clean-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/multiplatform-template.iml" filepath="$PROJECT_DIR$/multiplatform-template.iml" group="multiplatform-template" />
+    </modules>
+  </component>
+</project>
