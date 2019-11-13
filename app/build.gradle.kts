@@ -15,17 +15,28 @@ android {
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        create("release") {
+            /*keyAlias = "release"
+            keyPassword = "my release key password"
+            storeFile = file("/home/miles/keystore.jks")
+            storePassword = "my keystore password"*/
+        }
+    }
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("release")
+            isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
     sourceSets {
         val main by getting
+        main.setRoot("src/androidMain")
         main.java.srcDir("src/androidMain/kotlin")
         main.manifest.srcFile("src/androidMain/AndroidManifest.xml")
         main.res.srcDir("src/androidMain/res")
+        main.assets.srcDir("src/androidMain/assets")
         val test by getting
         test.java.srcDir("src/androidTest/kotlin")
         val androidTest by getting
