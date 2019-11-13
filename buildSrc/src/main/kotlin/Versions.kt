@@ -22,11 +22,11 @@ object Versions {
 
     const val lint_gradle: String = "26.5.2"
 
-    const val appcompat: String = "1.1.0-rc01" // available: "1.1.0"
+    const val appcompat: String = "1.1.0"
 
     const val junit_ktx: String = "1.1.1"
 
-    const val core_ktx: String = "1.1.0-rc02" // available: "1.1.0"
+    const val core_ktx: String = "1.1.0"
 
     const val aapt2: String = "3.5.2-5435860"
 
