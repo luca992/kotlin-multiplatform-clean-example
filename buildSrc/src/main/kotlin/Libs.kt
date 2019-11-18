@@ -23,6 +23,13 @@ object Libs {
     /**
      * https://kotlinlang.org/
      */
+    const val kotlin_annotation_processing_gradle: String =
+            "org.jetbrains.kotlin:kotlin-annotation-processing-gradle:" +
+            Versions.org_jetbrains_kotlin
+
+    /**
+     * https://kotlinlang.org/
+     */
     const val kotlin_gradle_plugin: String = "org.jetbrains.kotlin:kotlin-gradle-plugin:" +
             Versions.org_jetbrains_kotlin
 
@@ -68,6 +75,35 @@ object Libs {
      */
     const val kotlin_test_junit: String = "org.jetbrains.kotlin:kotlin-test-junit:" +
             Versions.org_jetbrains_kotlin
+
+    /**
+     * https://developer.android.com/topic/libraries/architecture/index.html
+     */
+    const val navigation_fragment_ktx: String = "androidx.navigation:navigation-fragment-ktx:" +
+            Versions.androidx_navigation
+
+    /**
+     * https://developer.android.com/topic/libraries/architecture/index.html
+     */
+    const val navigation_safe_args_gradle_plugin: String =
+            "androidx.navigation:navigation-safe-args-gradle-plugin:" + Versions.androidx_navigation
+
+    /**
+     * https://developer.android.com/topic/libraries/architecture/index.html
+     */
+    const val navigation_ui_ktx: String = "androidx.navigation:navigation-ui-ktx:" +
+            Versions.androidx_navigation
+
+    /**
+     * https://github.com/google/dagger
+     */
+    const val dagger: String = "com.google.dagger:dagger:" + Versions.com_google_dagger
+
+    /**
+     * https://github.com/google/dagger
+     */
+    const val dagger_compiler: String = "com.google.dagger:dagger-compiler:" +
+            Versions.com_google_dagger
 
     /**
      * https://developer.android.com/studio

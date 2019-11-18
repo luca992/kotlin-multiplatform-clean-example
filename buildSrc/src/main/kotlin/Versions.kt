@@ -10,11 +10,15 @@ import kotlin.String
  * YOU are responsible for updating manually the dependency version.
  */
 object Versions {
-    const val org_jetbrains_kotlin: String = "1.3.50"
+    const val org_jetbrains_kotlin: String = "1.3.50" // available: "1.3.60"
+
+    const val androidx_navigation: String = "2.1.0"
+
+    const val com_google_dagger: String = "2.25.2"
 
     const val com_android_tools_build_gradle: String = "3.5.2"
 
-    const val de_fayard_refreshversions_gradle_plugin: String = "0.7.0" // available: "0.8.3"
+    const val de_fayard_refreshversions_gradle_plugin: String = "0.7.0" // available: "0.8.4"
 
     const val constraintlayout: String = "1.1.3"
 
@@ -35,5 +39,5 @@ object Versions {
      * See issue 19: How to update Gradle itself?
      * https://github.com/jmfayard/buildSrcVersions/issues/19
      */
-    const val gradleLatestVersion: String = "6.0"
+    const val gradleLatestVersion: String = "6.0.1"
 }

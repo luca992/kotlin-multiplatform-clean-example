@@ -1,8 +1,10 @@
 plugins {
     id(BuildPlugins.kotlinMultiplatform)
     id(BuildPlugins.kotlinCocoapods)
+    id("kotlin-kapt")
     id(BuildPlugins.androidApplication)
     id(BuildPlugins.kotlinAndroidExtensions)
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -89,6 +91,9 @@ kotlin {
                 implementation(Libs.appcompat)
                 implementation(Libs.core_ktx)
                 implementation(Libs.constraintlayout)
+                implementation(Libs.navigation_fragment_ktx)
+                implementation(Libs.navigation_ui_ktx)
+                implementation(Libs.dagger)
             }
         }
 
@@ -116,4 +121,8 @@ kotlin {
 
     }
 
+}
+
+dependencies {
+    "kapt"(Libs.dagger_compiler)
 }
