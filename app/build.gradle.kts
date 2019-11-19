@@ -44,6 +44,9 @@ android {
         val androidTest by getting
         androidTest.java.srcDir("src/androidAndroidTest/kotlin")
     }
+    packagingOptions {
+        pickFirst("META-INF/*")
+    }
 }
 
 //for CocoaPods

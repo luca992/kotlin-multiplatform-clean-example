@@ -8,6 +8,34 @@ import kotlin.String
  */
 object Libs {
     /**
+     * https://github.com/Kotlin/kotlinx.serialization
+     */
+    const val kotlinx_serialization_runtime: String =
+            "org.jetbrains.kotlinx:kotlinx-serialization-runtime:" +
+            Versions.org_jetbrains_kotlinx_kotlinx_serialization
+
+    const val kotlinx_serialization_runtime_native: String =
+            "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:" +
+            Versions.org_jetbrains_kotlinx_kotlinx_serialization
+
+    /**
+     * https://github.com/Kotlin/kotlinx.coroutines
+     */
+    const val kotlinx_coroutines_core: String = "org.jetbrains.kotlinx:kotlinx-coroutines-core:" +
+            Versions.org_jetbrains_kotlinx_kotlinx_coroutines
+
+    /**
+     * https://github.com/Kotlin/kotlinx.coroutines
+     */
+    const val kotlinx_coroutines_core_common: String =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:" +
+            Versions.org_jetbrains_kotlinx_kotlinx_coroutines
+
+    const val kotlinx_coroutines_core_native: String =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:" +
+            Versions.org_jetbrains_kotlinx_kotlinx_coroutines
+
+    /**
      * https://kotlinlang.org/
      */
     const val kotlin_android_extensions: String =
@@ -104,6 +132,83 @@ object Libs {
      */
     const val dagger_compiler: String = "com.google.dagger:dagger-compiler:" +
             Versions.com_google_dagger
+
+    /**
+     * https://github.com/ktorio/ktor
+     */
+    const val ktor_client_auth: String = "io.ktor:ktor-client-auth:" + Versions.io_ktor
+
+    /**
+     * https://github.com/ktorio/ktor
+     */
+    const val ktor_client_auth_jvm: String = "io.ktor:ktor-client-auth-jvm:" + Versions.io_ktor
+
+    /**
+     * https://github.com/ktorio/ktor
+     */
+    const val ktor_client_core: String = "io.ktor:ktor-client-core:" + Versions.io_ktor
+
+    /**
+     * https://github.com/ktorio/ktor
+     */
+    const val ktor_client_core_jvm: String = "io.ktor:ktor-client-core-jvm:" + Versions.io_ktor
+
+    /**
+     * https://github.com/ktorio/ktor
+     */
+    const val ktor_client_curl: String = "io.ktor:ktor-client-curl:" + Versions.io_ktor
+
+    /**
+     * https://github.com/ktorio/ktor
+     */
+    const val ktor_client_ios: String = "io.ktor:ktor-client-ios:" + Versions.io_ktor
+
+    /**
+     * https://github.com/ktorio/ktor
+     */
+    const val ktor_client_logging: String = "io.ktor:ktor-client-logging:" + Versions.io_ktor
+
+    /**
+     * https://github.com/ktorio/ktor
+     */
+    const val ktor_client_logging_jvm: String = "io.ktor:ktor-client-logging-jvm:" +
+            Versions.io_ktor
+
+    /**
+     * https://github.com/ktorio/ktor
+     */
+    const val ktor_client_okhttp: String = "io.ktor:ktor-client-okhttp:" + Versions.io_ktor
+
+    /**
+     * https://github.com/ktorio/ktor
+     */
+    const val ktor_client_serialization: String = "io.ktor:ktor-client-serialization:" +
+            Versions.io_ktor
+
+    /**
+     * https://github.com/ktorio/ktor
+     */
+    const val ktor_client_serialization_jvm: String = "io.ktor:ktor-client-serialization-jvm:" +
+            Versions.io_ktor
+
+    const val ktor_client_auth_native: String = "io.ktor:ktor-client-auth-native:" +
+            Versions.io_ktor
+
+    const val ktor_client_core_native: String = "io.ktor:ktor-client-core-native:" +
+            Versions.io_ktor
+
+    const val ktor_client_logging_native: String = "io.ktor:ktor-client-logging-native:" +
+            Versions.io_ktor
+
+    const val ktor_client_serialization_native: String =
+            "io.ktor:ktor-client-serialization-native:" + Versions.io_ktor
+
+    const val ktor_utils: String = "io.ktor:ktor-utils:" + Versions.io_ktor
+
+    const val ktor_utils_jvm: String = "io.ktor:ktor-utils-jvm:" + Versions.io_ktor
+
+    const val ktor_utils_native: String = "io.ktor:ktor-utils-native:" +
+            Versions.io_ktor
 
     /**
      * https://developer.android.com/studio

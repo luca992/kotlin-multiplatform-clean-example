@@ -10,11 +10,17 @@ import kotlin.String
  * YOU are responsible for updating manually the dependency version.
  */
 object Versions {
+    const val org_jetbrains_kotlinx_kotlinx_serialization: String = "0.13.0"
+
+    const val org_jetbrains_kotlinx_kotlinx_coroutines: String = "1.3.2"
+
     const val org_jetbrains_kotlin: String = "1.3.50" // available: "1.3.60"
 
     const val androidx_navigation: String = "2.1.0"
 
     const val com_google_dagger: String = "2.25.2"
+
+    const val io_ktor: String = "1.3.0-beta-1"
 
     const val com_android_tools_build_gradle: String = "3.5.2"
 
