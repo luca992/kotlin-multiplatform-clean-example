@@ -133,6 +133,11 @@ object Libs {
     const val lint_gradle: String = "com.android.tools.lint:lint-gradle:" + Versions.lint_gradle
 
     /**
+     * https://jax-ws.dev.java.net/
+     */
+    const val jsr250_api: String = "javax.annotation:jsr250-api:" + Versions.jsr250_api
+
+    /**
      * https://developer.android.com/jetpack/androidx
      */
     const val appcompat: String = "androidx.appcompat:appcompat:" + Versions.appcompat

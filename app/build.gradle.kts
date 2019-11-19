@@ -94,6 +94,7 @@ kotlin {
                 implementation(Libs.navigation_fragment_ktx)
                 implementation(Libs.navigation_ui_ktx)
                 implementation(Libs.dagger)
+                implementation(Libs.jsr250_api)
             }
         }
 

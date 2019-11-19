@@ -26,6 +26,8 @@ object Versions {
 
     const val lint_gradle: String = "26.5.2"
 
+    const val jsr250_api: String = "1.0" // available: "1.0-20050927.133100"
+
     const val appcompat: String = "1.1.0"
 
     const val junit_ktx: String = "1.1.1"
