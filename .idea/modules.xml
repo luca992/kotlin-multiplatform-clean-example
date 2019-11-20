@@ -53,6 +53,7 @@
       <module fileurl="file://$PROJECT_DIR$/domain/domain_jvmTest.iml" filepath="$PROJECT_DIR$/domain/domain_jvmTest.iml" group="domain" />
       <module fileurl="file://$PROJECT_DIR$/domain/domain_macosX64Main.iml" filepath="$PROJECT_DIR$/domain/domain_macosX64Main.iml" group="domain" />
       <module fileurl="file://$PROJECT_DIR$/domain/domain_macosX64Test.iml" filepath="$PROJECT_DIR$/domain/domain_macosX64Test.iml" group="domain" />
+      <module fileurl="file://$PROJECT_DIR$/domain/domain_nativeMain.iml" filepath="$PROJECT_DIR$/domain/domain_nativeMain.iml" group="domain" />
       <module fileurl="file://$PROJECT_DIR$/.idea/kotlin-multiplatform-clean-template.iml" filepath="$PROJECT_DIR$/.idea/kotlin-multiplatform-clean-template.iml" />
       <module fileurl="file://$PROJECT_DIR$/multiplatform-template.iml" filepath="$PROJECT_DIR$/multiplatform-template.iml" group="multiplatform-template" />
     </modules>
