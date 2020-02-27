@@ -11,6 +11,8 @@ object BuildPlugins {
     const val kotlinAndroidExtensions = "kotlin-android-extensions"
     fun refreshVersionsPlugin(scope: PluginDependenciesSpec) : PluginDependencySpec =
             scope.id("de.fayard.refreshVersions").version(Versions.de_fayard_refreshversions_gradle_plugin)
+    fun testLoggerPlugin(scope: PluginDependenciesSpec) : PluginDependencySpec =
+        scope.id("com.adarshr.test-logger").version("2.0.0")
 }
 
 object AndroidSdk {

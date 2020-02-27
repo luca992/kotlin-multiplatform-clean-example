@@ -3,6 +3,7 @@ plugins {
     id("kotlinx-serialization")
     id("com.squareup.sqldelight")
     id("com.android.library")
+    BuildPlugins.testLoggerPlugin(this)
 }
 
 android {
