@@ -68,7 +68,6 @@ kotlin {
     targets {
         android()
         macosX64()
-        iosArm32()
         iosX64()
         iosArm64()
     }

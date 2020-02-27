@@ -6,7 +6,6 @@ kotlin {
     targets {
         jvm()
         macosX64()
-        iosArm32()
         iosX64()
         iosArm64()
     }
@@ -54,7 +53,6 @@ kotlin {
             }
         }
 
-        val iosArm32Main by getting {}
         val iosX64Main by getting {}
         val iosArm64Main by getting {}
         val macosX64Main by getting {
@@ -65,7 +63,7 @@ kotlin {
         }
 
 
-        configure(listOf(iosArm32Main,iosX64Main,iosArm64Main)) {
+        configure(listOf(iosX64Main,iosArm64Main)) {
             dependsOn(nativeMain)
             dependencies {
                 implementation(Libs.ktor_client_ios)

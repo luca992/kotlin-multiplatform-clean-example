@@ -6,7 +6,6 @@ pluginManagement {
 }
 
 rootProject.name = "multiplatform-template"
-include("appSwiftUi")
 include("app")
 include("data")
 include("domain")
