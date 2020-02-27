@@ -5,6 +5,7 @@ plugins {
     id(BuildPlugins.androidApplication)
     id(BuildPlugins.kotlinAndroidExtensions)
     id("androidx.navigation.safeargs.kotlin")
+    id("de.fayard.dependencies")
 }
 
 android {
@@ -83,7 +84,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(Libs.kotlin_stdlib_common)
+                implementation(Kotlin.stdlib.common)
                 implementation(project(":domain"))
                 implementation(project(":data"))
                 implementation(project(":device"))
@@ -92,12 +93,13 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
-                implementation(Libs.kotlin_stdlib_jdk8)
-                implementation(Libs.appcompat)
-                implementation(Libs.core_ktx)
-                implementation(Libs.constraintlayout)
-                implementation(Libs.navigation_fragment_ktx)
-                implementation(Libs.navigation_ui_ktx)
+                implementation(Kotlin.stdlib.jdk8)
+                implementation(AndroidX.appCompat)
+                implementation(AndroidX.coreKtx)
+                implementation(AndroidX.constraintLayout)
+                implementation(AndroidX.navigation.fragmentKtx)
+                implementation(AndroidX.navigation.uiKtx)
+                implementation(Ktor.client.cio)
                 implementation(Libs.dagger)
                 implementation(Libs.jsr250_api)
             }
@@ -105,14 +107,14 @@ kotlin {
 
         val commonTest by getting {
             dependencies {
-                implementation(Libs.kotlin_test_common)
-                implementation(Libs.kotlin_test_annotations_common)
+                implementation(Kotlin.test.common)
+                implementation(Kotlin.test.annotationsCommon)
             }
         }
 
         val androidTest by getting {
             dependencies {
-                implementation(Libs.kotlin_test)
+                implementation(Testing.kotlinTest)
                 implementation(Libs.kotlin_test_junit)
             }
         }
@@ -121,7 +123,7 @@ kotlin {
             dependencies {
                 implementation(Libs.kotlin_test)
                 implementation(Libs.junit_ktx)
-                implementation(Libs.espresso_core)
+                implementation(de.fayard.dependencies.DependenciesPlugin.artifactVersionKeyRules AndroidX.test.espresso.core)
             }
         }
 
@@ -130,5 +132,5 @@ kotlin {
 }
 
 dependencies {
-    "kapt"(Libs.dagger_compiler)
+    "kapt"( Libs.dagger_compiler)
 }
