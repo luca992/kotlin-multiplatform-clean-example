@@ -1,7 +1,9 @@
 package co.lucaspinazzola.example
 
 import android.app.Application
-import co.lucaspinazzola.example.di.AppComponent
+import android.content.Context
+import co.lucaspinazzola.example.data.utils.initData
+import co.lucaspinazzola.example.di.component.AppComponent
 
 
 class ExampleApplication: Application(){
@@ -10,5 +12,9 @@ class ExampleApplication: Application(){
         AppComponent.init(this)
     }
 
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(base)
+        initData(this)
+    }
 
 }

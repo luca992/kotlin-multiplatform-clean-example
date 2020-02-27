@@ -1,4 +1,4 @@
-package co.lucaspinazzola.example.di.modules
+package co.lucaspinazzola.example.di.module
 
 
 import dagger.Module

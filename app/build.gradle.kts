@@ -70,9 +70,11 @@ kotlin {
 
     targets {
         android()
-        //macosX64()
-        iosX64()
-        iosArm64()
+        if (buildForNative) {
+            //macosX64()
+            iosX64()
+            iosArm64()
+        }
     }
 
 

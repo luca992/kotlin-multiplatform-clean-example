@@ -1,11 +1,12 @@
-package co.lucaspinazzola.example.di.modules
+package co.lucaspinazzola.example.di.module
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
+import androidx.lifecycle.ViewModelProvider
 import co.lucaspinazzola.example.di.FragmentKey
 import co.lucaspinazzola.example.di.scope.FragmentScope
 import co.lucaspinazzola.example.ui.factory.InjectingFragmentFactory
-import co.lucaspinazzola.example.ui.main.MainFragment
+import co.lucaspinazzola.example.ui.giphy.GiphyFragment
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -20,11 +21,12 @@ abstract class FragmentModule {
 
     @Module
     companion object {
+
         @Provides
         @IntoMap
-        @FragmentKey(MainFragment::class)
+        @FragmentKey(GiphyFragment::class)
         @JvmStatic
-        fun mapFragmentIntoMap() : Fragment =
-                MainFragment()
+        fun mapFragmentIntoMap(factory: ViewModelProvider.Factory) : Fragment =
+            GiphyFragment(factory)
     }
 }

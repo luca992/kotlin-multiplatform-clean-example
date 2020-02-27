@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="co.lucaspinazzola.example.ui.main.MainFragment"
-        tools:layout="@layout/fragment_main">
+        android:name="co.lucaspinazzola.example.ui.giphy.GiphyFragment"
+        tools:layout="@layout/fragment_giphy">
     </fragment>
 
 </navigation>

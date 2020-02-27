@@ -30,9 +30,11 @@ kotlin {
         android() {
             publishLibraryVariants("release", "debug")
         }
-        macosX64()
-        iosX64()
-        iosArm64()
+        if (buildForNative) {
+            macosX64()
+            iosX64()
+            iosArm64()
+        }
     }
     sourceSets {
         val commonMain by getting {

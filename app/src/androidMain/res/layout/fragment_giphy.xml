@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+                name="vm"
+                type="co.lucaspinazzola.example.co.lucaspinazzola.example.ui.gifs.GiphyViewModel"/>
+    </data>
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            <!--app:data="@{vm.conversationListItems.ld()}"-->
+
+</layout>

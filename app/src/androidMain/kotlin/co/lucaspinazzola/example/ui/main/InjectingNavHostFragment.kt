@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import co.lucaspinazzola.example.ExampleApplication
-import co.lucaspinazzola.example.di.FragmentComponent
+import co.lucaspinazzola.example.di.component.FragmentComponent
 import co.lucaspinazzola.example.ui.factory.InjectingFragmentFactory
 import javax.inject.Inject
 

@@ -109,7 +109,7 @@ kotlin {
                     implementation(Libs.ktor_client_logging_native)
                     implementation(Libs.ktor_client_logging_native)
                     implementation(Libs.kotlinx_serialization_runtime_native)
-                    implementation(Libs.ktor_client_auth_native)
+                    //implementation(Libs.ktor_client_auth_native)
                     implementation(Libs.ktor_utils_native)
                     implementation(Libs.native_driver)
                 }
