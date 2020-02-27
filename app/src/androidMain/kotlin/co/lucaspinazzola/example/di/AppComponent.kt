@@ -20,7 +20,7 @@ interface AppComponent : AppComponentExposes {
         fun init(app: Application): AppComponent {
             return DaggerAppComponent.builder()
                     .appModule(AppModule(app))
-                    .dataModule(DataModule())
+                    //.dataModule(DataModule())
                     .build()
         }
     }

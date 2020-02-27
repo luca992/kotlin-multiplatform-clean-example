@@ -2,7 +2,7 @@
   <artifact type="jar" name="domain-jvm">
     <output-path>$PROJECT_DIR$/domain/build/libs</output-path>
     <root id="archive" name="domain-jvm.jar">
-      <element id="module-output" name="domain_jvmMain" />
+      <element id="module-output" name="multiplatform-template.domain.jvmMain" />
     </root>
   </artifact>
 </component>

@@ -10,27 +10,27 @@ import kotlin.String
  * YOU are responsible for updating manually the dependency version.
  */
 object Versions {
-    const val org_jetbrains_kotlinx_kotlinx_serialization: String = "0.13.0"
+    const val org_jetbrains_kotlinx_kotlinx_serialization: String = "0.14.0"
 
-    const val org_jetbrains_kotlinx_kotlinx_coroutines: String = "1.3.2"
+    const val org_jetbrains_kotlinx_kotlinx_coroutines: String = "1.3.3"
 
-    const val org_jetbrains_kotlin: String = "1.3.50" // available: "1.3.60"
+    const val org_jetbrains_kotlin: String = "1.3.61"
 
-    const val androidx_navigation: String = "2.1.0"
+    const val androidx_navigation: String = "2.2.1"
 
-    const val com_google_dagger: String = "2.25.2"
+    const val com_google_dagger: String = "2.26"
 
-    const val io_ktor: String = "1.3.0-beta-1"
+    const val io_ktor: String = "1.3.1"
 
-    const val com_android_tools_build_gradle: String = "3.5.2"
+    const val com_android_tools_build_gradle: String = "3.6.0"
 
-    const val de_fayard_refreshversions_gradle_plugin: String = "0.7.0" // available: "0.8.4"
+    const val de_fayard_refreshversions_gradle_plugin: String = "0.7.0" // available: "0.9.2"
 
     const val constraintlayout: String = "1.1.3"
 
     const val espresso_core: String = "3.2.0"
 
-    const val lint_gradle: String = "26.5.2"
+    const val lint_gradle: String = "26.6.0"
 
     const val jsr250_api: String = "1.0" // available: "1.0-20050927.133100"
 
@@ -38,14 +38,14 @@ object Versions {
 
     const val junit_ktx: String = "1.1.1"
 
-    const val core_ktx: String = "1.1.0"
+    const val core_ktx: String = "1.2.0"
 
-    const val aapt2: String = "3.5.2-5435860"
+    const val aapt2: String = "3.6.0-6040484"
 
     /**
-     * Current version: "5.6.3"
+     * Current version: "6.2.1"
      * See issue 19: How to update Gradle itself?
      * https://github.com/jmfayard/buildSrcVersions/issues/19
      */
-    const val gradleLatestVersion: String = "6.0.1"
+    const val gradleLatestVersion: String = "6.2.1"
 }

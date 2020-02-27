@@ -19,15 +19,15 @@ android {
     }
     signingConfigs {
         create("release") {
-            /*keyAlias = "release"
+            keyAlias = "release"
             keyPassword = "my release key password"
             storeFile = file("/home/miles/keystore.jks")
-            storePassword = "my keystore password"*/
+            storePassword = "my keystore password"
         }
     }
     buildTypes {
         getByName("release") {
-            signingConfig = signingConfigs.getByName("release")
+            //signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
@@ -45,15 +45,17 @@ android {
         androidTest.java.srcDir("src/androidAndroidTest/kotlin")
     }
     packagingOptions {
-        pickFirst("META-INF/*")
+        pickFirst("META-INF/*.kotlin_module")
+    }
+    compileOptions {
+        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
     }
 }
 
 //for CocoaPods
 version = "1.0"
 
-//https://youtrack.jetbrains.com/issue/KT-27170
-configurations.create("compileClasspath")
 
 kotlin {
     cocoapods {

@@ -191,6 +191,16 @@ object Libs {
     const val ktor_client_serialization_jvm: String = "io.ktor:ktor-client-serialization-jvm:" +
             Versions.io_ktor
 
+    /**
+     * https://github.com/ktorio/ktor
+     */
+    const val ktor_utils: String = "io.ktor:ktor-utils:" + Versions.io_ktor
+
+    /**
+     * https://github.com/ktorio/ktor
+     */
+    const val ktor_utils_jvm: String = "io.ktor:ktor-utils-jvm:" + Versions.io_ktor
+
     const val ktor_client_auth_native: String = "io.ktor:ktor-client-auth-native:" +
             Versions.io_ktor
 
@@ -200,15 +210,7 @@ object Libs {
     const val ktor_client_logging_native: String = "io.ktor:ktor-client-logging-native:" +
             Versions.io_ktor
 
-    const val ktor_client_serialization_native: String =
-            "io.ktor:ktor-client-serialization-native:" + Versions.io_ktor
-
-    const val ktor_utils: String = "io.ktor:ktor-utils:" + Versions.io_ktor
-
-    const val ktor_utils_jvm: String = "io.ktor:ktor-utils-jvm:" + Versions.io_ktor
-
-    const val ktor_utils_native: String = "io.ktor:ktor-utils-native:" +
-            Versions.io_ktor
+    const val ktor_utils_native: String = "io.ktor:ktor-utils-native:" + Versions.io_ktor
 
     /**
      * https://developer.android.com/studio
@@ -253,7 +255,7 @@ object Libs {
     const val junit_ktx: String = "androidx.test.ext:junit-ktx:" + Versions.junit_ktx
 
     /**
-     * http://developer.android.com/tools/extras/support-library.html
+     * https://developer.android.com/jetpack/androidx
      */
     const val core_ktx: String = "androidx.core:core-ktx:" + Versions.core_ktx
 

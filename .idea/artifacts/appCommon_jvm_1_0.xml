@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="appCommon-jvm-1.0">
-    <output-path>$PROJECT_DIR$/appCommon/build/libs</output-path>
-    <root id="archive" name="appCommon-jvm-1.0.jar">
-      <element id="module-output" name="nexashop.appCommon.jvmMain" />
-    </root>
-  </artifact>
-</component>
