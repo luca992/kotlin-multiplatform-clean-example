@@ -14,9 +14,23 @@ object Libs {
             "org.jetbrains.kotlinx:kotlinx-serialization-runtime:" +
             Versions.org_jetbrains_kotlinx_kotlinx_serialization
 
+    /**
+     * https://github.com/Kotlin/kotlinx.serialization
+     */
+    const val kotlinx_serialization_runtime_common: String =
+            "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:" +
+            Versions.org_jetbrains_kotlinx_kotlinx_serialization
+
     const val kotlinx_serialization_runtime_native: String =
             "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:" +
             Versions.org_jetbrains_kotlinx_kotlinx_serialization
+
+    /**
+     * https://github.com/Kotlin/kotlinx.coroutines
+     */
+    const val kotlinx_coroutines_android: String =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-android:" +
+            Versions.org_jetbrains_kotlinx_kotlinx_coroutines
 
     /**
      * https://github.com/Kotlin/kotlinx.coroutines
@@ -31,9 +45,60 @@ object Libs {
             "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:" +
             Versions.org_jetbrains_kotlinx_kotlinx_coroutines
 
+    /**
+     * https://github.com/Kotlin/kotlinx.coroutines
+     */
+    const val kotlinx_coroutines_test: String = "org.jetbrains.kotlinx:kotlinx-coroutines-test:" +
+            Versions.org_jetbrains_kotlinx_kotlinx_coroutines
+
     const val kotlinx_coroutines_core_native: String =
             "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:" +
             Versions.org_jetbrains_kotlinx_kotlinx_coroutines
+
+    /**
+     * https://github.com/square/sqldelight/
+     */
+    const val android_driver: String = "com.squareup.sqldelight:android-driver:" +
+            Versions.com_squareup_sqldelight
+
+    /**
+     * https://github.com/square/sqldelight/
+     */
+    const val gradle_plugin: String = "com.squareup.sqldelight:gradle-plugin:" +
+            Versions.com_squareup_sqldelight
+
+    /**
+     * https://github.com/square/sqldelight/
+     */
+    const val native_driver: String = "com.squareup.sqldelight:native-driver:" +
+            Versions.com_squareup_sqldelight
+
+    /**
+     * https://github.com/square/sqldelight/
+     */
+    const val sqlite_driver: String = "com.squareup.sqldelight:sqlite-driver:" +
+            Versions.com_squareup_sqldelight
+
+    const val com_squareup_sqldelight_runtime: String = "com.squareup.sqldelight:runtime:" +
+            Versions.com_squareup_sqldelight
+
+    const val databinding_adapters: String = "androidx.databinding:databinding-adapters:" +
+            Versions.androidx_databinding
+
+    /**
+     * https://developer.android.com/studio
+     */
+    const val databinding_common: String = "androidx.databinding:databinding-common:" +
+            Versions.androidx_databinding
+
+    /**
+     * https://developer.android.com/studio
+     */
+    const val databinding_compiler: String = "androidx.databinding:databinding-compiler:" +
+            Versions.androidx_databinding
+
+    const val databinding_runtime: String = "androidx.databinding:databinding-runtime:" +
+            Versions.androidx_databinding
 
     /**
      * https://kotlinlang.org/
@@ -67,6 +132,18 @@ object Libs {
     const val kotlin_scripting_compiler_embeddable: String =
             "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable:" +
             Versions.org_jetbrains_kotlin
+
+    /**
+     * https://kotlinlang.org/
+     */
+    const val kotlin_serialization: String = "org.jetbrains.kotlin:kotlin-serialization:" +
+            Versions.org_jetbrains_kotlin
+
+    /**
+     * https://kotlinlang.org/
+     */
+    const val kotlin_serialization_unshaded: String =
+            "org.jetbrains.kotlin:kotlin-serialization-unshaded:" + Versions.org_jetbrains_kotlin
 
     /**
      * https://kotlinlang.org/
@@ -123,6 +200,18 @@ object Libs {
             Versions.androidx_navigation
 
     /**
+     * https://developer.android.com/topic/libraries/architecture/index.html
+     */
+    const val lifecycle_common_java8: String = "androidx.lifecycle:lifecycle-common-java8:" +
+            Versions.androidx_lifecycle
+
+    /**
+     * https://developer.android.com/topic/libraries/architecture/index.html
+     */
+    const val lifecycle_livedata: String = "androidx.lifecycle:lifecycle-livedata:" +
+            Versions.androidx_lifecycle
+
+    /**
      * https://github.com/google/dagger
      */
     const val dagger: String = "com.google.dagger:dagger:" + Versions.com_google_dagger
@@ -132,6 +221,36 @@ object Libs {
      */
     const val dagger_compiler: String = "com.google.dagger:dagger-compiler:" +
             Versions.com_google_dagger
+
+    const val stately: String = "co.touchlab:stately:" + Versions.co_touchlab
+
+    const val stately_collections: String = "co.touchlab:stately-collections:" +
+            Versions.co_touchlab
+
+    const val stately_collections_jvm: String = "co.touchlab:stately-collections-jvm:" +
+            Versions.co_touchlab
+
+    const val stately_jvm: String = "co.touchlab:stately-jvm:" + Versions.co_touchlab
+
+    /**
+     * http://mockk.io
+     */
+    const val mockk: String = "io.mockk:mockk:" + Versions.io_mockk
+
+    /**
+     * http://mockk.io
+     */
+    const val mockk_android: String = "io.mockk:mockk-android:" + Versions.io_mockk
+
+    /**
+     * http://mockk.io
+     */
+    const val mockk_common: String = "io.mockk:mockk-common:" + Versions.io_mockk
+
+    /**
+     * https://github.com/ktorio/ktor
+     */
+    const val ktor_client_android: String = "io.ktor:ktor-client-android:" + Versions.io_ktor
 
     /**
      * https://github.com/ktorio/ktor
@@ -151,17 +270,17 @@ object Libs {
     /**
      * https://github.com/ktorio/ktor
      */
-    const val ktor_client_core_jvm: String = "io.ktor:ktor-client-core-jvm:" + Versions.io_ktor
-
-    /**
-     * https://github.com/ktorio/ktor
-     */
-    const val ktor_client_curl: String = "io.ktor:ktor-client-curl:" + Versions.io_ktor
-
-    /**
-     * https://github.com/ktorio/ktor
-     */
     const val ktor_client_ios: String = "io.ktor:ktor-client-ios:" + Versions.io_ktor
+
+    /**
+     * https://github.com/ktorio/ktor
+     */
+    const val ktor_client_json: String = "io.ktor:ktor-client-json:" + Versions.io_ktor
+
+    /**
+     * https://github.com/ktorio/ktor
+     */
+    const val ktor_client_json_jvm: String = "io.ktor:ktor-client-json-jvm:" + Versions.io_ktor
 
     /**
      * https://github.com/ktorio/ktor
@@ -177,7 +296,12 @@ object Libs {
     /**
      * https://github.com/ktorio/ktor
      */
-    const val ktor_client_okhttp: String = "io.ktor:ktor-client-okhttp:" + Versions.io_ktor
+    const val ktor_client_mock: String = "io.ktor:ktor-client-mock:" + Versions.io_ktor
+
+    /**
+     * https://github.com/ktorio/ktor
+     */
+    const val ktor_client_mock_jvm: String = "io.ktor:ktor-client-mock-jvm:" + Versions.io_ktor
 
     /**
      * https://github.com/ktorio/ktor
@@ -235,9 +359,19 @@ object Libs {
             Versions.espresso_core
 
     /**
+     * https://developer.android.com/topic/libraries/architecture/index.html
+     */
+    const val core_testing: String = "androidx.arch.core:core-testing:" + Versions.core_testing
+
+    /**
      * https://developer.android.com/studio
      */
     const val lint_gradle: String = "com.android.tools.lint:lint-gradle:" + Versions.lint_gradle
+
+    /**
+     * https://bytebuddy.net
+     */
+    const val byte_buddy: String = "net.bytebuddy:byte-buddy:" + Versions.byte_buddy
 
     /**
      * https://jax-ws.dev.java.net/
@@ -263,4 +397,6 @@ object Libs {
      * https://developer.android.com/studio
      */
     const val aapt2: String = "com.android.tools.build:aapt2:" + Versions.aapt2
+
+    const val mvvm: String = "dev.icerock.moko:mvvm:" + Versions.mvvm
 }

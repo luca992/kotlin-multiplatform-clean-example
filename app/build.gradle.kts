@@ -51,6 +51,9 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
         sourceCompatibility = JavaVersion.VERSION_1_8
     }
+    dataBinding {
+        isEnabled = true
+    }
 }
 
 //for CocoaPods
@@ -67,7 +70,7 @@ kotlin {
 
     targets {
         android()
-        macosX64()
+        //macosX64()
         iosX64()
         iosArm64()
     }
@@ -83,6 +86,9 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(Libs.kotlin_stdlib_common)
+                implementation(Libs.kotlinx_coroutines_core_common)
+                implementation(Libs.mvvm)
+
                 implementation(project(":domain"))
                 implementation(project(":data"))
                 implementation(project(":device"))
@@ -92,12 +98,16 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation(Libs.kotlin_stdlib_jdk8)
+                implementation(Libs.kotlinx_coroutines_android)
+
                 implementation(Libs.appcompat)
                 implementation(Libs.core_ktx)
                 implementation(Libs.constraintlayout)
                 implementation(Libs.navigation_fragment_ktx)
                 implementation(Libs.navigation_ui_ktx)
                 implementation(Libs.dagger)
+                implementation(Libs.lifecycle_livedata)
+                implementation(Libs.lifecycle_common_java8)
                 implementation(Libs.jsr250_api)
             }
         }
@@ -106,6 +116,7 @@ kotlin {
             dependencies {
                 implementation(Libs.kotlin_test_common)
                 implementation(Libs.kotlin_test_annotations_common)
+                implementation(Libs.mockk_common)
             }
         }
 
@@ -113,6 +124,9 @@ kotlin {
             dependencies {
                 implementation(Libs.kotlin_test)
                 implementation(Libs.kotlin_test_junit)
+                implementation(Libs.mockk)
+                implementation(Libs.core_testing)
+                implementation(Libs.kotlinx_coroutines_test)
             }
         }
 
@@ -121,6 +135,7 @@ kotlin {
                 implementation(Libs.kotlin_test)
                 implementation(Libs.junit_ktx)
                 implementation(Libs.espresso_core)
+                implementation(Libs.mockk_android)
             }
         }
 
@@ -130,4 +145,5 @@ kotlin {
 
 dependencies {
     "kapt"(Libs.dagger_compiler)
+    "kapt"(Libs.databinding_compiler)
 }

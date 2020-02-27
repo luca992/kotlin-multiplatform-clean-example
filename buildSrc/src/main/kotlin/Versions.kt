@@ -14,11 +14,21 @@ object Versions {
 
     const val org_jetbrains_kotlinx_kotlinx_coroutines: String = "1.3.3"
 
+    const val com_squareup_sqldelight: String = "1.2.1" // available: "1.2.2"
+
+    const val androidx_databinding: String = "3.6.0"
+
     const val org_jetbrains_kotlin: String = "1.3.61"
 
     const val androidx_navigation: String = "2.2.1"
 
+    const val androidx_lifecycle: String = "2.2.0"
+
     const val com_google_dagger: String = "2.26"
+
+    const val co_touchlab: String = "0.9.4"
+
+    const val io_mockk: String = "1.9.3"
 
     const val io_ktor: String = "1.3.1"
 
@@ -30,7 +40,11 @@ object Versions {
 
     const val espresso_core: String = "3.2.0"
 
+    const val core_testing: String = "2.1.0"
+
     const val lint_gradle: String = "26.6.0"
+
+    const val byte_buddy: String = "1.10.8"
 
     const val jsr250_api: String = "1.0" // available: "1.0-20050927.133100"
 
@@ -41,6 +55,8 @@ object Versions {
     const val core_ktx: String = "1.2.0"
 
     const val aapt2: String = "3.6.0-6040484"
+
+    const val mvvm: String = "0.4.0"
 
     /**
      * Current version: "6.2.1"
