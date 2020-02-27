@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id(BuildPlugins.kotlinMultiplatform)
     id(BuildPlugins.kotlinCocoapods)
@@ -6,6 +8,19 @@ plugins {
     id(BuildPlugins.kotlinAndroidExtensions)
     id("androidx.navigation.safeargs.kotlin")
 }
+
+
+val giphyApiKey : String
+    get() {
+    val local = Properties()
+    val localProperties: File = rootProject.file("local.properties")
+    if (localProperties.exists()) {
+        localProperties.inputStream().use { local.load(it) }
+    }
+    return local.getProperty("giphyApiKey") ?: "Add giphyApiKey to local.properties"
+}
+
+
 
 android {
     compileSdkVersion(AndroidSdk.compile)
@@ -16,6 +31,7 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "GIPHY_API_KEY", "\"$giphyApiKey\"")
     }
     signingConfigs {
         create("release") {
