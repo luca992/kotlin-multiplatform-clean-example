@@ -12,6 +12,7 @@ class GifDbHelperImplTest: DbHelperTest<GifData, GifDbHelper>() {
 
     override val data1 = GifData.Impl(
         id = "1",
+        resultIndex = 1,
         url = "url1",
         urlWebp = "urlWebp1",
         trendingDatetime = 1
@@ -19,6 +20,7 @@ class GifDbHelperImplTest: DbHelperTest<GifData, GifDbHelper>() {
 
     override val data2 = GifData.Impl(
         id = "2",
+        resultIndex = 2,
         url = "url2",
         urlWebp = "urlWebp2",
         trendingDatetime = 2

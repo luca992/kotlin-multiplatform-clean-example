@@ -33,12 +33,14 @@ class GifMapperImplTest {
     fun `data src correctly maps to domain output`() = runTest {
         val src = GifData.Impl(
             id = "1",
+            resultIndex = 1,
             url = "url1",
             urlWebp = "urlWebp1",
             trendingDatetime = 1
         )
         val expected = Gif(
             id = "1",
+            resultIndex = 1,
             url = "url1",
             urlWebp = "urlWebp1",
             trendingDatetime = Date(1)
@@ -51,12 +53,14 @@ class GifMapperImplTest {
         val srcs = arrayOf<GifData>(
             GifData.Impl(
                 id = "1",
+                resultIndex = 1,
                 url = "url1",
                 urlWebp = "urlWebp1",
                 trendingDatetime = 1
             ),
             GifData.Impl(
                 id = "2",
+                resultIndex = 2,
                 url = "url2",
                 urlWebp = "urlWebp2",
                 trendingDatetime = 2
@@ -65,12 +69,14 @@ class GifMapperImplTest {
         val expected = listOf(
             Gif(
                 id = "1",
+                resultIndex = 1,
                 url = "url1",
                 urlWebp = "urlWebp1",
                 trendingDatetime = Date(1)
             ),
             Gif(
                 id = "2",
+                resultIndex = 2,
                 url = "url2",
                 urlWebp = "urlWebp2",
                 trendingDatetime = Date(2)
@@ -88,12 +94,13 @@ class GifMapperImplTest {
         every { gifData1.trendingDatetime } returns Date(1)
         val expected = GifData.Impl(
             id = "1",
+            resultIndex = 1,
             url = "url1",
             urlWebp = "urlWebp1",
             trendingDatetime = 1
         )
 
-        assertEquals(expected,mapper.toDataModel(gifData1))
+        assertEquals(expected,mapper.toDataModel(gifData1,1))
     }
 
     @Test
@@ -112,18 +119,20 @@ class GifMapperImplTest {
         val expected = listOf<GifData>(
             GifData.Impl(
                 id = "1",
+                resultIndex = 1,
                 url = "url1",
                 urlWebp = "urlWebp1",
                 trendingDatetime = 1
             ),
             GifData.Impl(
-            id = "2",
-            url = "url2",
-            urlWebp = "urlWebp2",
-            trendingDatetime = 2
+                id = "2",
+                resultIndex = 2,
+                url = "url2",
+                urlWebp = "urlWebp2",
+                trendingDatetime = 2
             )
         )
-        assertEquals(expected,mapper.toDataModel(srcs))
+        assertEquals(expected,mapper.toDataModel(srcs, 1))
     }
 
 }

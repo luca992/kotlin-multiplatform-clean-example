@@ -58,13 +58,13 @@ class GiphyRepositoryImplTest {
     @Test
     fun `updateGifs offset 0, clears db, gets 1st page of gifs from api, updates db`() = runTest {
         val query = "query"
-        val offset = 0
+        val offset = 0L
         val response : GiphySearchResponse = mockk{}
         val responseData : List<GiphySearchResponse.Data> = listOf()
         val dataGifs : List<GifData> = listOf()
         every { response.data } returns responseData
         coEvery { api.searchGifs(query, offset) } returns response
-        every { gifMapper.toDataModel(responseData.toTypedArray()) } returns dataGifs
+        every { gifMapper.toDataModel(responseData.toTypedArray(),offset) } returns dataGifs
 
         repository.updateGifs(query, offset)
 
@@ -77,13 +77,13 @@ class GiphyRepositoryImplTest {
     @Test
     fun `updateGifs offset greater than 0 doesn't clear db, gets 1st page of gifs from api, updates db`() = runTest {
         val query = "query"
-        val offset = 1
+        val offset = 1L
         val response : GiphySearchResponse = mockk{}
         val responseData : List<GiphySearchResponse.Data> = listOf()
         val dataGifs : List<GifData> = listOf()
         every { response.data } returns responseData
         coEvery { api.searchGifs(query, offset) } returns response
-        every { gifMapper.toDataModel(responseData.toTypedArray()) } returns dataGifs
+        every { gifMapper.toDataModel(responseData.toTypedArray(),offset) } returns dataGifs
 
         repository.updateGifs(query, offset)
 
