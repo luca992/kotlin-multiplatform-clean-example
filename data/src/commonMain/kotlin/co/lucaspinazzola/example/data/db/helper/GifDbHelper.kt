@@ -19,6 +19,7 @@ class GifDbHelperImpl(database: Database) : SqlDelightDbHelper<GifData>(database
     override fun internalInsert(d: GifData) {
         queries.insert(
             id = d.id,
+            resultIndex = d.resultIndex,
             url = d.url,
             urlWebp = d.urlWebp,
             trendingDatetime = d.trendingDatetime)

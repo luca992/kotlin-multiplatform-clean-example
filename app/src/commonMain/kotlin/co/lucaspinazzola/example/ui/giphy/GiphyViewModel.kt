@@ -56,7 +56,7 @@ class GiphyViewModel(
         viewModelScope.launch {
             try {
                 withContext(Dispatchers.Default) {
-                    updateGifsUseCase.execute(query.value,gifs.value.size)
+                    updateGifsUseCase.execute(query.value,gifs.value.size.toLong())
                 }
             } catch (t: Throwable) {
                 t.printStackTrace()

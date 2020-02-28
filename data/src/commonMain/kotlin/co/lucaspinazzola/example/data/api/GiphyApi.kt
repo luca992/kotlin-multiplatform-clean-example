@@ -54,7 +54,7 @@ class GiphyApi(var apiKey: String,
      * @param query: Search query term or phrase.
      * @param offset: Position in pagination.
      */
-    suspend fun searchGifs(query: String, offset: Int, limit: Int = 10) : GiphySearchResponse =
+    suspend fun searchGifs(query: String, offset: Long, limit: Int = 10) : GiphySearchResponse =
             client.use {
                 it.get("$url/v1/gifs/search"){
                     parameter(GiphyApiConstants.API_KEY, apiKey)

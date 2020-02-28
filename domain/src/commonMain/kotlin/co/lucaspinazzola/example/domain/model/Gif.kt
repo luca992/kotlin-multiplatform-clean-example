@@ -4,6 +4,7 @@ import co.lucaspinazzola.example.domain.utils.Date
 
 data class Gif(
     val id: String,
+    val resultIndex: Long,
     val url: String,
     val urlWebp: String,
     val trendingDatetime: Date

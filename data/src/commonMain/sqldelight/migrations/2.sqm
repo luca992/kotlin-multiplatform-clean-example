@@ -1,0 +1,9 @@
+DROP TABLE GifData;
+
+CREATE TABLE GifData(
+    id TEXT PRIMARY KEY,
+    resultIndex INTEGER NOT NULL,
+    url TEXT NOT NULL,
+    urlWebp TEXT NOT NULL,
+    trendingDatetime INTEGER NOT NULL
+);

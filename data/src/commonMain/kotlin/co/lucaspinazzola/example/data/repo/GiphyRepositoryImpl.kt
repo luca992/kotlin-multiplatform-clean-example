@@ -19,10 +19,10 @@ data class GiphyRepositoryImpl(private val api: GiphyApi,
         return gifMapper.toDomainModel(gifDbHelper.getAll().toTypedArray())
     }
 
-    override suspend fun updateGifs(query: String, offset: Int) {
-        if (offset == 0) gifDbHelper.deleteAll()
+    override suspend fun updateGifs(query: String, offset: Long) {
+        if (offset == 0L) gifDbHelper.deleteAll()
         val responseData = api.searchGifs(query, offset).data.toTypedArray()
-        gifDbHelper.insert(gifMapper.toDataModel(responseData))
+        gifDbHelper.insert(gifMapper.toDataModel(responseData, offset))
     }
 
 

@@ -7,7 +7,7 @@ import co.lucaspinazzola.example.domain.model.Gif
 interface GifMapper {
     fun toDomainModel(src: GifData): Gif
     fun toDomainModel(src: Array<GifData>): List<Gif>
-    fun toDataModel(src: GiphySearchResponse.Data): GifData
-    fun toDataModel(src: Array<GiphySearchResponse.Data>): List<GifData>
+    fun toDataModel(src: GiphySearchResponse.Data, index: Long): GifData
+    fun toDataModel(src: Array<GiphySearchResponse.Data>, offset: Long): List<GifData>
 
 }

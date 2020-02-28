@@ -8,19 +8,21 @@ import co.lucaspinazzola.example.domain.utils.Date
 class GifMapperImpl : GifMapper {
 
 
-    override fun toDataModel(src: GiphySearchResponse.Data) = GifData.Impl(
+    override fun toDataModel(src: GiphySearchResponse.Data, index: Long) = GifData.Impl(
         id = src.id,
+        resultIndex = index,
         url = src.images.original.url,
         urlWebp = src.images.original.webp,
         trendingDatetime = src.trendingDatetime.getTime()
     )
 
-    override fun toDataModel(src: Array<GiphySearchResponse.Data>): List<GifData> =
-        src.map { toDataModel(it) }
+    override fun toDataModel(src: Array<GiphySearchResponse.Data>, offset: Long): List<GifData> =
+        src.mapIndexed{ index, data ->  toDataModel(data, offset + index) }
 
     override fun toDomainModel(src: GifData) =
         Gif(
             id = src.id,
+            resultIndex = src.resultIndex,
             url = src.url,
             urlWebp = src.urlWebp,
             trendingDatetime = Date(src.trendingDatetime)

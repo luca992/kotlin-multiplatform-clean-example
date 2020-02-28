@@ -24,7 +24,7 @@ class UpdateGifsUseCaseTest {
     @Test
     fun `calls update conversations repo function`() = runTest {
         val query = "query"
-        val offset = 0
+        val offset = 0L
         updateConversationsUseCase.execute(query,offset)
 
         coVerify(exactly = 1) { repository.updateGifs(query,offset) }

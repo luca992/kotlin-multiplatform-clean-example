@@ -1,5 +1,6 @@
 CREATE TABLE GifData(
     id TEXT PRIMARY KEY,
+    resultIndex INTEGER NOT NULL,
     url TEXT NOT NULL,
     urlWebp TEXT NOT NULL,
     trendingDatetime INTEGER NOT NULL
@@ -7,11 +8,12 @@ CREATE TABLE GifData(
 
 insert:
 INSERT OR REPLACE INTO GifData(id,
+resultIndex,
 url,
 urlWebp,
 trendingDatetime
 )
-VALUES (?, ?, ?, ?)
+VALUES (?, ?, ?, ?, ?)
 ;
 
 getById:
@@ -26,7 +28,7 @@ getAll:
 SELECT *
 FROM GifData
 ORDER BY
- trendingDatetime DESC
+ resultIndex ASC
 ;
 
 deleteById:
