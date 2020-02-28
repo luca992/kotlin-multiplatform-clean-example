@@ -33,7 +33,6 @@ class GiphyViewModel(
     }
     var lastQuery : String? = null
     val loadingIndicatorVisibility = MutableLiveData<Visibility>(Visibility.GONE)
-
     val gifs by lazy {
         MutableLiveData<List<Gif>>(listOf()).apply {
             viewModelScope.launch {
@@ -53,21 +52,21 @@ class GiphyViewModel(
 
     var getConversationsAndListenForUpdatesJob : Job? = null
 
-    /*fun onRefresh() {
+    fun loadNextPage() {
         viewModelScope.launch {
             try {
                 withContext(Dispatchers.Default) {
-                    updateGifsUseCase.execute()
+                    updateGifsUseCase.execute(query.value,gifs.value.size)
                 }
             } catch (t: Throwable) {
                 t.printStackTrace()
                 error.value = t.message ?: ""
             }
             finally {
-                loadingIndicatorEnabled.value = false
+                loadingIndicatorVisibility.value = Visibility.GONE
             }
         }
-    }*/
+    }
 
 
 

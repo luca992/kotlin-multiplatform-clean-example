@@ -34,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:spanCount="2"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layoutManager=".ui.utils.EndlessRecyclerGridLayoutManager"
                 app:layout_constraintTop_toBottomOf="@+id/searchEt"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintVertical_bias="0.0"

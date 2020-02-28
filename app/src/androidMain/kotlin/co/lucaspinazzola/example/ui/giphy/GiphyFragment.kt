@@ -10,11 +10,14 @@ import androidx.lifecycle.lifecycleScope
 import co.lucaspinazzola.example.R
 import co.lucaspinazzola.example.databinding.FragmentGiphyBinding
 import co.lucaspinazzola.example.ui.base.BaseFragment
+import co.lucaspinazzola.example.ui.utils.EndlessRecyclerGridLayoutManager
+import co.lucaspinazzola.example.ui.utils.OnLastItemVisible
+import co.lucaspinazzola.example.ui.utils.Visibility
 import dev.icerock.moko.mvvm.livedata.asFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class GiphyFragment constructor(private val factory: ViewModelProvider.Factory) : BaseFragment(){
+class GiphyFragment constructor(private val factory: ViewModelProvider.Factory) : BaseFragment(), OnLastItemVisible{
 
     private lateinit var viewModel: GiphyViewModel
 
@@ -29,14 +32,28 @@ class GiphyFragment constructor(private val factory: ViewModelProvider.Factory) 
         binding.vm = viewModel
         binding.lifecycleOwner = this
         binding.recyclerView.adapter = GiphyAdapter()
-
+        val layoutManager = (binding.recyclerView.layoutManager as EndlessRecyclerGridLayoutManager)
+        layoutManager.setOnLastItemVisible(this)
         lifecycleScope.launch {
             viewModel.error.asFlow().collect {
                 showError(it)
             }
         }
-
+        lifecycleScope.launch {
+            viewModel.loadingIndicatorVisibility.asFlow().collect{
+                if (it == Visibility.GONE){
+                    layoutManager.resetLoadMoreState()
+                }
+            }
+        }
         return view
+    }
+
+    override fun onLastItemVisible() {
+        viewModel.loadNextPage()
+    }
+
+    override fun onLoadMoreComplete() {
     }
 
 }
