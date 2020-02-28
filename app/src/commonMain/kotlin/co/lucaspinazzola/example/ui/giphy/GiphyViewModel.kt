@@ -1,7 +1,10 @@
-package co.lucaspinazzola.example.co.lucaspinazzola.example.ui.gifs
+package co.lucaspinazzola.example.ui.giphy
 
 import co.lucaspinazzola.example.ui.base.ViewModel
 import co.lucaspinazzola.example.data.utils.printStackTrace
+import co.lucaspinazzola.example.domain.interactor.gif.GetGifsAndListenForUpdatesUseCase
+import co.lucaspinazzola.example.domain.interactor.gif.UpdateGifsUseCase
+import co.lucaspinazzola.example.domain.interactor.session.GetLastGifQueryUseCase
 import dev.icerock.moko.mvvm.livedata.MutableLiveData
 import dev.icerock.moko.mvvm.livedata.asFlow
 import kotlinx.coroutines.*
@@ -10,8 +13,10 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectIndexed
 import kotlinx.coroutines.flow.flowOn
 
-class GiphyViewModel(/*private val getConversationsAndListenForUpdatesUseCase: GetConversationsAndListenForUpdatesUseCase,
-                    private val updateConversationsUseCase: UpdateConversationsUseCase*/): ViewModel() {
+class GiphyViewModel(
+    private val getLastGifQueryUseCase: GetLastGifQueryUseCase,
+    private val getGifsAndListenForUpdatesUseCase: GetGifsAndListenForUpdatesUseCase,
+    private val updateGifsUseCase: UpdateGifsUseCase): ViewModel() {
 
 
     val error = MutableLiveData<String?>(null)

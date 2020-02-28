@@ -2,9 +2,12 @@ package co.lucaspinazzola.example.di.module
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import co.lucaspinazzola.example.co.lucaspinazzola.example.ui.gifs.GiphyViewModel
+import co.lucaspinazzola.example.ui.giphy.GiphyViewModel
 import co.lucaspinazzola.example.di.ViewModelKey
 import co.lucaspinazzola.example.di.scope.FragmentScope
+import co.lucaspinazzola.example.domain.interactor.gif.GetGifsAndListenForUpdatesUseCase
+import co.lucaspinazzola.example.domain.interactor.gif.UpdateGifsUseCase
+import co.lucaspinazzola.example.domain.interactor.session.GetLastGifQueryUseCase
 import co.lucaspinazzola.example.ui.factory.ViewModelFactory
 import dagger.Binds
 import dagger.Module
@@ -26,8 +29,14 @@ abstract class ViewModelModule {
         @IntoMap
         @ViewModelKey(GiphyViewModel::class)
         @JvmStatic
-        fun mapConversationsViewModel() : ViewModel =
-                GiphyViewModel()
+        fun mapConversationsViewModel(getLastGifQueryUseCase: GetLastGifQueryUseCase,
+                                      getGifsAndListenForUpdatesUseCase: GetGifsAndListenForUpdatesUseCase,
+                                      updateGifsUseCase: UpdateGifsUseCase) : ViewModel =
+            GiphyViewModel(
+                getLastGifQueryUseCase = getLastGifQueryUseCase,
+                getGifsAndListenForUpdatesUseCase = getGifsAndListenForUpdatesUseCase,
+                updateGifsUseCase = updateGifsUseCase
+            )
 
     }
 

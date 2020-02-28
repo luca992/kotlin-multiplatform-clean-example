@@ -3,6 +3,7 @@ package co.lucaspinazzola.example.data.repo
 import co.lucaspinazzola.example.data.api.GiphyApi
 import co.lucaspinazzola.example.data.api.response.GiphySearchResponse
 import co.lucaspinazzola.example.data.db.helper.DbHelper
+import co.lucaspinazzola.example.data.db.helper.SessionDbHelper
 import co.lucaspinazzola.example.data.mapper.SessionMapper
 import co.lucaspinazzola.example.data.model.SessionData
 import co.lucaspinazzola.example.domain.model.Session
@@ -22,7 +23,7 @@ class SessionRepositoryTest {
     @MockK lateinit var sessionMapper: SessionMapper
     @MockK lateinit var session: Session
     @MockK lateinit var response : GiphySearchResponse
-    @MockK lateinit var sessionDbHelper : DbHelper<SessionData>
+    @MockK lateinit var sessionDbHelper : SessionDbHelper
 
 
 

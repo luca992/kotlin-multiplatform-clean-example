@@ -8,7 +8,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import co.lucaspinazzola.example.R
-import co.lucaspinazzola.example.co.lucaspinazzola.example.ui.gifs.GiphyViewModel
 import co.lucaspinazzola.example.databinding.FragmentGiphyBinding
 import co.lucaspinazzola.example.ui.base.BaseFragment
 import dev.icerock.moko.mvvm.livedata.asFlow

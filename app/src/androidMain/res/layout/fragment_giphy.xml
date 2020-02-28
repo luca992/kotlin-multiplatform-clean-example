@@ -5,7 +5,7 @@
     <data>
         <variable
                 name="vm"
-                type="co.lucaspinazzola.example.co.lucaspinazzola.example.ui.gifs.GiphyViewModel"/>
+                type="co.lucaspinazzola.example.ui.giphy.GiphyViewModel"/>
     </data>
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
