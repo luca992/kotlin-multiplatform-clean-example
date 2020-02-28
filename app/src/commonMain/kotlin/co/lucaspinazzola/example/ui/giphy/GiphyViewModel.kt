@@ -41,7 +41,7 @@ class GiphyViewModel(
                         viewModelScope.launch {
                             lastQuery = query
                             setLastGifQueryUseCase.execute(query)
-                            getConversationsAndListenForUpdatesJob?.cancelAndJoin()
+                            getGifsAndListenForUpdatesJob?.cancelAndJoin()
                             getConversationsAndListenForUpdates()
                         }
                     }
@@ -50,7 +50,7 @@ class GiphyViewModel(
         }
     }
 
-    var getConversationsAndListenForUpdatesJob : Job? = null
+    var getGifsAndListenForUpdatesJob : Job? = null
 
     fun loadNextPage() {
         loadingIndicatorVisibility.value = Visibility.VISIBLE
@@ -73,7 +73,7 @@ class GiphyViewModel(
 
     private fun getConversationsAndListenForUpdates() {
         loadingIndicatorVisibility.value = Visibility.VISIBLE
-        getConversationsAndListenForUpdatesJob = viewModelScope.launch(Dispatchers.Default) {
+        getGifsAndListenForUpdatesJob = viewModelScope.launch(Dispatchers.Default) {
             getGifsAndListenForUpdatesUseCase.execute(query = query.value)
                         .catch { t ->
                             when (t) {
