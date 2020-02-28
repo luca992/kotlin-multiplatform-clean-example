@@ -6,6 +6,8 @@ import co.lucaspinazzola.example.domain.interactor.gif.GetGifsAndListenForUpdate
 import co.lucaspinazzola.example.domain.interactor.gif.UpdateGifsUseCase
 import co.lucaspinazzola.example.domain.interactor.session.GetLastGifQueryUseCase
 import co.lucaspinazzola.example.domain.interactor.session.SetLastGifQueryUseCase
+import co.lucaspinazzola.example.domain.model.Gif
+import co.lucaspinazzola.example.ui.utils.Visibility
 import dev.icerock.moko.mvvm.livedata.MutableLiveData
 import dev.icerock.moko.mvvm.livedata.asFlow
 import kotlinx.coroutines.*
@@ -22,17 +24,24 @@ class GiphyViewModel(
 
 
     val error = MutableLiveData<String?>(null)
-    val query  = MutableLiveData<String>("")
+    val query  by lazy {
+        MutableLiveData<String>( "").apply {
+            viewModelScope.launch {
+                value = getLastGifQueryUseCase.execute()  ?: ""
+            }
+        }
+    }
     var lastQuery : String? = null
-    val loadingIndicatorEnabled = MutableLiveData<Boolean>(false)
+    val loadingIndicatorVisibility = MutableLiveData<Visibility>(Visibility.GONE)
 
-    /*val conversationListItems by lazy {
-        MutableLiveData<List<ConversationListItem>>(listOf()).apply {
+    val gifs by lazy {
+        MutableLiveData<List<Gif>>(listOf()).apply {
             viewModelScope.launch {
                 query.asFlow().collect { query ->
                     if (lastQuery != query) {
                         viewModelScope.launch {
                             lastQuery = query
+                            setLastGifQueryUseCase.execute(query)
                             getConversationsAndListenForUpdatesJob?.cancelAndJoin()
                             getConversationsAndListenForUpdates()
                         }
@@ -44,11 +53,11 @@ class GiphyViewModel(
 
     var getConversationsAndListenForUpdatesJob : Job? = null
 
-    fun onRefresh() {
+    /*fun onRefresh() {
         viewModelScope.launch {
             try {
                 withContext(Dispatchers.Default) {
-                    updateConversationsUseCase.execute()
+                    updateGifsUseCase.execute()
                 }
             } catch (t: Throwable) {
                 t.printStackTrace()
@@ -58,39 +67,37 @@ class GiphyViewModel(
                 loadingIndicatorEnabled.value = false
             }
         }
-    }
+    }*/
 
 
 
     private fun getConversationsAndListenForUpdates() {
-        loadingIndicatorEnabled.value = true
+        loadingIndicatorVisibility.value = Visibility.VISIBLE
         getConversationsAndListenForUpdatesJob = viewModelScope.launch(Dispatchers.Default) {
-                getConversationsAndListenForUpdatesUseCase.execute(query = query.value, archived = false)
+            getGifsAndListenForUpdatesUseCase.execute(query = query.value)
                         .catch { t ->
                             when (t) {
                                 is CancellationException -> {
                                     return@catch
-                                }
-                                is GetConversationsAndListenForUpdatesUseCase.AlreadyUpToDateException -> {
                                 }
                                 else -> {
                                     t.printStackTrace()
                                     error.value = t.message ?: ""
                                 }
                             }
-                            loadingIndicatorEnabled.value = false
+                            loadingIndicatorVisibility.value = Visibility.GONE
                         }
                         .flowOn(Dispatchers.Main)
                         .collectIndexed { index, value ->
                             withContext(Dispatchers.Main) {
-                                this@GifsViewModel.conversationListItems.value = value
+                                this@GiphyViewModel.gifs.value = value
                                 if (index == 1) {
-                                    loadingIndicatorEnabled.value = false
+                                    loadingIndicatorVisibility.value = Visibility.GONE
                                 }
                             }
                         }
         }
     }
-*/
+
 
 }

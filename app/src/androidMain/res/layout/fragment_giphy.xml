@@ -7,11 +7,35 @@
                 name="vm"
                 type="co.lucaspinazzola.example.ui.giphy.GiphyViewModel"/>
     </data>
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-            <!--app:data="@{vm.conversationListItems.ld()}"-->
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="match_parent">
+        <EditText
+                android:id="@+id/searchEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/search_bar_background"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_search_black_24dp"
+                android:hint="@string/search_hint"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:lineSpacingExtra="10dp"
+                android:lines="1"
+                android:minHeight="54dp"
+                android:padding="10dp"
+                android:scrollbars="vertical"
+                android:text="@={vm.query.ld()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@+id/searchEt" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:data="@{vm.gifs.ld()}"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

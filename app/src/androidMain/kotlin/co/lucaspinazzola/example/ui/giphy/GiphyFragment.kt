@@ -24,10 +24,11 @@ class GiphyFragment constructor(private val factory: ViewModelProvider.Factory) 
         val binding: FragmentGiphyBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_giphy, container, false)
         viewModel = ViewModelProvider(this, factory).get(GiphyViewModel::class.java)
+        mainLoadingIndicatorVisibilityLd = viewModel.loadingIndicatorVisibility.ld()
         val view: View = binding.root
         binding.vm = viewModel
         binding.lifecycleOwner = this
-        //binding.recyclerView.adapter = ConversationsAdapter()
+        binding.recyclerView.adapter = GiphyAdapter()
 
         lifecycleScope.launch {
             viewModel.error.asFlow().collect {
