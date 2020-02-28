@@ -25,16 +25,8 @@ class GiphyAdapter: ListClickAdapter<Gif, GiphyAdapter.ViewHolder>(ItemDiffUtil(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val i = getItem(position)
         holder.itemView.apply {
-            val imageLoader = ImageLoader(context) {
-                componentRegistry {
-                    if (SDK_INT >= P) {
-                        add(ImageDecoderDecoder())
-                    } else {
-                        add(GifDecoder())
-                    }
-                }
-            }
-            gifIv.load(i.urlWebp, imageLoader)
+
+            gifIv.load(i.urlWebp)
         }
     }
 
