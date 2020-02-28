@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id(BuildPlugins.androidLibrary)
+    BuildPlugins.testLoggerPlugin(this)
 }
 
 android {

@@ -6,6 +6,7 @@ plugins {
     id(BuildPlugins.androidApplication)
     id(BuildPlugins.kotlinAndroidExtensions)
     id("androidx.navigation.safeargs.kotlin")
+    BuildPlugins.testLoggerPlugin(this)
 }
 
 
