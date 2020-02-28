@@ -1,5 +1,4 @@
 import java.util.Properties
-
 plugins {
     id(BuildPlugins.kotlinMultiplatform)
     id(BuildPlugins.kotlinCocoapods)
@@ -72,6 +71,12 @@ android {
     }
 }
 
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java) {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
 //for CocoaPods
 version = "1.0"
 
@@ -127,6 +132,8 @@ kotlin {
                 implementation(Libs.lifecycle_livedata)
                 implementation(Libs.lifecycle_common_java8)
                 implementation(Libs.jsr250_api)
+                implementation("io.coil-kt:coil:0.9.5")
+                implementation("io.coil-kt:coil-gif:0.9.5")
             }
         }
 

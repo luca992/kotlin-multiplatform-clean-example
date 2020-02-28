@@ -1,8 +1,7 @@
 package co.lucaspinazzola.example.ui.giphy
 
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.style.ForegroundColorSpan
+import android.os.Build.VERSION.SDK_INT
+import android.os.Build.VERSION_CODES.P
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +9,10 @@ import androidx.recyclerview.widget.DiffUtil
 import co.lucaspinazzola.example.R
 import co.lucaspinazzola.example.domain.model.Gif
 import co.lucaspinazzola.example.ui.base.ListClickAdapter
+import coil.ImageLoader
+import coil.api.load
+import coil.decode.GifDecoder
+import coil.decode.ImageDecoderDecoder
 import kotlinx.android.synthetic.main.item_gif.view.*
 
 class GiphyAdapter: ListClickAdapter<Gif, GiphyAdapter.ViewHolder>(ItemDiffUtil()) {
@@ -22,23 +25,20 @@ class GiphyAdapter: ListClickAdapter<Gif, GiphyAdapter.ViewHolder>(ItemDiffUtil(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val i = getItem(position)
         holder.itemView.apply {
-            nameTv.text = i.url
+            val imageLoader = ImageLoader(context) {
+                componentRegistry {
+                    if (SDK_INT >= P) {
+                        add(ImageDecoderDecoder())
+                    } else {
+                        add(GifDecoder())
+                    }
+                }
+            }
+            gifIv.load(i.urlWebp, imageLoader)
         }
     }
 
-    fun colorString(color: Int, text: String, vararg wordsToColor: String): SpannableString {
-        val coloredString = SpannableString(text)
 
-        for (word in wordsToColor) {
-            val startColorIndex = text.toLowerCase().indexOf(word.toLowerCase())
-            if (startColorIndex==-1) continue
-            val endColorIndex = startColorIndex + word.length
-            coloredString.setSpan(ForegroundColorSpan(color), startColorIndex, endColorIndex,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        }
-
-        return coloredString
-    }
 
     private class ItemDiffUtil : DiffUtil.ItemCallback<Gif>() {
         override fun areItemsTheSame(oldItem: Gif, newItem: Gif): Boolean {
