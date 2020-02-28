@@ -1,0 +1,37 @@
+CREATE TABLE GifData(
+    id TEXT PRIMARY KEY,
+    url TEXT NOT NULL,
+    urlWebp TEXT NOT NULL,
+    trendingDatetime INTEGER NOT NULL
+);
+
+insert:
+INSERT OR REPLACE INTO GifData(id,
+url,
+urlWebp,
+trendingDatetime
+)
+VALUES (?, ?, ?, ?)
+;
+
+getById:
+SELECT * FROM GifData WHERE id = ?;
+
+count:
+SELECT COUNT(id)
+FROM GifData
+;
+
+getAll:
+SELECT *
+FROM GifData
+ORDER BY
+ trendingDatetime DESC
+;
+
+deleteById:
+DELETE FROM GifData WHERE id = ?;
+
+deleteAll:
+DELETE FROM GifData
+;
