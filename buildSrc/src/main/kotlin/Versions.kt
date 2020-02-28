@@ -56,6 +56,8 @@ object Versions {
 
     const val aapt2: String = "3.6.0-6040484"
 
+    const val klock: String = "1.8.6"
+
     const val mvvm: String = "0.4.0"
 
     /**

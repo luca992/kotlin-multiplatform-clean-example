@@ -398,5 +398,7 @@ object Libs {
      */
     const val aapt2: String = "com.android.tools.build:aapt2:" + Versions.aapt2
 
+    const val klock: String = "com.soywiz.korlibs.klock:klock:" + Versions.klock
+
     const val mvvm: String = "dev.icerock.moko:mvvm:" + Versions.mvvm
 }

@@ -55,6 +55,7 @@ kotlin {
                 implementation(Libs.com_squareup_sqldelight_runtime)
                 implementation(Libs.stately)
                 implementation(Libs.stately_collections)
+                implementation(Libs.klock)
             }
         }
 

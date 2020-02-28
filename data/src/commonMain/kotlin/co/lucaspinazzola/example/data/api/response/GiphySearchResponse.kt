@@ -1,6 +1,8 @@
 package co.lucaspinazzola.example.data.api.response
 
 
+import co.lucaspinazzola.example.data.utils.DateSerializer
+import co.lucaspinazzola.example.domain.utils.Date
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -28,7 +30,7 @@ data class GiphySearchResponse(
         @SerialName("source_post_url") val sourcePostUrl: String,
         @SerialName("source_tld") val sourceTld: String,
         @SerialName("title") val title: String,
-        @SerialName("trending_datetime") val trendingDatetime: String,
+        @Serializable(with= DateSerializer::class) @SerialName("trending_datetime") val trendingDatetime: Date,
         @SerialName("type") val type: String,
         @SerialName("url") val url: String,
         @SerialName("username") val username: String
