@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Build
 import co.lucaspinazzola.example.data.utils.initData
 import co.lucaspinazzola.example.di.component.AppComponent
+import co.lucaspinazzola.example.ui.utils.LoadingDrawable
 import coil.Coil
 import coil.ImageLoader
 import coil.decode.GifDecoder
@@ -26,6 +27,7 @@ class ExampleApplication: Application(){
         Coil.setDefaultImageLoader {
             ImageLoader(base) {
                 crossfade(true)
+                this.placeholder(LoadingDrawable(base))
                 okHttpClient {
                     OkHttpClient.Builder()
                         .cache(CoilUtils.createDefaultCache(base))
@@ -43,3 +45,4 @@ class ExampleApplication: Application(){
     }
 
 }
+
