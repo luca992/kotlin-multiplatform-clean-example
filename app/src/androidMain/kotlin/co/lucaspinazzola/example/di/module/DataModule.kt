@@ -16,6 +16,7 @@ import co.lucaspinazzola.example.data.repo.SessionRepositoryImpl
 import co.lucaspinazzola.example.domain.interactor.gif.GetGifsAndListenForUpdatesUseCase
 import co.lucaspinazzola.example.domain.interactor.gif.UpdateGifsUseCase
 import co.lucaspinazzola.example.domain.interactor.session.GetLastGifQueryUseCase
+import co.lucaspinazzola.example.domain.interactor.session.SetLastGifQueryUseCase
 import co.lucaspinazzola.example.domain.repo.GiphyRepository
 import co.lucaspinazzola.example.domain.repo.SessionRepository
 import com.squareup.sqldelight.db.SqlDriver
@@ -93,10 +94,16 @@ class DataModule {
     fun providesGetLastGifQueryUseCase(repository: SessionRepository) : GetLastGifQueryUseCase =
         GetLastGifQueryUseCase(repository)
 
+    @Provides
+    @Singleton
+    fun providesSetLastGifQueryUseCase(repository: SessionRepository) : SetLastGifQueryUseCase =
+        SetLastGifQueryUseCase(repository)
+
     interface Exposes {
         val getGifsAndListenForUpdatesUseCase: GetGifsAndListenForUpdatesUseCase
         val updateGifsUseCase: UpdateGifsUseCase
         val getLastGifQueryUseCase: GetLastGifQueryUseCase
+        val setLastGifQueryUseCase: SetLastGifQueryUseCase
 
     }
 

@@ -8,6 +8,7 @@ import co.lucaspinazzola.example.di.scope.FragmentScope
 import co.lucaspinazzola.example.domain.interactor.gif.GetGifsAndListenForUpdatesUseCase
 import co.lucaspinazzola.example.domain.interactor.gif.UpdateGifsUseCase
 import co.lucaspinazzola.example.domain.interactor.session.GetLastGifQueryUseCase
+import co.lucaspinazzola.example.domain.interactor.session.SetLastGifQueryUseCase
 import co.lucaspinazzola.example.ui.factory.ViewModelFactory
 import dagger.Binds
 import dagger.Module
@@ -30,10 +31,12 @@ abstract class ViewModelModule {
         @ViewModelKey(GiphyViewModel::class)
         @JvmStatic
         fun mapConversationsViewModel(getLastGifQueryUseCase: GetLastGifQueryUseCase,
+                                      setLastGifQueryUseCase: SetLastGifQueryUseCase,
                                       getGifsAndListenForUpdatesUseCase: GetGifsAndListenForUpdatesUseCase,
                                       updateGifsUseCase: UpdateGifsUseCase) : ViewModel =
             GiphyViewModel(
                 getLastGifQueryUseCase = getLastGifQueryUseCase,
+                setLastGifQueryUseCase = setLastGifQueryUseCase,
                 getGifsAndListenForUpdatesUseCase = getGifsAndListenForUpdatesUseCase,
                 updateGifsUseCase = updateGifsUseCase
             )

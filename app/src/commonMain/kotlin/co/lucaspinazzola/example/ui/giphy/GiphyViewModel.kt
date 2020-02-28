@@ -5,6 +5,7 @@ import co.lucaspinazzola.example.data.utils.printStackTrace
 import co.lucaspinazzola.example.domain.interactor.gif.GetGifsAndListenForUpdatesUseCase
 import co.lucaspinazzola.example.domain.interactor.gif.UpdateGifsUseCase
 import co.lucaspinazzola.example.domain.interactor.session.GetLastGifQueryUseCase
+import co.lucaspinazzola.example.domain.interactor.session.SetLastGifQueryUseCase
 import dev.icerock.moko.mvvm.livedata.MutableLiveData
 import dev.icerock.moko.mvvm.livedata.asFlow
 import kotlinx.coroutines.*
@@ -15,6 +16,7 @@ import kotlinx.coroutines.flow.flowOn
 
 class GiphyViewModel(
     private val getLastGifQueryUseCase: GetLastGifQueryUseCase,
+    private val setLastGifQueryUseCase: SetLastGifQueryUseCase,
     private val getGifsAndListenForUpdatesUseCase: GetGifsAndListenForUpdatesUseCase,
     private val updateGifsUseCase: UpdateGifsUseCase): ViewModel() {
 

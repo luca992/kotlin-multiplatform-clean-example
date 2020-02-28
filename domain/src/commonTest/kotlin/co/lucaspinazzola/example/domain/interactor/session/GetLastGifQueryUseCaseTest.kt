@@ -28,7 +28,7 @@ class GetLastGifQueryUseCaseTest {
     }
 
     @Test
-    fun callsGetEmployeeInEmployeeRepository() = runTest {
+    fun `gets last query from session`() = runTest {
         val lastQuery = "doge"
         every { session.lastGiphySearchQuery } returns "doge"
         coEvery {
