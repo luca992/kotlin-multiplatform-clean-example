@@ -1,11 +1,14 @@
 package co.lucaspinazzola.example.data.db.helper
 
+import co.lucaspinazzola.example.data.db.QueryPub
 import co.lucaspinazzola.example.data.model.GifData
 import co.lucaspinazzola.example.data.model.GifDataQueries
 import co.lucaspinazzola.example.data.model.sqldelight.Database
 
 
-interface GifDbHelper : DbHelper<GifData>
+interface GifDbHelper : DbHelper<GifData>{
+    fun getAllChangePublisher(): QueryPub<GifData, List<GifData>>
+}
 
 class GifDbHelperImpl(database: Database) : SqlDelightDbHelper<GifData>(database), GifDbHelper{
 
@@ -42,6 +45,10 @@ class GifDbHelperImpl(database: Database) : SqlDelightDbHelper<GifData>(database
 
     override fun getAll(): List<GifData> =
         queries.getAll().executeAsList()
+
+    override fun getAllChangePublisher(): QueryPub<GifData, List<GifData>> =
+        getChangePublisher(queries.getAll())
+
 
     override fun deleteById(id: String) =
         queries.deleteById(id)
