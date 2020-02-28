@@ -6,4 +6,5 @@ interface SessionRepository {
 
     suspend fun getSession(): Session?
 
+    suspend fun updateSession(session: Session): Any
 }

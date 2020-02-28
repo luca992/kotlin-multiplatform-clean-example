@@ -12,4 +12,8 @@ data class SessionRepositoryImpl(private val sessionDbHelper: DbHelper<SessionDa
 
     override suspend fun getSession(): Session? =
         sessionMapper.toDomainModel(sessionDbHelper.getAll().toTypedArray()).firstOrNull()
+
+    override suspend fun updateSession(session: Session) =
+        sessionDbHelper.insert(sessionMapper.toDataModel(session))
+
 }

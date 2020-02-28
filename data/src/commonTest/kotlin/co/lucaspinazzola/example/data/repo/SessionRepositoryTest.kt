@@ -10,10 +10,7 @@ import co.lucaspinazzola.example.runTest
 import io.mockk.*
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertNotNull
-import kotlin.test.assertNull
+import kotlin.test.*
 
 class SessionRepositoryTest {
 
@@ -46,7 +43,7 @@ class SessionRepositoryTest {
     }
 
     @Test
-    fun `getSession returns session from Db if doesn't exist`() = runTest {
+    fun `getSession returns null from Db if doesn't exist`() = runTest {
         val sessionDatas = listOf<SessionData>()
         val sessions = listOf<Session>()
 
@@ -55,6 +52,16 @@ class SessionRepositoryTest {
 
         val session = repository.getSession()
         assertNull(session)
+    }
+
+    @Test
+    fun `updateSessionLastGiphySearchQuery inserts session`() = runTest {
+        val session : Session = mockk{}
+        val sessionData : SessionData = mockk{}
+        every { sessionMapper.toDataModel(session) } returns sessionData
+
+        repository.updateSession(session)
+        verify (exactly = 1) { sessionDbHelper.insert(sessionData) }
     }
 
 
