@@ -13,4 +13,9 @@ class SessionMapperImpl : SessionMapper {
             Session(
                 id = src.id,
                 lastGiphySearchQuery = src.lastGiphySearchQuery)
+
+    override fun toDataModel(src: Session) = SessionData.Impl(
+        id = src.id,
+        lastGiphySearchQuery = src.lastGiphySearchQuery
+    )
 }

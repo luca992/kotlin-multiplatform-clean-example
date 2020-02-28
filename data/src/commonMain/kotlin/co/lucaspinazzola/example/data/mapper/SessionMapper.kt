@@ -7,5 +7,6 @@ interface SessionMapper {
 
     fun toDomainModel(src: Array<SessionData>): List<Session>
     fun toDomainModel(src: SessionData): Session
+    fun toDataModel(src: Session): SessionData
 
 }

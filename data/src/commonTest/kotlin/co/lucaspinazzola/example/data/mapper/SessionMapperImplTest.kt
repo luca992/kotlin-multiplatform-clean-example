@@ -61,4 +61,17 @@ class SessionMapperImplTest {
         assertEquals(expected,mapper.toDomainModel(srcs))
     }
 
+    @Test
+    fun `domain src correctly maps to data output`() = runTest {
+        val src = Session(
+            id = "1",
+            lastGiphySearchQuery = "query"
+        )
+        val expected = SessionData.Impl(
+            id = "1",
+            lastGiphySearchQuery = "query"
+        )
+        assertEquals(expected,mapper.toDataModel(src))
+    }
+
 }
