@@ -53,6 +53,7 @@ class GiphyViewModel(
     var getConversationsAndListenForUpdatesJob : Job? = null
 
     fun loadNextPage() {
+        loadingIndicatorVisibility.value = Visibility.VISIBLE
         viewModelScope.launch {
             try {
                 withContext(Dispatchers.Default) {
