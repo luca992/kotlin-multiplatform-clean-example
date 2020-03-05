@@ -9,8 +9,29 @@ pluginManagement {
 
 
 buildscript {
-    repositories { gradlePluginPortal() }
-    dependencies.classpath("de.fayard:dependencies:0.5.7")
+    val versionsProperties : java.util.Properties by lazy {
+        val versions = java.util.Properties()
+        val localProperties: File = File(rootProject.projectDir.absoluteFile.absolutePath+"/versions.properties")
+        if (localProperties.exists()) {
+            localProperties.inputStream().use { versions.load(it) }
+        }
+        versions
+    }
+
+
+    repositories {
+        google()
+        jcenter()
+        gradlePluginPortal()
+    }
+    dependencies{
+        classpath("de.fayard:dependencies:0.5.7")
+        classpath ("com.android.tools.build:gradle:3.6.0")
+        classpath ("org.jetbrains.kotlin:kotlin-gradle-plugin:${versionsProperties["version.kotlin"]}")
+        classpath("org.jetbrains.kotlin:kotlin-serialization:${versionsProperties["version.kotlin"]}")
+        classpath("com.squareup.sqldelight:gradle-plugin:${versionsProperties["version.sqldelight"]}")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:${versionsProperties["version.androidx.navigation"]}")
+    }
 }
 
 bootstrapRefreshVersionsAndDependencies()

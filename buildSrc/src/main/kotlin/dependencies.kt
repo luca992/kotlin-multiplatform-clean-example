@@ -8,6 +8,7 @@ object BuildPlugins {
         scope.id("com.adarshr.test-logger").version("2.0.0")
 }
 
+
 object AndroidSdk {
     const val min = 21
     const val compile = 29
