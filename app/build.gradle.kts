@@ -61,6 +61,9 @@ android {
         val androidTest by getting
         androidTest.java.srcDir("src/androidAndroidTest/kotlin")
     }
+    lintOptions {
+        disable("GradleDependency")
+    }
     packagingOptions {
         pickFirst("META-INF/*.kotlin_module")
         pickFirst("META-INF/*.kotlin_metadata")
@@ -137,6 +140,9 @@ kotlin {
                 implementation("javax.annotation:jsr250-api:_")
                 implementation("io.coil-kt:coil:_")
                 implementation("io.coil-kt:coil-gif:_")
+
+                configurations["kapt"].dependencies
+                    .add(DefaultExternalModuleDependency("com.google.dagger","dagger-compiler","_"))
             }
         }
 
@@ -169,9 +175,4 @@ kotlin {
 
     }
 
-}
-
-dependencies {
-
-    configurations.get("kapt").dependencies.add(DefaultExternalModuleDependency("com.google.dagger","dagger-compiler","_"))
 }
