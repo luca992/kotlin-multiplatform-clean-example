@@ -1,6 +1,6 @@
 plugins {
     kotlin("multiplatform")
-    id(BuildPlugins.androidLibrary)
+    id("com.android.library")
     BuildPlugins.testLoggerPlugin(this)
 }
 
@@ -32,7 +32,7 @@ kotlin {
             publishLibraryVariants("release", "debug")
         }
         if (buildForNative) {
-            macosX64()
+            //macosX64()
             iosX64()
             iosArm64()
         }
@@ -40,14 +40,14 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(Libs.kotlin_stdlib_common)
+                implementation("org.jetbrains.kotlin:kotlin-stdlib-common:_")
                 implementation(project(":domain"))
             }
         }
 
         val androidMain by getting {
             dependencies {
-                implementation(Libs.kotlin_stdlib_jdk8)
+                implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:_")
             }
         }
     }

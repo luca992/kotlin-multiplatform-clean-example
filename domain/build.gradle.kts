@@ -15,40 +15,40 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(Libs.kotlin_stdlib_common)
-                implementation(Libs.kotlinx_coroutines_core_common)
+                implementation("org.jetbrains.kotlin:kotlin-stdlib-common:_")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:_")
             }
         }
 
         val jvmMain by getting {
             dependencies {
-                implementation(Libs.kotlin_stdlib_jdk8)
-                implementation(Libs.kotlinx_coroutines_core)
+                implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:_")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:_")
             }
         }
 
         val commonTest by getting {
             dependencies {
-                implementation(Libs.mockk_common)
-                implementation(Libs.kotlin_test_common)
-                implementation(Libs.kotlin_test_annotations_common)
-                implementation(Libs.kotlinx_coroutines_test)
+                implementation("io.mockk:mockk-common:_")
+                implementation("org.jetbrains.kotlin:kotlin-test-common:_")
+                implementation("org.jetbrains.kotlin:kotlin-test-annotations-common:_")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:_")
             }
         }
 
         val jvmTest by getting {
             dependencies {
-                implementation(Libs.mockk)
-                implementation(Libs.kotlin_test)
-                implementation(Libs.kotlin_test_junit)
-                runtimeOnly(Libs.byte_buddy) //https://github.com/mockk/mockk/issues/376
+                implementation("io.mockk:mockk:_")
+                implementation("org.jetbrains.kotlin:kotlin-test:_")
+                implementation("org.jetbrains.kotlin:kotlin-test-junit:_")
+                runtimeOnly("net.bytebuddy:byte-buddy:_") //https://github.com/mockk/mockk/issues/376
             }
         }
         if (buildForNative) {
             val nativeMain by creating {
                 dependsOn(commonMain)
                 dependencies {
-                    implementation(Libs.kotlinx_coroutines_core_native)
+                    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:_")
                 }
             }
 

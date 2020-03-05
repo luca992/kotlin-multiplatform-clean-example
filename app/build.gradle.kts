@@ -1,10 +1,11 @@
 import java.util.Properties
+import org.gradle.api.internal.artifacts.dependencies.DefaultExternalModuleDependency
 plugins {
-    id(BuildPlugins.kotlinMultiplatform)
-    id(BuildPlugins.kotlinCocoapods)
+    id("kotlin-multiplatform")
+    id("org.jetbrains.kotlin.native.cocoapods")
     id("kotlin-kapt")
-    id(BuildPlugins.androidApplication)
-    id(BuildPlugins.kotlinAndroidExtensions)
+    id("com.android.application")
+    id("kotlin-android-extensions")
     id("androidx.navigation.safeargs.kotlin")
     BuildPlugins.testLoggerPlugin(this)
 }
@@ -62,6 +63,7 @@ android {
     }
     packagingOptions {
         pickFirst("META-INF/*.kotlin_module")
+        pickFirst("META-INF/*.kotlin_metadata")
     }
     compileOptions {
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -109,9 +111,9 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(Libs.kotlin_stdlib_common)
-                implementation(Libs.kotlinx_coroutines_core_common)
-                implementation(Libs.mvvm)
+                implementation("org.jetbrains.kotlin:kotlin-stdlib-common:_")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:_")
+                implementation("dev.icerock.moko:mvvm:_")
 
                 implementation(project(":domain"))
                 implementation(project(":data"))
@@ -121,47 +123,47 @@ kotlin {
 
         val androidMain by getting {
             dependencies {
-                implementation(Libs.kotlin_stdlib_jdk8)
-                implementation(Libs.kotlinx_coroutines_android)
+                implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:_")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:_")
 
-                implementation(Libs.appcompat)
-                implementation(Libs.core_ktx)
-                implementation(Libs.constraintlayout)
-                implementation(Libs.navigation_fragment_ktx)
-                implementation(Libs.navigation_ui_ktx)
-                implementation(Libs.dagger)
-                implementation(Libs.lifecycle_livedata)
-                implementation(Libs.lifecycle_common_java8)
-                implementation(Libs.jsr250_api)
-                implementation("io.coil-kt:coil:0.9.5")
-                implementation("io.coil-kt:coil-gif:0.9.5")
+                implementation("androidx.appcompat:appcompat:_")
+                implementation("androidx.core:core-ktx:_")
+                implementation("androidx.constraintlayout:constraintlayout:_")
+                implementation("androidx.navigation:navigation-fragment-ktx:_")
+                implementation("androidx.navigation:navigation-ui-ktx:_")
+                implementation("com.google.dagger:dagger:_")
+                implementation("androidx.lifecycle:lifecycle-livedata:_")
+                implementation("androidx.lifecycle:lifecycle-common-java8:_")
+                implementation("javax.annotation:jsr250-api:_")
+                implementation("io.coil-kt:coil:_")
+                implementation("io.coil-kt:coil-gif:_")
             }
         }
 
         val commonTest by getting {
             dependencies {
-                implementation(Libs.kotlin_test_common)
-                implementation(Libs.kotlin_test_annotations_common)
-                implementation(Libs.mockk_common)
+                implementation("org.jetbrains.kotlin:kotlin-test-common:_")
+                implementation("org.jetbrains.kotlin:kotlin-test-annotations-common:_")
+                implementation("io.mockk:mockk-common:_")
             }
         }
 
         val androidTest by getting {
             dependencies {
-                implementation(Libs.kotlin_test)
-                implementation(Libs.kotlin_test_junit)
-                implementation(Libs.mockk)
-                implementation(Libs.core_testing)
-                implementation(Libs.kotlinx_coroutines_test)
+                implementation("org.jetbrains.kotlin:kotlin-test:_")
+                implementation("org.jetbrains.kotlin:kotlin-test-junit:_")
+                implementation("io.mockk:mockk:_")
+                implementation("androidx.arch.core:core-testing:_")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:_")
             }
         }
 
         val androidAndroidTest by getting {
             dependencies {
-                implementation(Libs.kotlin_test)
-                implementation(Libs.junit_ktx)
-                implementation(Libs.espresso_core)
-                implementation(Libs.mockk_android)
+                implementation("org.jetbrains.kotlin:kotlin-test:_")
+                implementation("androidx.test.ext:junit-ktx:_")
+                implementation("androidx.test.espresso:espresso-core:_")
+                implementation("io.mockk:mockk-android:_")
             }
         }
 
@@ -170,6 +172,6 @@ kotlin {
 }
 
 dependencies {
-    "kapt"(Libs.dagger_compiler)
-    "kapt"(Libs.databinding_compiler)
+
+    configurations.get("kapt").dependencies.add(DefaultExternalModuleDependency("com.google.dagger","dagger-compiler","_"))
 }

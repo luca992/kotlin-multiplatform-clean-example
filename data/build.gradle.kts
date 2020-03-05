@@ -43,61 +43,61 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(":domain"))
-                implementation(Libs.kotlin_stdlib_common)
-                implementation(Libs.kotlinx_coroutines_core_common)
-                implementation(Libs.kotlinx_serialization_runtime_common)
-                implementation(Libs.ktor_client_core)
-                implementation(Libs.ktor_client_logging)
-                implementation(Libs.ktor_client_json)
-                implementation(Libs.ktor_client_serialization)
-                implementation(Libs.ktor_client_auth)
-                implementation(Libs.ktor_utils)
-                implementation(Libs.com_squareup_sqldelight_runtime)
-                implementation(Libs.stately)
-                implementation(Libs.stately_collections)
-                implementation(Libs.klock)
+                implementation("org.jetbrains.kotlin:kotlin-stdlib-common:_")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:_")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:_")
+                implementation("io.ktor:ktor-client-core:_")
+                implementation("io.ktor:ktor-client-logging:_")
+                implementation("io.ktor:ktor-client-json:_")
+                implementation("io.ktor:ktor-client-serialization:_")
+                implementation("io.ktor:ktor-client-auth:_")
+                implementation("io.ktor:ktor-utils:_")
+                implementation("com.squareup.sqldelight:runtime:_")
+                implementation("co.touchlab:stately:_")
+                implementation("co.touchlab:stately-collections:_")
+                implementation("com.soywiz.korlibs.klock:klock:_")
             }
         }
 
         val commonTest by getting {
             dependencies {
                 //implementation(project(":domain"))
-                implementation(Libs.mockk_common)
-                implementation(Libs.kotlin_test_common)
-                implementation(Libs.kotlin_test_annotations_common)
-                implementation(Libs.kotlinx_coroutines_test)
-                implementation(Libs.ktor_client_mock)
-                implementation(Libs.ktor_client_json)
-                implementation(Libs.ktor_client_serialization)
+                implementation("io.mockk:mockk-common:_")
+                implementation("org.jetbrains.kotlin:kotlin-test-common:_")
+                implementation("org.jetbrains.kotlin:kotlin-test-annotations-common:_")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:_")
+                implementation("io.ktor:ktor-client-mock:_")
+                implementation("io.ktor:ktor-client-json:_")
+                implementation("io.ktor:ktor-client-serialization:_")
             }
         }
 
         val androidMain by getting {
             dependencies {
-                implementation(Libs.kotlin_stdlib_jdk8)
-                implementation(Libs.kotlinx_coroutines_android)
-                implementation(Libs.kotlinx_serialization_runtime)
-                implementation(Libs.ktor_client_android)
-                implementation(Libs.ktor_client_logging_jvm)
-                implementation(Libs.ktor_client_json_jvm)
-                implementation(Libs.ktor_client_serialization_jvm)
-                implementation(Libs.ktor_client_auth_jvm)
-                implementation(Libs.ktor_utils_jvm)
-                implementation(Libs.android_driver)
-                implementation(Libs.stately_jvm)
-                implementation(Libs.stately_collections_jvm)
+                implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:_")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:_")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:_")
+                implementation("io.ktor:ktor-client-android:_")
+                implementation("io.ktor:ktor-client-logging-jvm:_")
+                implementation("io.ktor:ktor-client-json-jvm:_")
+                implementation("io.ktor:ktor-client-serialization-jvm:_")
+                implementation("io.ktor:ktor-client-auth-jvm:_")
+                implementation("io.ktor:ktor-utils-jvm:_")
+                implementation("com.squareup.sqldelight:android-driver:_")
+                implementation("co.touchlab:stately-jvm:_")
+                implementation("co.touchlab:stately-collections-jvm:_")
             }
         }
 
         val androidTest by getting {
             dependencies {
-                implementation(Libs.mockk)
-                implementation(Libs.kotlin_test)
-                implementation(Libs.kotlin_test_junit)
-                implementation(Libs.sqlite_driver)
-                implementation(Libs.ktor_client_mock_jvm)
-                implementation(Libs.ktor_client_json_jvm)
-                implementation(Libs.ktor_client_serialization_jvm)
+                implementation("io.mockk:mockk:_")
+                implementation("org.jetbrains.kotlin:kotlin-test:_")
+                implementation("org.jetbrains.kotlin:kotlin-test-junit:_")
+                implementation("com.squareup.sqldelight:sqlite-driver:_")
+                implementation("io.ktor:ktor-client-mock-jvm:_")
+                implementation("io.ktor:ktor-client-json-jvm:_")
+                implementation("io.ktor:ktor-client-serialization-jvm:_")
             }
         }
 
@@ -105,32 +105,32 @@ kotlin {
             val nativeMain by creating {
                 dependsOn(commonMain)
                 dependencies {
-                    implementation(Libs.kotlinx_coroutines_core_native)
-                    implementation(Libs.kotlinx_serialization_runtime_native)
-                    implementation(Libs.ktor_client_core_native)
-                    implementation(Libs.ktor_client_logging_native)
-                    implementation(Libs.ktor_client_logging_native)
-                    implementation(Libs.kotlinx_serialization_runtime_native)
-                    //implementation(Libs.ktor_client_auth_native)
-                    implementation(Libs.ktor_utils_native)
-                    implementation(Libs.native_driver)
+                    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:_")
+                    implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:_")
+                    implementation("io.ktor:ktor-client-core-native:_")
+                    implementation("io.ktor:ktor-client-logging-native:_")
+                    implementation("io.ktor:ktor-client-logging-native:_")
+                    implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:_")
+                    implementation("io.ktor:ktor-client-auth-native:_")
+                    implementation("io.ktor:ktor-utils-native:_")
+                    implementation("com.squareup.sqldelight:native-driver:_")
                 }
             }
 
             val iosX64Main by getting {}
             val iosArm64Main by getting {}
             /*val macosX64Main by getting {
-            dependsOn(nativeMain)
-            dependencies {
-                implementation(Libs.ktor_client_curl)
-            }
+                dependsOn(nativeMain)
+                dependencies {
+                    implementation("io.ktor:ktor-client-curl:_")
+                }
             }*/
 
 
             configure(listOf(iosX64Main, iosArm64Main)) {
                 dependsOn(nativeMain)
                 dependencies {
-                    implementation(Libs.ktor_client_ios)
+                    implementation("io.ktor:ktor-client-ios:_")
                 }
             }
         }
