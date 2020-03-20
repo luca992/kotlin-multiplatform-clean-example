@@ -2,7 +2,7 @@ package co.lucaspinazzola.example.data.mapper
 
 
 import co.lucaspinazzola.example.data.api.giphy.response.GiphySearchResponse
-import co.lucaspinazzola.example.data.model.GifData
+import co.lucaspinazzola.example.data.model.ImgData
 import co.lucaspinazzola.example.domain.model.Img
 import co.lucaspinazzola.example.domain.utils.Date
 import co.lucaspinazzola.example.runTest
@@ -29,49 +29,43 @@ class GifMapperImplTest {
 
     @Test
     fun `data src correctly maps to domain output`() = runTest {
-        val src = GifData.Impl(
+        val src = ImgData.Impl(
             id = "1",
             resultIndex = 1,
-            url = "url1",
-            urlWebp = "urlWebp1",
-            trendingDatetime = 1
+            url = "url1"
         )
         val expected = Img(
             id = "1",
             resultIndex = 1,
-            url = "urlWebp1"
+            url = "url1"
         )
         assertEquals(expected,mapper.toDomainModel(src))
     }
 
     @Test
     fun `data src array correctly maps to domain list output`() = runTest {
-        val srcs = arrayOf<GifData>(
-            GifData.Impl(
+        val srcs = arrayOf<ImgData>(
+            ImgData.Impl(
                 id = "1",
                 resultIndex = 1,
-                url = "url1",
-                urlWebp = "urlWebp1",
-                trendingDatetime = 1
+                url = "url1"
             ),
-            GifData.Impl(
+            ImgData.Impl(
                 id = "2",
                 resultIndex = 2,
-                url = "url2",
-                urlWebp = "urlWebp2",
-                trendingDatetime = 2
+                url = "url2"
             )
         )
         val expected = listOf(
             Img(
                 id = "1",
                 resultIndex = 1,
-                url = "urlWebp1"
+                url = "url1"
             ),
             Img(
                 id = "2",
                 resultIndex = 2,
-                url = "urlWebp2"
+                url = "url2"
             )
         )
         assertEquals(expected,mapper.toDomainModel(srcs))
@@ -79,49 +73,40 @@ class GifMapperImplTest {
 
     @Test
     fun `api src correctly maps to data output`() = runTest {
-        val gifData1 : GiphySearchResponse.Data = mockk(relaxed = true) {}
-        every { gifData1.id } returns "1"
-        every { gifData1.images.original.url } returns "url1"
-        every { gifData1.images.original.webp } returns "urlWebp1"
-        every { gifData1.trendingDatetime } returns Date(1)
-        val expected = GifData.Impl(
+        val imgData1 : GiphySearchResponse.Data = mockk(relaxed = true) {}
+        every { imgData1.id } returns "1"
+        every { imgData1.images.original.webp } returns "url1"
+        every { imgData1.trendingDatetime } returns Date(1)
+        val expected = ImgData.Impl(
             id = "1",
             resultIndex = 1,
-            url = "url1",
-            urlWebp = "urlWebp1",
-            trendingDatetime = 1
+            url = "url1"
         )
 
-        assertEquals(expected,mapper.toDataModel(gifData1,1))
+        assertEquals(expected,mapper.toDataModel(imgData1,1))
     }
 
     @Test
     fun `api src array correctly maps to data list output`() = runTest {
-        val gifData1 : GiphySearchResponse.Data = mockk(relaxed = true) {}
-        every { gifData1.id } returns "1"
-        every { gifData1.images.original.url } returns "url1"
-        every { gifData1.images.original.webp } returns "urlWebp1"
-        every { gifData1.trendingDatetime } returns Date(1)
-        val gifData2 : GiphySearchResponse.Data = mockk(relaxed = true)  {}
-        every { gifData2.id } returns "2"
-        every { gifData2.images.original.url } returns "url2"
-        every { gifData2.images.original.webp } returns "urlWebp2"
-        every { gifData2.trendingDatetime } returns Date(2)
-        val srcs = arrayOf(gifData1,gifData2)
-        val expected = listOf<GifData>(
-            GifData.Impl(
+        val imgData1 : GiphySearchResponse.Data = mockk(relaxed = true) {}
+        every { imgData1.id } returns "1"
+        every { imgData1.images.original.webp } returns "url1"
+        every { imgData1.trendingDatetime } returns Date(1)
+        val imgData2 : GiphySearchResponse.Data = mockk(relaxed = true)  {}
+        every { imgData2.id } returns "2"
+        every { imgData2.images.original.webp } returns "url2"
+        every { imgData2.trendingDatetime } returns Date(2)
+        val srcs = arrayOf(imgData1,imgData2)
+        val expected = listOf<ImgData>(
+            ImgData.Impl(
                 id = "1",
                 resultIndex = 1,
-                url = "url1",
-                urlWebp = "urlWebp1",
-                trendingDatetime = 1
+                url = "url1"
             ),
-            GifData.Impl(
+            ImgData.Impl(
                 id = "2",
                 resultIndex = 2,
-                url = "url2",
-                urlWebp = "urlWebp2",
-                trendingDatetime = 2
+                url = "url2"
             )
         )
         assertEquals(expected,mapper.toDataModel(srcs, 1))

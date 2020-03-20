@@ -3,7 +3,7 @@ import co.lucaspinazzola.example.data.api.giphy.GiphyApi
 import co.lucaspinazzola.example.data.db.architecture.Sub
 import co.lucaspinazzola.example.data.db.helper.GifDbHelper
 import co.lucaspinazzola.example.data.mapper.GifMapper
-import co.lucaspinazzola.example.data.model.GifData
+import co.lucaspinazzola.example.data.model.ImgData
 import co.lucaspinazzola.example.domain.model.Img
 import co.lucaspinazzola.example.domain.repo.GiphyRepository
 import kotlinx.coroutines.channels.awaitClose
@@ -31,8 +31,8 @@ data class GiphyRepositoryImpl(private val api: GiphyApi,
     ): Flow<List<Img>> =
             callbackFlow {
                 val pub = gifDbHelper.getAllChangePublisher()
-                pub.addSub(object : Sub<List<GifData>> {
-                    override fun onNext(next: List<GifData>) {
+                pub.addSub(object : Sub<List<ImgData>> {
+                    override fun onNext(next: List<ImgData>) {
                         val items = gifMapper.toDomainModel(next.toTypedArray())
                         if (!isClosedForSend) {
                             offer(items)

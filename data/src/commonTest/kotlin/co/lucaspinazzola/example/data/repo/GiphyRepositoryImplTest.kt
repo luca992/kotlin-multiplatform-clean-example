@@ -5,7 +5,7 @@ import co.lucaspinazzola.example.data.api.giphy.response.GiphySearchResponse
 import co.lucaspinazzola.example.data.db.QueryPub
 import co.lucaspinazzola.example.data.db.helper.GifDbHelper
 import co.lucaspinazzola.example.data.mapper.GifMapper
-import co.lucaspinazzola.example.data.model.GifData
+import co.lucaspinazzola.example.data.model.ImgData
 import co.lucaspinazzola.example.domain.model.Img
 import co.lucaspinazzola.example.runTest
 import com.squareup.sqldelight.Query
@@ -32,7 +32,7 @@ class GiphyRepositoryImplTest {
 
 
     @MockK(relaxed = true)
-    private lateinit var gifsQuery : Query<GifData>
+    private lateinit var gifsQuery : Query<ImgData>
 
 
     @BeforeTest
@@ -44,7 +44,7 @@ class GiphyRepositoryImplTest {
 
     @Test
     fun `getGifs gets all gifs from db`() = runTest {
-        val dataList = emptyList<GifData>()
+        val dataList = emptyList<ImgData>()
         val domainList = listOf<Img>()
         every { gifDbHelper.getAll() } returns dataList
         every { gifMapper.toDomainModel(dataList.toTypedArray()) } returns domainList
@@ -61,7 +61,7 @@ class GiphyRepositoryImplTest {
         val offset = 0L
         val response : GiphySearchResponse = mockk{}
         val responseData : List<GiphySearchResponse.Data> = listOf()
-        val dataGifs : List<GifData> = listOf()
+        val dataGifs : List<ImgData> = listOf()
         every { response.data } returns responseData
         coEvery { api.searchGifs(query, offset) } returns response
         every { gifMapper.toDataModel(responseData.toTypedArray(),offset) } returns dataGifs
@@ -71,7 +71,7 @@ class GiphyRepositoryImplTest {
         verify (exactly = 1)  { gifDbHelper.deleteAll() }
         coVerify (exactly = 1)  { api.searchGifs(query, offset) }
 
-        verify (exactly = 1)  { gifDbHelper.insert(any<List<GifData>>()) }
+        verify (exactly = 1)  { gifDbHelper.insert(any<List<ImgData>>()) }
     }
 
     @Test
@@ -80,7 +80,7 @@ class GiphyRepositoryImplTest {
         val offset = 1L
         val response : GiphySearchResponse = mockk{}
         val responseData : List<GiphySearchResponse.Data> = listOf()
-        val dataGifs : List<GifData> = listOf()
+        val dataGifs : List<ImgData> = listOf()
         every { response.data } returns responseData
         coEvery { api.searchGifs(query, offset) } returns response
         every { gifMapper.toDataModel(responseData.toTypedArray(),offset) } returns dataGifs
@@ -90,12 +90,12 @@ class GiphyRepositoryImplTest {
         verify (exactly = 0)  { gifDbHelper.deleteAll() }
         coVerify (exactly = 1)  { api.searchGifs(query, offset) }
 
-        verify (exactly = 1)  { gifDbHelper.insert(any<List<GifData>>()) }
+        verify (exactly = 1)  { gifDbHelper.insert(any<List<ImgData>>()) }
     }
 
     @Test
     fun `listenForGifUpdates produces on db change`()= runTest {
-        val dataList = emptyArray<GifData>()
+        val dataList = emptyArray<ImgData>()
         val pub = QueryPub(gifsQuery) {it.executeAsList()}
         val domainList = emptyList<Img>()
         every { gifMapper.toDomainModel(dataList) } returns domainList

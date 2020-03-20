@@ -1,32 +1,30 @@
 package co.lucaspinazzola.example.data.db.helper
 
 import co.lucaspinazzola.example.data.db.QueryPub
-import co.lucaspinazzola.example.data.model.GifData
-import co.lucaspinazzola.example.data.model.GifDataQueries
+import co.lucaspinazzola.example.data.model.ImgData
+import co.lucaspinazzola.example.data.model.ImgDataQueries
 import co.lucaspinazzola.example.data.model.sqldelight.Database
 
 
-interface GifDbHelper : DbHelper<GifData>{
-    fun getAllChangePublisher(): QueryPub<GifData, List<GifData>>
+interface GifDbHelper : DbHelper<ImgData>{
+    fun getAllChangePublisher(): QueryPub<ImgData, List<ImgData>>
 }
 
-class GifDbHelperImpl(database: Database) : SqlDelightDbHelper<GifData>(database), GifDbHelper{
+class GifDbHelperImpl(database: Database) : SqlDelightDbHelper<ImgData>(database), GifDbHelper{
 
 
-    override val queries: GifDataQueries = database.gifDataQueries
+    override val queries: ImgDataQueries = database.imgDataQueries
 
 
-    override fun internalInsert(d: GifData) {
+    override fun internalInsert(d: ImgData) {
         queries.insert(
             id = d.id,
             resultIndex = d.resultIndex,
-            url = d.url,
-            urlWebp = d.urlWebp,
-            trendingDatetime = d.trendingDatetime)
+            url = d.url)
     }
 
 
-    override fun insert(items: List<GifData>) {
+    override fun insert(items: List<ImgData>) {
         queries.transaction {
             for (s in items) {
                 internalInsert(s)
@@ -34,20 +32,20 @@ class GifDbHelperImpl(database: Database) : SqlDelightDbHelper<GifData>(database
         }
     }
 
-    override fun insert(c: GifData?) {
+    override fun insert(c: ImgData?) {
         c?:return
         queries.transaction {
             internalInsert(c)
         }
     }
 
-    override fun getById(id: String): GifData? =
+    override fun getById(id: String): ImgData? =
         queries.getById(id).executeAsOneOrNull()
 
-    override fun getAll(): List<GifData> =
+    override fun getAll(): List<ImgData> =
         queries.getAll().executeAsList()
 
-    override fun getAllChangePublisher(): QueryPub<GifData, List<GifData>> =
+    override fun getAllChangePublisher(): QueryPub<ImgData, List<ImgData>> =
         getChangePublisher(queries.getAll())
 
 
