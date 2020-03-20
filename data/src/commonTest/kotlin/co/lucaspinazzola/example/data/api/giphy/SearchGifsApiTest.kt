@@ -1,6 +1,6 @@
 package co.lucaspinazzola.example.data.api.giphy
 
-import co.lucaspinazzola.example.data.api.giphy.response.gifSearchResponse
+import co.lucaspinazzola.example.data.api.rickandmorty.response.gifSearchResponse
 import co.lucaspinazzola.example.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
