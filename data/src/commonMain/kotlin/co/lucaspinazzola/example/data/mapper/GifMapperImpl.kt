@@ -3,7 +3,6 @@ package co.lucaspinazzola.example.data.mapper
 import co.lucaspinazzola.example.data.api.response.GiphySearchResponse
 import co.lucaspinazzola.example.data.model.GifData
 import co.lucaspinazzola.example.domain.model.Img
-import co.lucaspinazzola.example.domain.utils.Date
 
 class GifMapperImpl : GifMapper {
 
@@ -23,9 +22,7 @@ class GifMapperImpl : GifMapper {
         Img(
             id = src.id,
             resultIndex = src.resultIndex,
-            url = src.url,
-            urlWebp = src.urlWebp,
-            trendingDatetime = Date(src.trendingDatetime)
+            url = src.urlWebp
         )
 
     override fun toDomainModel(src: Array<GifData>): List<Img> =

@@ -21,7 +21,7 @@ class GiphyAdapter: ListClickAdapter<Img, GiphyAdapter.ViewHolder>(ItemDiffUtil(
         val i = getItem(position)
         holder.itemView.apply {
 
-            gifIv.load(i.urlWebp)
+            gifIv.load(i.url)
         }
     }
 

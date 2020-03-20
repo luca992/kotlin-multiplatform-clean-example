@@ -39,9 +39,7 @@ class GifMapperImplTest {
         val expected = Img(
             id = "1",
             resultIndex = 1,
-            url = "url1",
-            urlWebp = "urlWebp1",
-            trendingDatetime = Date(1)
+            url = "urlWebp1"
         )
         assertEquals(expected,mapper.toDomainModel(src))
     }
@@ -68,16 +66,12 @@ class GifMapperImplTest {
             Img(
                 id = "1",
                 resultIndex = 1,
-                url = "url1",
-                urlWebp = "urlWebp1",
-                trendingDatetime = Date(1)
+                url = "urlWebp1"
             ),
             Img(
                 id = "2",
                 resultIndex = 2,
-                url = "url2",
-                urlWebp = "urlWebp2",
-                trendingDatetime = Date(2)
+                url = "urlWebp2"
             )
         )
         assertEquals(expected,mapper.toDomainModel(srcs))
