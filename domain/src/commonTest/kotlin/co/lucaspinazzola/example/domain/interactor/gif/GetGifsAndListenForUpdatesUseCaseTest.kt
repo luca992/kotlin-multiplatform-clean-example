@@ -1,5 +1,5 @@
 import co.lucaspinazzola.example.domain.interactor.gif.GetGifsAndListenForUpdatesUseCase
-import co.lucaspinazzola.example.domain.model.Gif
+import co.lucaspinazzola.example.domain.model.Img
 import co.lucaspinazzola.example.domain.repo.GiphyRepository
 import co.lucaspinazzola.example.runTest
 import io.mockk.*
@@ -22,17 +22,17 @@ class GetGifsAndListenForUpdatesUseCaseTest {
 
     private lateinit var parentJob : Job
     private val query = "query"
-    private val gifs : MutableList<Gif> = mutableListOf()
+    private val GetImgsAndListenForUpdatesUseCaseTest : MutableList<Img> = mutableListOf()
 
     @BeforeTest
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
 
 
-        val broadcastChannel = ConflatedBroadcastChannel<List<Gif>>()
+        val broadcastChannel = ConflatedBroadcastChannel<List<Img>>()
         val onChangePublisherSubscribedSlot = slot<suspend ()->Unit>()
         parentJob = Job()
-        coEvery { repository.getGifs() } returns gifs
+        coEvery { repository.getGifs() } returns GetImgsAndListenForUpdatesUseCaseTest
         every { repository.listenForGifUpdates(capture(onChangePublisherSubscribedSlot)) } returns channelFlow {
             broadcastChannel.asFlow()
                     .onStart {
@@ -43,7 +43,7 @@ class GetGifsAndListenForUpdatesUseCaseTest {
                     }
         }
         coEvery { repository.updateGifs(query, any()) } answers {
-            broadcastChannel.offer(gifs)
+            broadcastChannel.offer(GetImgsAndListenForUpdatesUseCaseTest)
         }
     }
 
@@ -78,7 +78,7 @@ class GetGifsAndListenForUpdatesUseCaseTest {
 
     @AfterTest
     fun afterTest(){
-        gifs.clear()
+        GetImgsAndListenForUpdatesUseCaseTest.clear()
     }
 
 

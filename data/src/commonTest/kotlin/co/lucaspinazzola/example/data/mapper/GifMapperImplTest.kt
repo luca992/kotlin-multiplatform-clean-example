@@ -3,9 +3,7 @@ package co.lucaspinazzola.example.data.mapper
 
 import co.lucaspinazzola.example.data.api.response.GiphySearchResponse
 import co.lucaspinazzola.example.data.model.GifData
-import co.lucaspinazzola.example.data.model.SessionData
-import co.lucaspinazzola.example.domain.model.Gif
-import co.lucaspinazzola.example.domain.model.Session
+import co.lucaspinazzola.example.domain.model.Img
 import co.lucaspinazzola.example.domain.utils.Date
 import co.lucaspinazzola.example.runTest
 import io.mockk.MockKAnnotations
@@ -38,7 +36,7 @@ class GifMapperImplTest {
             urlWebp = "urlWebp1",
             trendingDatetime = 1
         )
-        val expected = Gif(
+        val expected = Img(
             id = "1",
             resultIndex = 1,
             url = "url1",
@@ -67,14 +65,14 @@ class GifMapperImplTest {
             )
         )
         val expected = listOf(
-            Gif(
+            Img(
                 id = "1",
                 resultIndex = 1,
                 url = "url1",
                 urlWebp = "urlWebp1",
                 trendingDatetime = Date(1)
             ),
-            Gif(
+            Img(
                 id = "2",
                 resultIndex = 2,
                 url = "url2",

@@ -6,7 +6,7 @@ import co.lucaspinazzola.example.domain.interactor.gif.GetGifsAndListenForUpdate
 import co.lucaspinazzola.example.domain.interactor.gif.UpdateGifsUseCase
 import co.lucaspinazzola.example.domain.interactor.session.GetLastGifQueryUseCase
 import co.lucaspinazzola.example.domain.interactor.session.SetLastGifQueryUseCase
-import co.lucaspinazzola.example.domain.model.Gif
+import co.lucaspinazzola.example.domain.model.Img
 import co.lucaspinazzola.example.runTest
 import co.lucaspinazzola.example.ui.utils.Visibility
 import io.mockk.*
@@ -66,9 +66,9 @@ class GiphyViewModelTest() {
     fun `getGifsAndListenForUpdatesUseCase, db and api produce, receives twice and stops loading indicator`() = runTest{
         viewModel.loadingIndicatorVisibility.value = Visibility.VISIBLE
         val query = ""
-        val gifListsIn= listOf<List<Gif>>(listOf(mockk{}),listOf(mockk{}, mockk{}))
+        val gifListsIn= listOf<List<Img>>(listOf(mockk{}),listOf(mockk{}, mockk{}))
         coEvery{getLastGifQueryUseCase.execute()} returns query
-        val gifListsOut= mutableListOf<List<Gif>>()
+        val gifListsOut= mutableListOf<List<Img>>()
         every{getGifsAndListenForUpdatesUseCase.execute(query = any())} returns channelFlow {
             offer(gifListsIn[0])
             offer(gifListsIn[1])
@@ -91,9 +91,9 @@ class GiphyViewModelTest() {
     fun `getGifsAndListenForUpdatesUseCase, db api only produces, receives error and stops loading indicator`() = runTest{
         viewModel.loadingIndicatorVisibility.value = Visibility.VISIBLE
         val query = ""
-        val gifListsIn= listOf<List<Gif>>(listOf(mockk{}))
+        val gifListsIn= listOf<List<Img>>(listOf(mockk{}))
         coEvery{getLastGifQueryUseCase.execute()} returns query
-        val gifListsOut= mutableListOf<List<Gif>>()
+        val gifListsOut= mutableListOf<List<Img>>()
         every{getGifsAndListenForUpdatesUseCase.execute(query = any())} returns channelFlow {
             offer(gifListsIn[0])
             throw Error("Test Error")

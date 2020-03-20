@@ -4,7 +4,7 @@ import co.lucaspinazzola.example.data.db.architecture.Sub
 import co.lucaspinazzola.example.data.db.helper.GifDbHelper
 import co.lucaspinazzola.example.data.mapper.GifMapper
 import co.lucaspinazzola.example.data.model.GifData
-import co.lucaspinazzola.example.domain.model.Gif
+import co.lucaspinazzola.example.domain.model.Img
 import co.lucaspinazzola.example.domain.repo.GiphyRepository
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -15,7 +15,7 @@ data class GiphyRepositoryImpl(private val api: GiphyApi,
                                private val gifMapper: GifMapper) : GiphyRepository {
 
 
-    override suspend fun getGifs(): List<Gif> {
+    override suspend fun getGifs(): List<Img> {
         return gifMapper.toDomainModel(gifDbHelper.getAll().toTypedArray())
     }
 
@@ -28,7 +28,7 @@ data class GiphyRepositoryImpl(private val api: GiphyApi,
 
     override fun listenForGifUpdates(
         onChangePublisherSubscribed: suspend () -> Unit
-    ): Flow<List<Gif>> =
+    ): Flow<List<Img>> =
             callbackFlow {
                 val pub = gifDbHelper.getAllChangePublisher()
                 pub.addSub(object : Sub<List<GifData>> {

@@ -6,7 +6,7 @@ import co.lucaspinazzola.example.data.db.QueryPub
 import co.lucaspinazzola.example.data.db.helper.GifDbHelper
 import co.lucaspinazzola.example.data.mapper.GifMapper
 import co.lucaspinazzola.example.data.model.GifData
-import co.lucaspinazzola.example.domain.model.Gif
+import co.lucaspinazzola.example.domain.model.Img
 import co.lucaspinazzola.example.runTest
 import com.squareup.sqldelight.Query
 import io.mockk.*
@@ -45,7 +45,7 @@ class GiphyRepositoryImplTest {
     @Test
     fun `getGifs gets all gifs from db`() = runTest {
         val dataList = emptyList<GifData>()
-        val domainList = listOf<Gif>()
+        val domainList = listOf<Img>()
         every { gifDbHelper.getAll() } returns dataList
         every { gifMapper.toDomainModel(dataList.toTypedArray()) } returns domainList
         val result = repository.getGifs()
@@ -97,7 +97,7 @@ class GiphyRepositoryImplTest {
     fun `listenForGifUpdates produces on db change`()= runTest {
         val dataList = emptyArray<GifData>()
         val pub = QueryPub(gifsQuery) {it.executeAsList()}
-        val domainList = emptyList<Gif>()
+        val domainList = emptyList<Img>()
         every { gifMapper.toDomainModel(dataList) } returns domainList
         every { gifDbHelper.getAllChangePublisher() } returns pub
         val parentJob = Job()
