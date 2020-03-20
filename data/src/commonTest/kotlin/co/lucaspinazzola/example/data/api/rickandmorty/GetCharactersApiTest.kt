@@ -37,12 +37,12 @@ class GetCharactersApiTest : RickAndMortyApiTest() {
     }
 
     @Test
-    fun `last character is antenna rick`() = runTest {
+    fun `last character is ants in my eyes johnson`() = runTest {
         val apiClient = givenAMockTodoApiClient(PATH,
             getCharactersResponse
         )
         val response = apiClient.getCharacters(0)
         apiMockEngine.verifyRequestContainsHeader("Accept", "application/json")
-        assertEquals("Antenna Rick", response.results[19].name)
+        assertEquals("Ants in my Eyes Johnson", response.results[19].name)
     }
 }
