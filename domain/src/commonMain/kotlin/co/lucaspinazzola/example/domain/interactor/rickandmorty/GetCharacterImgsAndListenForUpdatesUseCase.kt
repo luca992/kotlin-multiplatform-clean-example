@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.collect
 
 class GetCharacterImgsAndListenForUpdatesUseCase(private val rickAndMortyRepository: RickAndMortyRepository) {
 
-    fun execute(query: String) : Flow<List<Img>> = channelFlow {
+    fun execute() : Flow<List<Img>> = channelFlow {
         send(rickAndMortyRepository.getCharacterImages())
         rickAndMortyRepository.listenForCharacterImageUpdates {
             rickAndMortyRepository.updateCharacterImages(0)

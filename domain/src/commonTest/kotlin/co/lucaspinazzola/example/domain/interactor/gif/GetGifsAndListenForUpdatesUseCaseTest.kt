@@ -22,7 +22,7 @@ class GetGifsAndListenForUpdatesUseCaseTest {
 
     private lateinit var parentJob : Job
     private val query = "query"
-    private val GetImgsAndListenForUpdatesUseCaseTest : MutableList<Img> = mutableListOf()
+    private val imgs : MutableList<Img> = mutableListOf()
 
     @BeforeTest
     fun setUp() {
@@ -32,7 +32,7 @@ class GetGifsAndListenForUpdatesUseCaseTest {
         val broadcastChannel = ConflatedBroadcastChannel<List<Img>>()
         val onChangePublisherSubscribedSlot = slot<suspend ()->Unit>()
         parentJob = Job()
-        coEvery { repository.getGifs() } returns GetImgsAndListenForUpdatesUseCaseTest
+        coEvery { repository.getGifs() } returns imgs
         every { repository.listenForGifUpdates(capture(onChangePublisherSubscribedSlot)) } returns channelFlow {
             broadcastChannel.asFlow()
                     .onStart {
@@ -43,7 +43,7 @@ class GetGifsAndListenForUpdatesUseCaseTest {
                     }
         }
         coEvery { repository.updateGifs(query, any()) } answers {
-            broadcastChannel.offer(GetImgsAndListenForUpdatesUseCaseTest)
+            broadcastChannel.offer(imgs)
         }
     }
 
@@ -78,7 +78,7 @@ class GetGifsAndListenForUpdatesUseCaseTest {
 
     @AfterTest
     fun afterTest(){
-        GetImgsAndListenForUpdatesUseCaseTest.clear()
+        imgs.clear()
     }
 
 

@@ -1,6 +1,7 @@
 import co.lucaspinazzola.example.domain.interactor.rickandmorty.GetCharacterImgsAndListenForUpdatesUseCase
 import co.lucaspinazzola.example.domain.model.Img
 import co.lucaspinazzola.example.domain.repo.GiphyRepository
+import co.lucaspinazzola.example.domain.repo.RickAndMortyRepository
 import co.lucaspinazzola.example.runTest
 import io.mockk.*
 import io.mockk.impl.annotations.InjectMockKs
@@ -21,11 +22,10 @@ class GetCharacterImgsAndListenForUpdatesUseCaseTest {
     @InjectMockKs
     private lateinit var useCase: GetCharacterImgsAndListenForUpdatesUseCase
 
-    @MockK private lateinit var repository: GiphyRepository
+    @MockK private lateinit var repository: RickAndMortyRepository
 
     private lateinit var parentJob : Job
-    private val query = "query"
-    private val GetImgsAndListenForUpdatesUseCaseTest : MutableList<Img> = mutableListOf()
+    private val imgs : MutableList<Img> = mutableListOf()
 
     @BeforeTest
     fun setUp() {
@@ -35,8 +35,8 @@ class GetCharacterImgsAndListenForUpdatesUseCaseTest {
         val broadcastChannel = ConflatedBroadcastChannel<List<Img>>()
         val onChangePublisherSubscribedSlot = slot<suspend ()->Unit>()
         parentJob = Job()
-        coEvery { repository.getGifs() } returns GetImgsAndListenForUpdatesUseCaseTest
-        every { repository.listenForGifUpdates(capture(onChangePublisherSubscribedSlot)) } returns channelFlow {
+        coEvery { repository.getCharacterImages() } returns imgs
+        every { repository.listenForCharacterImageUpdates(capture(onChangePublisherSubscribedSlot)) } returns channelFlow {
             broadcastChannel.asFlow()
                     .onStart {
                         onChangePublisherSubscribedSlot.captured()
@@ -45,8 +45,8 @@ class GetCharacterImgsAndListenForUpdatesUseCaseTest {
                         this@channelFlow.offer(it)
                     }
         }
-        coEvery { repository.updateGifs(query, any()) } answers {
-            broadcastChannel.offer(GetImgsAndListenForUpdatesUseCaseTest)
+        coEvery { repository.updateCharacterImages(any()) } answers {
+            broadcastChannel.offer(imgs)
         }
     }
 
@@ -55,14 +55,12 @@ class GetCharacterImgsAndListenForUpdatesUseCaseTest {
         var count = 0
 
         GlobalScope.launch(parentJob) {
-            useCase.execute(
-                    query
-            ).withIndex().onEach {
+            useCase.execute().withIndex().onEach {
                 count = it.index+1
                 if (it.index+1==2) parentJob.cancel()
             }.launchIn(this)
             delay(10000)
-            throw Error("The updated gifs list was not received by the update listener after 10 sec")
+            throw Error("The updated images list was not received by the update listener after 10 sec")
         }
 
         parentJob.join()
@@ -70,9 +68,9 @@ class GetCharacterImgsAndListenForUpdatesUseCaseTest {
         assertEquals(2,count)
 
         coVerifyOrder {
-            repository.getGifs()
-            repository.listenForGifUpdates(any())
-            repository.updateGifs(query, any())
+            repository.getCharacterImages()
+            repository.listenForCharacterImageUpdates(any())
+            repository.updateCharacterImages(any())
         }
     }
 
@@ -81,7 +79,7 @@ class GetCharacterImgsAndListenForUpdatesUseCaseTest {
 
     @AfterTest
     fun afterTest(){
-        GetImgsAndListenForUpdatesUseCaseTest.clear()
+        imgs.clear()
     }
 
 
