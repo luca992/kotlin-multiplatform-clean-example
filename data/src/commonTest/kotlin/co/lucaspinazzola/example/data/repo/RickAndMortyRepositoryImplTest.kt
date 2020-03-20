@@ -59,8 +59,8 @@ class RickAndMortyRepositoryImplTest {
     }
 
     @Test
-    fun `updateGifs page 0, clears db, gets 1st page of gifs from api, updates db`() = runTest {
-        val page = 0L
+    fun `updateGifs page 1, clears db, gets 1st page of gifs from api, updates db`() = runTest {
+        val page = 1L
         val response : RickAndMortySearchResponse = mockk{}
         val responseData : List<RickAndMortySearchResponse.Result> = listOf()
         val dataGifs : List<ImgData> = listOf()
@@ -77,8 +77,8 @@ class RickAndMortyRepositoryImplTest {
     }
 
     @Test
-    fun `updateGifs page greater than 0 doesn't clear db, gets 1st page of gifs from api, updates db`() = runTest {
-        val page = 1L
+    fun `updateGifs page greater than 1 doesn't clear db, gets 1st page of gifs from api, updates db`() = runTest {
+        val page = 2L
         val response : RickAndMortySearchResponse = mockk{}
         val responseData : List<RickAndMortySearchResponse.Result> = listOf()
         val dataGifs : List<ImgData> = listOf()

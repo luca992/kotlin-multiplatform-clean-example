@@ -12,7 +12,7 @@ class GetCharacterImgsAndListenForUpdatesUseCase(private val rickAndMortyReposit
     fun execute() : Flow<List<Img>> = channelFlow {
         send(rickAndMortyRepository.getCharacterImages())
         rickAndMortyRepository.listenForCharacterImageUpdates {
-            rickAndMortyRepository.updateCharacterImages(0)
+            rickAndMortyRepository.updateCharacterImages(1)
         }.collect { gifs ->
             send(gifs)
         }

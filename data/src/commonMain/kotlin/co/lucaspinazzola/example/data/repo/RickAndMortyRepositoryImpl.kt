@@ -20,7 +20,7 @@ data class RickAndMortyRepositoryImpl(private val api: RickAndMortyApi,
     }
 
     override suspend fun updateCharacterImages(page: Long) {
-        if (page == 0L) imgDbHelper.deleteAll()
+        if (page == 1L) imgDbHelper.deleteAll()
         val responseData = api.getCharacters(page).results.toTypedArray()
         imgDbHelper.insert(imgMapper.toDataModel(responseData))
     }
