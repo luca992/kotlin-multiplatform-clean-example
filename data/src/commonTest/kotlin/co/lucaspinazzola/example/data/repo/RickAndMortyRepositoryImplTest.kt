@@ -59,7 +59,7 @@ class RickAndMortyRepositoryImplTest {
     }
 
     @Test
-    fun `updateGifs page 1, clears db, gets 1st page of gifs from api, updates db`() = runTest {
+    fun `updateGifs page 1 gets 1st page of gifs from api, updates db`() = runTest {
         val page = 1L
         val response : RickAndMortySearchResponse = mockk{}
         val responseData : List<RickAndMortySearchResponse.Result> = listOf()
@@ -70,29 +70,11 @@ class RickAndMortyRepositoryImplTest {
 
         repository.updateCharacterImages(page)
 
-        verify (exactly = 1)  { imgDbHelper.deleteAll() }
         coVerify (exactly = 1)  { api.getCharacters(page) }
 
         verify (exactly = 1)  { imgDbHelper.insert(any<List<ImgData>>()) }
     }
 
-    @Test
-    fun `updateGifs page greater than 1 doesn't clear db, gets 1st page of gifs from api, updates db`() = runTest {
-        val page = 2L
-        val response : RickAndMortySearchResponse = mockk{}
-        val responseData : List<RickAndMortySearchResponse.Result> = listOf()
-        val dataGifs : List<ImgData> = listOf()
-        every { response.results } returns responseData
-        coEvery { api.getCharacters(page) } returns response
-        every { imgMapper.toDataModel(responseData.toTypedArray()) } returns dataGifs
-
-        repository.updateCharacterImages(page)
-
-        verify (exactly = 0)  { imgDbHelper.deleteAll() }
-        coVerify (exactly = 1)  { api.getCharacters(page) }
-
-        verify (exactly = 1)  { imgDbHelper.insert(any<List<ImgData>>()) }
-    }
 
     @Test
     fun `listenForGifUpdates produces on db change`()= runTest {
