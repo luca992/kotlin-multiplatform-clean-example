@@ -26,7 +26,7 @@
 #kotlinx.serialization
 -keepattributes *Annotation*, InnerClasses
 -dontnote kotlinx.serialization.SerializationKt
--keep,includedescriptorclasses class co.lucaspinazzola.example.data.api.response.**$$serializer { *; }
--keepclassmembers class co.lucaspinazzola.example.data.api.response.** { *** Companion; }
--keepclasseswithmembers class co.lucaspinazzola.example.data.api.response.** { kotlinx.serialization.KSerializer serializer(...); }
+-keep,includedescriptorclasses class co.lucaspinazzola.example.data.api.Giphy.response.**$$serializer { *; }
+-keepclassmembers class co.lucaspinazzola.example.data.api.Giphy.response.** { *** Companion; }
+-keepclasseswithmembers class co.lucaspinazzola.example.data.api.Giphy.response.** { kotlinx.serialization.KSerializer serializer(...); }
 

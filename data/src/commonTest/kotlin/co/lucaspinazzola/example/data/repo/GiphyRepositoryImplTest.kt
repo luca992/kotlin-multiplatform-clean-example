@@ -1,7 +1,7 @@
 package co.lucaspinazzola.example.data.repo
 
-import co.lucaspinazzola.example.data.api.GiphyApi
-import co.lucaspinazzola.example.data.api.response.GiphySearchResponse
+import co.lucaspinazzola.example.data.api.giphy.GiphyApi
+import co.lucaspinazzola.example.data.api.giphy.response.GiphySearchResponse
 import co.lucaspinazzola.example.data.db.QueryPub
 import co.lucaspinazzola.example.data.db.helper.GifDbHelper
 import co.lucaspinazzola.example.data.mapper.GifMapper

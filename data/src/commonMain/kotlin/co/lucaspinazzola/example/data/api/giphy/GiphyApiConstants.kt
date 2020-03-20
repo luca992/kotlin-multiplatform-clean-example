@@ -1,4 +1,4 @@
-package co.lucaspinazzola.example.data.api
+package co.lucaspinazzola.example.data.api.giphy
 
 object GiphyApiConstants {
     const val OFFSET = "offset"

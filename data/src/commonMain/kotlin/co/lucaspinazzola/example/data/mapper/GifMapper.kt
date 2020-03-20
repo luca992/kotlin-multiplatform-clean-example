@@ -1,6 +1,6 @@
 package co.lucaspinazzola.example.data.mapper
 
-import co.lucaspinazzola.example.data.api.response.GiphySearchResponse
+import co.lucaspinazzola.example.data.api.giphy.response.GiphySearchResponse
 import co.lucaspinazzola.example.data.model.GifData
 import co.lucaspinazzola.example.domain.model.Img
 

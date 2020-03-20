@@ -1,8 +1,7 @@
 package co.lucaspinazzola.example.data.repo
 
-import co.lucaspinazzola.example.data.api.GiphyApi
-import co.lucaspinazzola.example.data.api.response.GiphySearchResponse
-import co.lucaspinazzola.example.data.db.helper.DbHelper
+import co.lucaspinazzola.example.data.api.giphy.GiphyApi
+import co.lucaspinazzola.example.data.api.giphy.response.GiphySearchResponse
 import co.lucaspinazzola.example.data.db.helper.SessionDbHelper
 import co.lucaspinazzola.example.data.mapper.SessionMapper
 import co.lucaspinazzola.example.data.model.SessionData

@@ -7,7 +7,7 @@ import io.ktor.content.TextContent
 import io.ktor.http.*
 import kotlin.test.assertEquals
 
-class GiphyApiMockEngine {
+class ApiMockEngine {
     private lateinit var mockResponse: MockResponse
 
     private var lastRequestData: HttpRequestData? = null

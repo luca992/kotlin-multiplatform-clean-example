@@ -1,4 +1,4 @@
-package co.lucaspinazzola.example.data.api.giphy
+package co.lucaspinazzola.example.data.api.giphy.response
 
 val gifSearchResponse = """
     {

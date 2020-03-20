@@ -1,8 +1,10 @@
-package co.lucaspinazzola.example.data.api
+package co.lucaspinazzola.example.data.api.giphy
 
-open class GiphyApiTest {
+import co.lucaspinazzola.example.data.api.ApiMockEngine
 
-    protected val apiMockEngine = GiphyApiMockEngine()
+abstract class GiphyApiTest {
+
+    protected val apiMockEngine = ApiMockEngine()
 
     protected val businessId = 1L
 
@@ -14,6 +16,7 @@ open class GiphyApiTest {
             httpStatusCode: Int = 200
     ): GiphyApi {
         apiMockEngine.enqueueMockResponse(endpointSegment, responseBody, httpStatusCode)
-        return GiphyApi("mock_key", true).apply { otherEngine = apiMockEngine.get() }
+        return GiphyApi("mock_key", true)
+            .apply { otherEngine = apiMockEngine.get() }
     }
 }

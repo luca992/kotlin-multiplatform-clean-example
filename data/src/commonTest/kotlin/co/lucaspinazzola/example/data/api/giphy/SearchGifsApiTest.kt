@@ -1,6 +1,6 @@
 package co.lucaspinazzola.example.data.api.giphy
 
-import co.lucaspinazzola.example.data.api.GiphyApiTest
+import co.lucaspinazzola.example.data.api.giphy.response.gifSearchResponse
 import co.lucaspinazzola.example.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -16,7 +16,9 @@ class SearchGifsApiTest : GiphyApiTest() {
 
     @Test
     fun `search returns 2 dog gifs`() = runTest {
-        val apiClient = givenAMockTodoApiClient(SEARCH_PATH, gifSearchResponse)
+        val apiClient = givenAMockTodoApiClient(SEARCH_PATH,
+            gifSearchResponse
+        )
         val response = apiClient.searchGifs("dogs", 0, 2)
         apiMockEngine.verifyRequestContainsHeader("Accept", "application/json")
         assertEquals(2, response.data.size)

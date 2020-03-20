@@ -1,6 +1,7 @@
-package co.lucaspinazzola.example.data.api
+package co.lucaspinazzola.example.data.api.giphy
 
-import co.lucaspinazzola.example.data.api.response.GiphySearchResponse
+import co.lucaspinazzola.example.data.api.eLogger
+import co.lucaspinazzola.example.data.api.giphy.response.GiphySearchResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.HttpClientConfig
 import io.ktor.client.engine.HttpClientEngine

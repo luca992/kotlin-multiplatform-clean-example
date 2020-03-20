@@ -1,4 +1,4 @@
-package co.lucaspinazzola.example.data.api.response
+package co.lucaspinazzola.example.data.api.giphy.response
 
 
 import co.lucaspinazzola.example.data.utils.DateSerializer
