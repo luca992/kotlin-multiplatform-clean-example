@@ -8,7 +8,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import co.lucaspinazzola.example.R
-import co.lucaspinazzola.example.databinding.FragmentGiphyBinding
 import co.lucaspinazzola.example.databinding.FragmentRickandmortyBinding
 import co.lucaspinazzola.example.ui.base.BaseFragment
 import co.lucaspinazzola.example.ui.utils.EndlessRecyclerGridLayoutManager
