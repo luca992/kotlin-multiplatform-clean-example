@@ -4,7 +4,7 @@ import co.lucaspinazzola.example.data.api.giphy.GiphyApi
 import co.lucaspinazzola.example.data.api.giphy.response.GiphySearchResponse
 import co.lucaspinazzola.example.data.db.QueryPub
 import co.lucaspinazzola.example.data.db.helper.GifDbHelper
-import co.lucaspinazzola.example.data.mapper.GifMapper
+import co.lucaspinazzola.example.data.mapper.ImgMapper
 import co.lucaspinazzola.example.data.model.ImgData
 import co.lucaspinazzola.example.domain.model.Img
 import co.lucaspinazzola.example.runTest
@@ -28,7 +28,7 @@ class GiphyRepositoryImplTest {
 
     @MockK lateinit var api: GiphyApi
     @MockK lateinit var gifDbHelper: GifDbHelper
-    @MockK lateinit var gifMapper: GifMapper
+    @MockK lateinit var imgMapper: ImgMapper
 
 
     @MockK(relaxed = true)
@@ -47,7 +47,7 @@ class GiphyRepositoryImplTest {
         val dataList = emptyList<ImgData>()
         val domainList = listOf<Img>()
         every { gifDbHelper.getAll() } returns dataList
-        every { gifMapper.toDomainModel(dataList.toTypedArray()) } returns domainList
+        every { imgMapper.toDomainModel(dataList.toTypedArray()) } returns domainList
         val result = repository.getGifs()
         verify (exactly = 1) {
             gifDbHelper.getAll()
@@ -64,7 +64,7 @@ class GiphyRepositoryImplTest {
         val dataGifs : List<ImgData> = listOf()
         every { response.data } returns responseData
         coEvery { api.searchGifs(query, offset) } returns response
-        every { gifMapper.toDataModel(responseData.toTypedArray(),offset) } returns dataGifs
+        every { imgMapper.toDataModel(responseData.toTypedArray(),offset) } returns dataGifs
 
         repository.updateGifs(query, offset)
 
@@ -83,7 +83,7 @@ class GiphyRepositoryImplTest {
         val dataGifs : List<ImgData> = listOf()
         every { response.data } returns responseData
         coEvery { api.searchGifs(query, offset) } returns response
-        every { gifMapper.toDataModel(responseData.toTypedArray(),offset) } returns dataGifs
+        every { imgMapper.toDataModel(responseData.toTypedArray(),offset) } returns dataGifs
 
         repository.updateGifs(query, offset)
 
@@ -98,7 +98,7 @@ class GiphyRepositoryImplTest {
         val dataList = emptyArray<ImgData>()
         val pub = QueryPub(gifsQuery) {it.executeAsList()}
         val domainList = emptyList<Img>()
-        every { gifMapper.toDomainModel(dataList) } returns domainList
+        every { imgMapper.toDomainModel(dataList) } returns domainList
         every { gifDbHelper.getAllChangePublisher() } returns pub
         val parentJob = Job()
         var count = 0

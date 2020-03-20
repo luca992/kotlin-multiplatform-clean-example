@@ -5,8 +5,8 @@ import co.lucaspinazzola.example.BuildConfig
 import co.lucaspinazzola.example.data.api.giphy.GiphyApi
 import co.lucaspinazzola.example.data.db.helper.*
 import co.lucaspinazzola.example.data.db.initSqldelightDatabase
-import co.lucaspinazzola.example.data.mapper.GifMapper
-import co.lucaspinazzola.example.data.mapper.GifMapperImpl
+import co.lucaspinazzola.example.data.mapper.ImgMapper
+import co.lucaspinazzola.example.data.mapper.ImgMapperImpl
 import co.lucaspinazzola.example.data.mapper.SessionMapper
 import co.lucaspinazzola.example.data.mapper.SessionMapperImpl
 import co.lucaspinazzola.example.data.model.sqldelight.Database
@@ -48,16 +48,16 @@ class DataModule {
     @Singleton
     fun provideGiphyRepository(giphyApi: GiphyApi,
                                gifDbHelper: GifDbHelper,
-                               gifMapper: GifMapper
+                               imgMapper: ImgMapper
     ) : GiphyRepository = GiphyRepositoryImpl(
         api = giphyApi,
         gifDbHelper = gifDbHelper,
-        gifMapper = gifMapper
+        imgMapper = imgMapper
     )
 
     @Provides
     @Singleton
-    fun provideGifMapper() : GifMapper = GifMapperImpl()
+    fun provideGifMapper() : ImgMapper = ImgMapperImpl()
 
     @Provides
     @Singleton

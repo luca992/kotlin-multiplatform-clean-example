@@ -5,7 +5,7 @@ import co.lucaspinazzola.example.data.api.rickandmorty.response.RickAndMortySear
 import co.lucaspinazzola.example.data.model.ImgData
 import co.lucaspinazzola.example.domain.model.Img
 
-class GifMapperImpl : GifMapper {
+class ImgMapperImpl : ImgMapper {
 
 
     override fun toDataModel(src: GiphySearchResponse.Data, index: Long) = ImgData.Impl(
@@ -27,11 +27,13 @@ class GifMapperImpl : GifMapper {
     override fun toDomainModel(src: Array<ImgData>): List<Img> =
         src.map { toDomainModel(it) }
 
-    override fun toDataModel(src: Array<RickAndMortySearchResponse.Result>, offset: Long): List<ImgData> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun toDataModel(src: Array<RickAndMortySearchResponse.Result>): List<ImgData> =
+        src.mapIndexed{ index, result ->  toDataModel(result) }
 
-    override fun toDataModel(src: RickAndMortySearchResponse.Result, index: Long): ImgData {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+
+    override fun toDataModel(src: RickAndMortySearchResponse.Result): ImgData = ImgData.Impl(
+        id = src.id,
+        resultIndex = src.id.toLong(),
+        url = src.image
+    )
 }
