@@ -47,11 +47,11 @@ class DataModule {
     @Provides
     @Singleton
     fun provideGiphyRepository(giphyApi: GiphyApi,
-                               gifDbHelper: GifDbHelper,
+                               imgDbHelper: ImgDbHelper,
                                imgMapper: ImgMapper
     ) : GiphyRepository = GiphyRepositoryImpl(
         api = giphyApi,
-        gifDbHelper = gifDbHelper,
+        gifDbHelper = imgDbHelper,
         imgMapper = imgMapper
     )
 
@@ -79,8 +79,8 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideGifDbHelper(db: Database) : GifDbHelper =
-        GifDbHelperImpl(db)
+    fun provideGifDbHelper(db: Database) : ImgDbHelper =
+        ImgDbHelperImpl(db)
 
     @Provides
     @Singleton

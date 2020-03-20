@@ -6,11 +6,11 @@ import co.lucaspinazzola.example.data.model.ImgDataQueries
 import co.lucaspinazzola.example.data.model.sqldelight.Database
 
 
-interface GifDbHelper : DbHelper<ImgData>{
+interface ImgDbHelper : DbHelper<ImgData>{
     fun getAllChangePublisher(): QueryPub<ImgData, List<ImgData>>
 }
 
-class GifDbHelperImpl(database: Database) : SqlDelightDbHelper<ImgData>(database), GifDbHelper{
+class ImgDbHelperImpl(database: Database) : SqlDelightDbHelper<ImgData>(database), ImgDbHelper{
 
 
     override val queries: ImgDataQueries = database.imgDataQueries

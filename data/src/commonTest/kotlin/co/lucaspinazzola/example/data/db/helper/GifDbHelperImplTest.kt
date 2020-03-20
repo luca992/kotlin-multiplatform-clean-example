@@ -1,14 +1,14 @@
 
-import co.lucaspinazzola.example.data.db.helper.GifDbHelper
-import co.lucaspinazzola.example.data.db.helper.GifDbHelperImpl
+import co.lucaspinazzola.example.data.db.helper.ImgDbHelper
+import co.lucaspinazzola.example.data.db.helper.ImgDbHelperImpl
 import co.lucaspinazzola.example.data.model.ImgData
 import kotlin.test.BeforeTest
 
 
-class GifDbHelperImplTest: DbHelperTest<ImgData, GifDbHelper>() {
+class GifDbHelperImplTest: DbHelperTest<ImgData, ImgDbHelper>() {
 
 
-    override lateinit var dbHelper : GifDbHelper
+    override lateinit var dbHelper : ImgDbHelper
 
     override val data1 = ImgData.Impl(
         id = "1",
@@ -29,7 +29,7 @@ class GifDbHelperImplTest: DbHelperTest<ImgData, GifDbHelper>() {
     @BeforeTest
     override fun setUp() {
         super.setUp()
-        dbHelper = GifDbHelperImpl(db!!)
+        dbHelper = ImgDbHelperImpl(db!!)
     }
 
 

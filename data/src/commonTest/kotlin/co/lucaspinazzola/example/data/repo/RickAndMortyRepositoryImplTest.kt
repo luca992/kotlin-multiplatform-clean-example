@@ -1,7 +1,7 @@
 package co.lucaspinazzola.example.data.repo
 
-import co.lucaspinazzola.example.data.api.giphy.GiphyApi
-import co.lucaspinazzola.example.data.api.giphy.response.GiphySearchResponse
+import co.lucaspinazzola.example.data.api.rickandmorty.RickAndMortyApi
+import co.lucaspinazzola.example.data.api.rickandmorty.response.RickAndMortySearchResponse
 import co.lucaspinazzola.example.data.db.QueryPub
 import co.lucaspinazzola.example.data.db.helper.ImgDbHelper
 import co.lucaspinazzola.example.data.mapper.ImgMapper
@@ -18,15 +18,18 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import kotlin.test.*
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertSame
 
-class GiphyRepositoryImplTest {
+class RickAndMortyRepositoryImplTest {
 
 
     @InjectMockKs
-    private lateinit var repository: GiphyRepositoryImpl
+    private lateinit var repository: RickAndMortyRepositoryImpl
 
-    @MockK lateinit var api: GiphyApi
+    @MockK lateinit var api: RickAndMortyApi
     @MockK lateinit var imgDbHelper: ImgDbHelper
     @MockK lateinit var imgMapper: ImgMapper
 
@@ -43,12 +46,12 @@ class GiphyRepositoryImplTest {
 
 
     @Test
-    fun `getGifs gets all gifs from db`() = runTest {
+    fun `getCharacterImages gets all imgs from db`() = runTest {
         val dataList = emptyList<ImgData>()
         val domainList = listOf<Img>()
         every { imgDbHelper.getAll() } returns dataList
         every { imgMapper.toDomainModel(dataList.toTypedArray()) } returns domainList
-        val result = repository.getGifs()
+        val result = repository.getCharacterImages()
         verify (exactly = 1) {
             imgDbHelper.getAll()
         }
@@ -56,39 +59,37 @@ class GiphyRepositoryImplTest {
     }
 
     @Test
-    fun `updateGifs offset 0, clears db, gets 1st page of gifs from api, updates db`() = runTest {
-        val query = "query"
-        val offset = 0L
-        val response : GiphySearchResponse = mockk{}
-        val responseData : List<GiphySearchResponse.Data> = listOf()
+    fun `updateGifs page 0, clears db, gets 1st page of gifs from api, updates db`() = runTest {
+        val page = 0L
+        val response : RickAndMortySearchResponse = mockk{}
+        val responseData : List<RickAndMortySearchResponse.Result> = listOf()
         val dataGifs : List<ImgData> = listOf()
-        every { response.data } returns responseData
-        coEvery { api.searchGifs(query, offset) } returns response
-        every { imgMapper.toDataModel(responseData.toTypedArray(),offset) } returns dataGifs
+        every { response.results } returns responseData
+        coEvery { api.getCharacters(page) } returns response
+        every { imgMapper.toDataModel(responseData.toTypedArray()) } returns dataGifs
 
-        repository.updateGifs(query, offset)
+        repository.updateCharacterImages(page)
 
         verify (exactly = 1)  { imgDbHelper.deleteAll() }
-        coVerify (exactly = 1)  { api.searchGifs(query, offset) }
+        coVerify (exactly = 1)  { api.getCharacters(page) }
 
         verify (exactly = 1)  { imgDbHelper.insert(any<List<ImgData>>()) }
     }
 
     @Test
-    fun `updateGifs offset greater than 0 doesn't clear db, gets 1st page of gifs from api, updates db`() = runTest {
-        val query = "query"
-        val offset = 1L
-        val response : GiphySearchResponse = mockk{}
-        val responseData : List<GiphySearchResponse.Data> = listOf()
+    fun `updateGifs page greater than 0 doesn't clear db, gets 1st page of gifs from api, updates db`() = runTest {
+        val page = 1L
+        val response : RickAndMortySearchResponse = mockk{}
+        val responseData : List<RickAndMortySearchResponse.Result> = listOf()
         val dataGifs : List<ImgData> = listOf()
-        every { response.data } returns responseData
-        coEvery { api.searchGifs(query, offset) } returns response
-        every { imgMapper.toDataModel(responseData.toTypedArray(),offset) } returns dataGifs
+        every { response.results } returns responseData
+        coEvery { api.getCharacters(page) } returns response
+        every { imgMapper.toDataModel(responseData.toTypedArray()) } returns dataGifs
 
-        repository.updateGifs(query, offset)
+        repository.updateCharacterImages(page)
 
         verify (exactly = 0)  { imgDbHelper.deleteAll() }
-        coVerify (exactly = 1)  { api.searchGifs(query, offset) }
+        coVerify (exactly = 1)  { api.getCharacters(page) }
 
         verify (exactly = 1)  { imgDbHelper.insert(any<List<ImgData>>()) }
     }
@@ -103,7 +104,7 @@ class GiphyRepositoryImplTest {
         val parentJob = Job()
         var count = 0
         GlobalScope.launch(parentJob) {
-            repository.listenForGifUpdates(){
+            repository.listenForCharacterImageUpdates {
                 pub.applyNext { dataList.toList() }
             }.onEach {
                 count++
