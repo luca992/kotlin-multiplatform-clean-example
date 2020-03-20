@@ -1,4 +1,4 @@
-package co.lucaspinazzola.example.ui.giphy
+package co.lucaspinazzola.example.ui.utils
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +10,9 @@ import co.lucaspinazzola.example.ui.base.ListClickAdapter
 import coil.api.load
 import kotlinx.android.synthetic.main.item_gif.view.*
 
-class GiphyAdapter: ListClickAdapter<Img, GiphyAdapter.ViewHolder>(ItemDiffUtil()) {
+class ImgAdapter: ListClickAdapter<Img, ImgAdapter.ViewHolder>(
+    ItemDiffUtil()
+) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
