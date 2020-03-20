@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-sealed class RickAndMortySearchResponse(
+data class RickAndMortySearchResponse(
     @SerialName("info") val info: Info,
     @SerialName("results") val results: List<Result>
 ) {
@@ -19,6 +19,7 @@ sealed class RickAndMortySearchResponse(
     data class Info(
         @SerialName("count") val count: Int,
         @SerialName("pages") val pages: Int,
-        @SerialName("total_count") val totalCount: Int
+        @SerialName("next") val next: String,
+        @SerialName("prev") val previous: String
     )
 }
