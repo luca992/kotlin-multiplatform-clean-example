@@ -16,8 +16,10 @@ import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import kotlin.test.*
 
@@ -31,9 +33,6 @@ class GiphyRepositoryImplTest {
     @MockK lateinit var imgDbHelper: ImgDbHelper
     @MockK lateinit var imgMapper: ImgMapper
 
-
-    @MockK(relaxed = true)
-    private lateinit var gifsQuery : Query<ImgData>
 
 
     @BeforeTest
@@ -97,18 +96,19 @@ class GiphyRepositoryImplTest {
     @Test
     fun `listenForGifUpdates produces on db change`()= runTest {
         val dataList = emptyArray<ImgData>()
-        val pub = gifsQuery.asFlow().mapToList()
+        val pub = flowOf(dataList.toList())
         val domainList = emptyList<Img>()
         every { imgMapper.toDomainModel(dataList) } returns domainList
         every { imgDbHelper.getAllChangePublisher() } returns pub
         val parentJob = Job()
         var count = 0
         GlobalScope.launch(parentJob) {
-            repository.listenForGifUpdates().onEach {
-                count++
-                //did produce on db change
-                parentJob.cancel()
-            }.launchIn(this)
+            repository.listenForGifUpdates()
+                    .onEach {
+                        count++
+                        //did produce on db change
+                        parentJob.cancel()
+                    }.launchIn(this)
         }
 
         GlobalScope.launch(parentJob) {

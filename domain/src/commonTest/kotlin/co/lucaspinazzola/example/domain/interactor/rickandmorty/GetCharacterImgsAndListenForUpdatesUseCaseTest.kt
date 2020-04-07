@@ -32,14 +32,10 @@ class GetCharacterImgsAndListenForUpdatesUseCaseTest {
 
 
         val broadcastChannel = ConflatedBroadcastChannel<List<Img>>()
-        val onChangePublisherSubscribedSlot = slot<suspend ()->Unit>()
         parentJob = Job()
         coEvery { repository.getCharacterImages() } returns imgs
         every { repository.listenForCharacterImageUpdates() } returns channelFlow {
             broadcastChannel.asFlow()
-                    .onStart {
-                        onChangePublisherSubscribedSlot.captured()
-                    }
                     .collect {
                         this@channelFlow.offer(it)
                     }
@@ -54,10 +50,11 @@ class GetCharacterImgsAndListenForUpdatesUseCaseTest {
         var count = 0
 
         GlobalScope.launch(parentJob) {
-            useCase.execute().withIndex().onEach {
-                count = it.index+1
-                if (it.index+1==2) parentJob.cancel()
-            }.launchIn(this)
+            useCase.execute().withIndex()
+                    .onEach {
+                        count = it.index+1
+                        if (it.index+1==2) parentJob.cancel()
+                    }.launchIn(this)
             delay(10000)
             throw Error("The updated images list was not received by the update listener after 10 sec")
         }

@@ -30,14 +30,10 @@ class GetGifsAndListenForUpdatesUseCaseTest {
 
 
         val broadcastChannel = ConflatedBroadcastChannel<List<Img>>()
-        val onChangePublisherSubscribedSlot = slot<suspend ()->Unit>()
         parentJob = Job()
         coEvery { repository.getGifs() } returns imgs
         every { repository.listenForGifUpdates() } returns channelFlow {
             broadcastChannel.asFlow()
-                    .onStart {
-                        onChangePublisherSubscribedSlot.captured()
-                    }
                     .collect {
                         this@channelFlow.offer(it)
                     }
@@ -52,12 +48,11 @@ class GetGifsAndListenForUpdatesUseCaseTest {
         var count = 0
 
         GlobalScope.launch(parentJob) {
-            useCase.execute(
-                    query
-            ).withIndex().onEach {
-                count = it.index+1
-                if (it.index+1==2) parentJob.cancel()
-            }.launchIn(this)
+            useCase.execute(query).withIndex()
+                    .onEach {
+                        count = it.index+1
+                        if (it.index+1==2) parentJob.cancel()
+                    }.launchIn(this)
             delay(10000)
             throw Error("The updated gifs list was not received by the update listener after 10 sec")
         }

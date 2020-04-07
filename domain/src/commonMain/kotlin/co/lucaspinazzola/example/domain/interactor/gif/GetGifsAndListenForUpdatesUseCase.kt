@@ -11,11 +11,12 @@ class GetGifsAndListenForUpdatesUseCase(private val giphyRepository: GiphyReposi
 
     fun execute(query: String) : Flow<List<Img>> = channelFlow {
         send(giphyRepository.getGifs())
-        giphyRepository.listenForGifUpdates().onStart {
-            giphyRepository.updateGifs(query, 0)
-        }.collect { gifs ->
-            send(gifs)
-        }
+        giphyRepository.listenForGifUpdates()
+                .onStart {
+                    giphyRepository.updateGifs(query, 0)
+                }.collect { gifs ->
+                    send(gifs)
+                }
     }
 
 }
