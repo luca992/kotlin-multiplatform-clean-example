@@ -2,13 +2,14 @@ package co.lucaspinazzola.example.data.repo
 
 import co.lucaspinazzola.example.data.api.rickandmorty.RickAndMortyApi
 import co.lucaspinazzola.example.data.api.rickandmorty.response.RickAndMortySearchResponse
-import co.lucaspinazzola.example.data.db.QueryPub
 import co.lucaspinazzola.example.data.db.helper.ImgDbHelper
 import co.lucaspinazzola.example.data.mapper.ImgMapper
 import co.lucaspinazzola.example.data.model.ImgData
 import co.lucaspinazzola.example.domain.model.Img
 import co.lucaspinazzola.example.runTest
 import com.squareup.sqldelight.Query
+import com.squareup.sqldelight.runtime.coroutines.asFlow
+import com.squareup.sqldelight.runtime.coroutines.mapToList
 import io.mockk.*
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
@@ -17,6 +18,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -79,20 +81,21 @@ class RickAndMortyRepositoryImplTest {
     @Test
     fun `listenForGifUpdates produces on db change`()= runTest {
         val dataList = emptyArray<ImgData>()
-        val pub = QueryPub(gifsQuery) {it.executeAsList()}
+        val pub = gifsQuery.asFlow().mapToList()
         val domainList = emptyList<Img>()
         every { imgMapper.toDomainModel(dataList) } returns domainList
         every { imgDbHelper.getAllChangePublisher() } returns pub
         val parentJob = Job()
         var count = 0
         GlobalScope.launch(parentJob) {
-            repository.listenForCharacterImageUpdates {
-                pub.applyNext { dataList.toList() }
-            }.onEach {
-                count++
-                //did produce on db change
-                parentJob.cancel()
-            }.launchIn(this)
+            repository.listenForCharacterImageUpdates()
+                    .onStart {
+                        emit(domainList)
+                    }.onEach {
+                        count++
+                        //did produce on db change
+                        parentJob.cancel()
+                    }.launchIn(this)
         }
 
         GlobalScope.launch(parentJob) {

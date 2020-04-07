@@ -1,14 +1,11 @@
 package co.lucaspinazzola.example.data.repo
 import co.lucaspinazzola.example.data.api.rickandmorty.RickAndMortyApi
-import co.lucaspinazzola.example.data.db.architecture.Sub
 import co.lucaspinazzola.example.data.db.helper.ImgDbHelper
 import co.lucaspinazzola.example.data.mapper.ImgMapper
-import co.lucaspinazzola.example.data.model.ImgData
 import co.lucaspinazzola.example.domain.model.Img
 import co.lucaspinazzola.example.domain.repo.RickAndMortyRepository
-import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.map
 
 data class RickAndMortyRepositoryImpl(private val api: RickAndMortyApi,
                                       private val imgDbHelper: ImgDbHelper,
@@ -25,25 +22,9 @@ data class RickAndMortyRepositoryImpl(private val api: RickAndMortyApi,
     }
 
 
-    override fun listenForCharacterImageUpdates(onChangePublisherSubscribed: suspend () -> Unit): Flow<List<Img>> =
-            callbackFlow {
-                val pub = imgDbHelper.getAllChangePublisher()
-                pub.addSub(object : Sub<List<ImgData>> {
-                    override fun onNext(next: List<ImgData>) {
-                        val items = imgMapper.toDomainModel(next.toTypedArray())
-                        if (!isClosedForSend) {
-                            offer(items)
-                        }
-                    }
-                    override fun onError(t: Throwable) {
-                        throw t
-                    }
-                })
-                onChangePublisherSubscribed()
-                awaitClose{
-                    pub.destroy()
-                }
-            }
+    override fun listenForCharacterImageUpdates(): Flow<List<Img>> =
+            imgDbHelper.getAllChangePublisher()
+                    .map { imgMapper.toDomainModel(it.toTypedArray()) }
 
 
 }

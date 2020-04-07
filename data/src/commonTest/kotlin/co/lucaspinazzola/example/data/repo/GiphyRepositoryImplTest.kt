@@ -2,13 +2,14 @@ package co.lucaspinazzola.example.data.repo
 
 import co.lucaspinazzola.example.data.api.giphy.GiphyApi
 import co.lucaspinazzola.example.data.api.giphy.response.GiphySearchResponse
-import co.lucaspinazzola.example.data.db.QueryPub
 import co.lucaspinazzola.example.data.db.helper.ImgDbHelper
 import co.lucaspinazzola.example.data.mapper.ImgMapper
 import co.lucaspinazzola.example.data.model.ImgData
 import co.lucaspinazzola.example.domain.model.Img
 import co.lucaspinazzola.example.runTest
 import com.squareup.sqldelight.Query
+import com.squareup.sqldelight.runtime.coroutines.asFlow
+import com.squareup.sqldelight.runtime.coroutines.mapToList
 import io.mockk.*
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
@@ -96,16 +97,14 @@ class GiphyRepositoryImplTest {
     @Test
     fun `listenForGifUpdates produces on db change`()= runTest {
         val dataList = emptyArray<ImgData>()
-        val pub = QueryPub(gifsQuery) {it.executeAsList()}
+        val pub = gifsQuery.asFlow().mapToList()
         val domainList = emptyList<Img>()
         every { imgMapper.toDomainModel(dataList) } returns domainList
         every { imgDbHelper.getAllChangePublisher() } returns pub
         val parentJob = Job()
         var count = 0
         GlobalScope.launch(parentJob) {
-            repository.listenForGifUpdates(){
-                pub.applyNext { dataList.toList() }
-            }.onEach {
+            repository.listenForGifUpdates().onEach {
                 count++
                 //did produce on db change
                 parentJob.cancel()

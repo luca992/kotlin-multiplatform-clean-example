@@ -8,6 +8,6 @@ interface GiphyRepository {
     suspend fun getGifs(): List<Img>
     suspend fun updateGifs(query: String, offset: Long)
 
-    fun listenForGifUpdates(onChangePublisherSubscribed: suspend ()->Unit) : Flow<List<Img>>
+    fun listenForGifUpdates(): Flow<List<Img>>
 
 }

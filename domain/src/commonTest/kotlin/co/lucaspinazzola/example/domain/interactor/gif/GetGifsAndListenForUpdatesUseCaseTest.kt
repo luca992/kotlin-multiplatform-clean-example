@@ -33,7 +33,7 @@ class GetGifsAndListenForUpdatesUseCaseTest {
         val onChangePublisherSubscribedSlot = slot<suspend ()->Unit>()
         parentJob = Job()
         coEvery { repository.getGifs() } returns imgs
-        every { repository.listenForGifUpdates(capture(onChangePublisherSubscribedSlot)) } returns channelFlow {
+        every { repository.listenForGifUpdates() } returns channelFlow {
             broadcastChannel.asFlow()
                     .onStart {
                         onChangePublisherSubscribedSlot.captured()
@@ -68,7 +68,7 @@ class GetGifsAndListenForUpdatesUseCaseTest {
 
         coVerifyOrder {
             repository.getGifs()
-            repository.listenForGifUpdates(any())
+            repository.listenForGifUpdates()
             repository.updateGifs(query, any())
         }
     }

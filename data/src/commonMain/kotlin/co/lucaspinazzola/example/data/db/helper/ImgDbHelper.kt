@@ -1,13 +1,15 @@
 package co.lucaspinazzola.example.data.db.helper
 
-import co.lucaspinazzola.example.data.db.QueryPub
 import co.lucaspinazzola.example.data.model.ImgData
 import co.lucaspinazzola.example.data.model.ImgDataQueries
 import co.lucaspinazzola.example.data.model.sqldelight.Database
+import com.squareup.sqldelight.runtime.coroutines.asFlow
+import com.squareup.sqldelight.runtime.coroutines.mapToList
+import kotlinx.coroutines.flow.Flow
 
 
 interface ImgDbHelper : DbHelper<ImgData>{
-    fun getAllChangePublisher(): QueryPub<ImgData, List<ImgData>>
+    fun getAllChangePublisher(): Flow<List<ImgData>>
 }
 
 class ImgDbHelperImpl(database: Database) : SqlDelightDbHelper<ImgData>(database), ImgDbHelper{
@@ -45,8 +47,8 @@ class ImgDbHelperImpl(database: Database) : SqlDelightDbHelper<ImgData>(database
     override fun getAll(): List<ImgData> =
         queries.getAll().executeAsList()
 
-    override fun getAllChangePublisher(): QueryPub<ImgData, List<ImgData>> =
-        getChangePublisher(queries.getAll())
+    override fun getAllChangePublisher(): Flow<List<ImgData>> =
+        queries.getAll().asFlow().mapToList()
 
 
     override fun deleteById(id: String) =

@@ -45,7 +45,7 @@ kotlin {
             }
         }
         if (buildForNative) {
-            val nativeMain by creating {
+            val nativeCommonMain by creating {
                 dependsOn(commonMain)
                 dependencies {
                     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:_")
@@ -58,7 +58,7 @@ kotlin {
 
 
             configure(listOf(iosX64Main, iosArm64Main/*, macosX64Main*/)) {
-                dependsOn(nativeMain)
+                dependsOn(nativeCommonMain)
                 dependencies {
                 }
             }

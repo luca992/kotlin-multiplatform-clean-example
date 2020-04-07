@@ -1,6 +1,5 @@
 import co.lucaspinazzola.example.domain.interactor.rickandmorty.GetCharacterImgsAndListenForUpdatesUseCase
 import co.lucaspinazzola.example.domain.model.Img
-import co.lucaspinazzola.example.domain.repo.GiphyRepository
 import co.lucaspinazzola.example.domain.repo.RickAndMortyRepository
 import co.lucaspinazzola.example.runTest
 import io.mockk.*
@@ -36,7 +35,7 @@ class GetCharacterImgsAndListenForUpdatesUseCaseTest {
         val onChangePublisherSubscribedSlot = slot<suspend ()->Unit>()
         parentJob = Job()
         coEvery { repository.getCharacterImages() } returns imgs
-        every { repository.listenForCharacterImageUpdates(capture(onChangePublisherSubscribedSlot)) } returns channelFlow {
+        every { repository.listenForCharacterImageUpdates() } returns channelFlow {
             broadcastChannel.asFlow()
                     .onStart {
                         onChangePublisherSubscribedSlot.captured()
@@ -69,7 +68,7 @@ class GetCharacterImgsAndListenForUpdatesUseCaseTest {
 
         coVerifyOrder {
             repository.getCharacterImages()
-            repository.listenForCharacterImageUpdates(any())
+            repository.listenForCharacterImageUpdates()
             repository.updateCharacterImages(any())
         }
     }

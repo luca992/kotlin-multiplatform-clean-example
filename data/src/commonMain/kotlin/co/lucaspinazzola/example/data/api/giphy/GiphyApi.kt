@@ -23,8 +23,9 @@ class GiphyApi(var apiKey: String,
     var otherEngine: HttpClientEngine? = null
 
     val json = Json(
-            configuration = JsonConfiguration(
-                    strictMode = false,
+            configuration = JsonConfiguration.Default.copy(
+                    ignoreUnknownKeys = true,
+                    isLenient = true,
                     encodeDefaults = false
             )
     )

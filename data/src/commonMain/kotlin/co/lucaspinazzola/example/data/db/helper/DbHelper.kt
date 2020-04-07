@@ -1,7 +1,7 @@
 package co.lucaspinazzola.example.data.db.helper
 
-import co.lucaspinazzola.example.data.db.QueryPub
 import com.squareup.sqldelight.Query
+import kotlinx.coroutines.flow.Flow
 
 interface DbHelper<D : Any> {
 
@@ -17,7 +17,7 @@ interface DbHelper<D : Any> {
 
     fun deleteAll()
 
-    fun getChangePublisher(q: Query<D>) : QueryPub<D, List<D>>
+    fun getChangeFlow(q: Query<D>) : Flow<List<D>>
 
     val count: Long
 

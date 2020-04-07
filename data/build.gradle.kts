@@ -1,6 +1,6 @@
 plugins {
     kotlin("multiplatform")
-    id("kotlinx-serialization")
+    kotlin("plugin.serialization")
     id("com.squareup.sqldelight")
     id("com.android.library")
     BuildPlugins.testLoggerPlugin(this)
@@ -53,8 +53,8 @@ kotlin {
                 implementation("io.ktor:ktor-client-auth:_")
                 implementation("io.ktor:ktor-utils:_")
                 implementation("com.squareup.sqldelight:runtime:_")
+                implementation("com.squareup.sqldelight:coroutines-extensions:_")
                 implementation("co.touchlab:stately:_")
-                implementation("co.touchlab:stately-collections:_")
                 implementation("com.soywiz.korlibs.klock:klock:_")
             }
         }
@@ -85,7 +85,6 @@ kotlin {
                 implementation("io.ktor:ktor-utils-jvm:_")
                 implementation("com.squareup.sqldelight:android-driver:_")
                 implementation("co.touchlab:stately-jvm:_")
-                implementation("co.touchlab:stately-collections-jvm:_")
             }
         }
 

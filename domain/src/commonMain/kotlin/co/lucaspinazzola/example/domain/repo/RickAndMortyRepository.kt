@@ -8,6 +8,6 @@ interface RickAndMortyRepository {
     suspend fun getCharacterImages(): List<Img>
     suspend fun updateCharacterImages(page: Long)
 
-    fun listenForCharacterImageUpdates(onChangePublisherSubscribed: suspend ()->Unit) : Flow<List<Img>>
+    fun listenForCharacterImageUpdates(): Flow<List<Img>>
 
 }
