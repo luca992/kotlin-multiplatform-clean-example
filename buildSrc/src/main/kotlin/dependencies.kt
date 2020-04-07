@@ -1,7 +1,7 @@
 import org.gradle.plugin.use.PluginDependenciesSpec
 import org.gradle.plugin.use.PluginDependencySpec
 
-var buildForNative = false
+var buildForNative = true
 
 object BuildPlugins {
     fun testLoggerPlugin(scope: PluginDependenciesSpec) : PluginDependencySpec =

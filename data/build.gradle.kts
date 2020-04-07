@@ -54,7 +54,7 @@ kotlin {
                 implementation("io.ktor:ktor-utils:_")
                 implementation("com.squareup.sqldelight:runtime:_")
                 implementation("com.squareup.sqldelight:coroutines-extensions:_")
-                implementation("co.touchlab:stately:_")
+                implementation("co.touchlab:stately-common:_")
                 implementation("com.soywiz.korlibs.klock:klock:_")
             }
         }
@@ -84,7 +84,6 @@ kotlin {
                 implementation("io.ktor:ktor-client-auth-jvm:_")
                 implementation("io.ktor:ktor-utils-jvm:_")
                 implementation("com.squareup.sqldelight:android-driver:_")
-                implementation("co.touchlab:stately-jvm:_")
             }
         }
 
@@ -101,14 +100,15 @@ kotlin {
         }
 
         if (buildForNative) {
-            val nativeMain by creating {
+            val nativeCommonMain by creating {
                 dependsOn(commonMain)
                 dependencies {
                     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:_")
                     implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:_")
                     implementation("io.ktor:ktor-client-core-native:_")
                     implementation("io.ktor:ktor-client-logging-native:_")
-                    implementation("io.ktor:ktor-client-logging-native:_")
+                    implementation("io.ktor:ktor-client-json-native:_")
+                    implementation("io.ktor:ktor-client-serialization-native:_")
                     implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:_")
                     implementation("io.ktor:ktor-client-auth-native:_")
                     implementation("io.ktor:ktor-utils-native:_")
@@ -127,7 +127,7 @@ kotlin {
 
 
             configure(listOf(iosX64Main, iosArm64Main)) {
-                dependsOn(nativeMain)
+                dependsOn(nativeCommonMain)
                 dependencies {
                     implementation("io.ktor:ktor-client-ios:_")
                 }
