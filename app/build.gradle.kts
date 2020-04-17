@@ -1,5 +1,6 @@
 import java.util.Properties
 import org.gradle.api.internal.artifacts.dependencies.DefaultExternalModuleDependency
+
 plugins {
     id("kotlin-multiplatform")
     id("org.jetbrains.kotlin.native.cocoapods")
@@ -20,7 +21,6 @@ val giphyApiKey : String
     }
     return local.getProperty("giphyApiKey") ?: "Add giphyApiKey to local.properties"
 }
-
 
 
 android {
@@ -73,6 +73,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
     }
     dataBinding {
+        isEnabled = true
+    }
+    viewBinding {
         isEnabled = true
     }
 }
@@ -142,7 +145,7 @@ kotlin {
                 implementation("io.coil-kt:coil-gif:_")
 
                 configurations["kapt"].dependencies
-                    .add(DefaultExternalModuleDependency("com.google.dagger","dagger-compiler","_"))
+                        .add(DefaultExternalModuleDependency("com.google.dagger", "dagger-compiler", "_"))
             }
         }
 
