@@ -51,16 +51,21 @@ kotlin {
                     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:_")
                 }
             }
-
+            val nativeCommonTest by creating {}
             val iosX64Main by getting {}
             val iosArm64Main by getting {}
             //val macosX64Main by getting {}
+            val iosX64Test by getting {}
+            val iosArm64Test by getting {}
 
 
             configure(listOf(iosX64Main, iosArm64Main/*, macosX64Main*/)) {
                 dependsOn(nativeCommonMain)
                 dependencies {
                 }
+            }
+            configure(listOf(iosX64Test, iosArm64Test/*, macosX64Test*/)) {
+                dependsOn(nativeCommonTest)
             }
         }
     }

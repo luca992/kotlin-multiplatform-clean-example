@@ -26,6 +26,9 @@ android {
         main.java.srcDirs("src/androidMain/kotlin")
         main.manifest.srcFile("src/androidMain/AndroidManifest.xml")
     }
+    lintOptions {
+        disable("GradleDependency")
+    }
 }
 
 kotlin {
@@ -69,6 +72,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-mock:_")
                 implementation("io.ktor:ktor-client-json:_")
                 implementation("io.ktor:ktor-client-serialization:_")
+                implementation("co.touchlab:stately-concurrency:_")
             }
         }
 
@@ -115,9 +119,11 @@ kotlin {
                     implementation("com.squareup.sqldelight:native-driver:_")
                 }
             }
-
+            val nativeCommonTest by creating {}
             val iosX64Main by getting {}
             val iosArm64Main by getting {}
+            val iosX64Test by getting {}
+            val iosArm64Test by getting {}
             /*val macosX64Main by getting {
                 dependsOn(nativeMain)
                 dependencies {
@@ -132,11 +138,11 @@ kotlin {
                     implementation("io.ktor:ktor-client-ios:_")
                 }
             }
+            configure(listOf(iosX64Test, iosArm64Test)) {
+                dependsOn(nativeCommonTest)
+            }
         }
-
     }
-
-
 }
 
 sqldelight{
