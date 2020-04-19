@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		053251D0824F76A220E92FAF /* Pods_multiplatform_template.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC711B94AD30627547A4953 /* Pods_multiplatform_template.framework */; };
 		2408832C22D9721200ACAF13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2408832B22D9721200ACAF13 /* AppDelegate.swift */; };
 		2408832E22D9721200ACAF13 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2408832D22D9721200ACAF13 /* SceneDelegate.swift */; };
 		2408833022D9721200ACAF13 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2408832F22D9721200ACAF13 /* ContentView.swift */; };
@@ -15,10 +14,10 @@
 		2408833522D9721400ACAF13 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2408833422D9721400ACAF13 /* Preview Assets.xcassets */; };
 		2408833822D9721400ACAF13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2408833622D9721400ACAF13 /* LaunchScreen.storyboard */; };
 		24A95581244BBDDA004818C9 /* RickAndMortyVmObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A95580244BBDDA004818C9 /* RickAndMortyVmObserver.swift */; };
+		42DD73FC668F57F57FCB7479 /* libPods-multiplatform-template.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3510AA3248906AD625B8C6DC /* libPods-multiplatform-template.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1AC711B94AD30627547A4953 /* Pods_multiplatform_template.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_multiplatform_template.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2408832822D9721200ACAF13 /* multiplatform-template.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "multiplatform-template.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2408832B22D9721200ACAF13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2408832D22D9721200ACAF13 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +27,7 @@
 		2408833722D9721400ACAF13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2408833922D9721400ACAF13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24A95580244BBDDA004818C9 /* RickAndMortyVmObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyVmObserver.swift; sourceTree = "<group>"; };
+		3510AA3248906AD625B8C6DC /* libPods-multiplatform-template.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-multiplatform-template.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D71ED130DCE102F287401B2 /* Pods-multiplatform-template.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-multiplatform-template.release.xcconfig"; path = "Target Support Files/Pods-multiplatform-template/Pods-multiplatform-template.release.xcconfig"; sourceTree = "<group>"; };
 		F6593D43B29B505294C91A4F /* Pods-multiplatform-template.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-multiplatform-template.debug.xcconfig"; path = "Target Support Files/Pods-multiplatform-template/Pods-multiplatform-template.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -37,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				053251D0824F76A220E92FAF /* Pods_multiplatform_template.framework in Frameworks */,
+				42DD73FC668F57F57FCB7479 /* libPods-multiplatform-template.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,7 +47,7 @@
 		15051B489FD05723BBF26E4E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1AC711B94AD30627547A4953 /* Pods_multiplatform_template.framework */,
+				3510AA3248906AD625B8C6DC /* libPods-multiplatform-template.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -56,7 +56,6 @@
 			isa = PBXGroup;
 			children = (
 				2408832A22D9721200ACAF13 /* multiplatform-template */,
-				2408832922D9721200ACAF13 /* Products */,
 				7E1F919C8FB6F3B2E7294415 /* Pods */,
 				15051B489FD05723BBF26E4E /* Frameworks */,
 			);
@@ -68,6 +67,7 @@
 				2408832822D9721200ACAF13 /* multiplatform-template.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		2408832A22D9721200ACAF13 /* multiplatform-template */ = {
@@ -81,6 +81,7 @@
 				2408833922D9721400ACAF13 /* Info.plist */,
 				2408833322D9721400ACAF13 /* Preview Content */,
 				24A95580244BBDDA004818C9 /* RickAndMortyVmObserver.swift */,
+				2408832922D9721200ACAF13 /* Products */,
 			);
 			path = "multiplatform-template";
 			sourceTree = "<group>";

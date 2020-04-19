@@ -108,11 +108,15 @@ kotlin {
     }
 
 
-    /*targets.filterIsInstance<KotlinNativeTarget>().forEach{
-        it.binaries {
-                sharedLib {}
-        }
-    }*/
+    targets.filterIsInstance<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget>().forEach{
+        it.binaries.filterIsInstance<org.jetbrains.kotlin.gradle.plugin.mpp.Framework>()
+            .forEach { lib ->
+                lib.export(project(":domain"))
+                lib.export(project(":data"))
+                lib.export(project(":device"))
+                //lib.transitiveExport = true
+            }
+    }
 
     sourceSets {
         val commonMain by getting {
@@ -121,9 +125,9 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:_")
                 implementation("dev.icerock.moko:mvvm:_")
 
-                implementation(project(":domain"))
-                implementation(project(":data"))
-                implementation(project(":device"))
+                api(project(":domain"))
+                api(project(":data"))
+                api(project(":device"))
             }
         }
 
