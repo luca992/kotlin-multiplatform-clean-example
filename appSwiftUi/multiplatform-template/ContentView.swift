@@ -10,9 +10,9 @@ import SwiftUI
 import app
 
 struct ContentView : View {
-    let names = NamesSupplier().listOfNames
+    @State private var imgs = "NONE"
     var body: some View {
-        Text(names[0])
+        Text(imgs)
     }
 }
 

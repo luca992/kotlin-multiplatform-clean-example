@@ -14,6 +14,7 @@
 		2408833222D9721400ACAF13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2408833122D9721400ACAF13 /* Assets.xcassets */; };
 		2408833522D9721400ACAF13 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2408833422D9721400ACAF13 /* Preview Assets.xcassets */; };
 		2408833822D9721400ACAF13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2408833622D9721400ACAF13 /* LaunchScreen.storyboard */; };
+		24A95581244BBDDA004818C9 /* RickAndMortyVmObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A95580244BBDDA004818C9 /* RickAndMortyVmObserver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		2408833422D9721400ACAF13 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2408833722D9721400ACAF13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2408833922D9721400ACAF13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24A95580244BBDDA004818C9 /* RickAndMortyVmObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyVmObserver.swift; sourceTree = "<group>"; };
 		4D71ED130DCE102F287401B2 /* Pods-multiplatform-template.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-multiplatform-template.release.xcconfig"; path = "Target Support Files/Pods-multiplatform-template/Pods-multiplatform-template.release.xcconfig"; sourceTree = "<group>"; };
 		F6593D43B29B505294C91A4F /* Pods-multiplatform-template.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-multiplatform-template.debug.xcconfig"; path = "Target Support Files/Pods-multiplatform-template/Pods-multiplatform-template.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,6 +80,7 @@
 				2408833622D9721400ACAF13 /* LaunchScreen.storyboard */,
 				2408833922D9721400ACAF13 /* Info.plist */,
 				2408833322D9721400ACAF13 /* Preview Content */,
+				24A95580244BBDDA004818C9 /* RickAndMortyVmObserver.swift */,
 			);
 			path = "multiplatform-template";
 			sourceTree = "<group>";
@@ -96,7 +99,6 @@
 				F6593D43B29B505294C91A4F /* Pods-multiplatform-template.debug.xcconfig */,
 				4D71ED130DCE102F287401B2 /* Pods-multiplatform-template.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -198,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2408832C22D9721200ACAF13 /* AppDelegate.swift in Sources */,
+				24A95581244BBDDA004818C9 /* RickAndMortyVmObserver.swift in Sources */,
 				2408832E22D9721200ACAF13 /* SceneDelegate.swift in Sources */,
 				2408833022D9721200ACAF13 /* ContentView.swift in Sources */,
 			);
@@ -344,6 +347,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-framework",
+					"\"app\"",
+					"-l\"sqlite3\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "co.example.multiplatform-template";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -363,6 +374,14 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-framework",
+					"\"app\"",
+					"-l\"sqlite3\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "co.example.multiplatform-template";
 				PRODUCT_NAME = "$(TARGET_NAME)";
