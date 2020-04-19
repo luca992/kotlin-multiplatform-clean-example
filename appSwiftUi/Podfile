@@ -7,5 +7,6 @@ target 'multiplatform-template' do
 
   # Pods for multiplatform-template
     pod 'app', :path => '../app'
-
+    pod 'URLImage'
+    
 end

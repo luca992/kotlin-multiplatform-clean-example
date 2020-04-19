@@ -26,7 +26,6 @@ class RickAndMortyVmObserver: ObservableObject {
         vm.imgs.addObserver { [weak self] urls in
             self?.imgs = urls as! [Img]
         }
-        self.imgs = vm.imgs.value as! [Img]
     }
 
 

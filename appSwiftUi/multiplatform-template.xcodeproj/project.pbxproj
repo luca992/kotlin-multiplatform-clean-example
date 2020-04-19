@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		2408833522D9721400ACAF13 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2408833422D9721400ACAF13 /* Preview Assets.xcassets */; };
 		2408833822D9721400ACAF13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2408833622D9721400ACAF13 /* LaunchScreen.storyboard */; };
 		24A95581244BBDDA004818C9 /* RickAndMortyVmObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A95580244BBDDA004818C9 /* RickAndMortyVmObserver.swift */; };
+		24A95584244C20E2004818C9 /* Grid in Frameworks */ = {isa = PBXBuildFile; productRef = 24A95583244C20E2004818C9 /* Grid */; };
 		42DD73FC668F57F57FCB7479 /* libPods-multiplatform-template.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3510AA3248906AD625B8C6DC /* libPods-multiplatform-template.a */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24A95584244C20E2004818C9 /* Grid in Frameworks */,
 				42DD73FC668F57F57FCB7479 /* libPods-multiplatform-template.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -120,6 +122,9 @@
 			dependencies = (
 			);
 			name = "multiplatform-template";
+			packageProductDependencies = (
+				24A95583244C20E2004818C9 /* Grid */,
+			);
 			productName = "multiplatform-template";
 			productReference = 2408832822D9721200ACAF13 /* multiplatform-template.app */;
 			productType = "com.apple.product-type.application";
@@ -148,6 +153,9 @@
 				Base,
 			);
 			mainGroup = 2408831F22D9721200ACAF13;
+			packageReferences = (
+				24A95582244C20E2004818C9 /* XCRemoteSwiftPackageReference "swiftui-grid" */,
+			);
 			productRefGroup = 2408832922D9721200ACAF13 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -413,6 +421,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		24A95582244C20E2004818C9 /* XCRemoteSwiftPackageReference "swiftui-grid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/spacenation/swiftui-grid";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		24A95583244C20E2004818C9 /* Grid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 24A95582244C20E2004818C9 /* XCRemoteSwiftPackageReference "swiftui-grid" */;
+			productName = Grid;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2408832022D9721200ACAF13 /* Project object */;
 }

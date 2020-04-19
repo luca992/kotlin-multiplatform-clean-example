@@ -8,14 +8,42 @@
 
 import SwiftUI
 import app
+import URLImage
+import Grid
 
 struct ContentView : View {
     @ObservedObject private var vm = RickAndMortyVmObserver()
     
     var body: some View {
-        List(vm.imgs, id: \.self) { img in
-            Text(img.url)
-        }
+        ScrollView {
+            Grid(vm.imgs, id: \.self) { img in
+                URLImage(URL.init(string: img.url)!,
+                         placeholder: {
+                             ProgressView($0) { progress in
+                                 ZStack {
+                                     if progress > 0.0 {
+                                         CircleProgressView(progress).stroke(lineWidth: 8.0)
+                                     }
+                                     else {
+                                         CircleActivityView().stroke(lineWidth: 50.0)
+                                     }
+                                 }
+                             }
+                                 .frame(width: 50.0, height: 50.0)
+                         },
+                         content: {
+                             $0.image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .clipShape(RoundedRectangle(cornerRadius: 5))
+                                .padding(.leading, 5.0)
+                                .padding(.trailing, 5.0)
+                                 .shadow(radius: 2.0)
+                         })
+            }
+        }.gridStyle(
+            ModularGridStyle(columns: 2, rows: .fixed(200))
+        )
     }
 }
 
