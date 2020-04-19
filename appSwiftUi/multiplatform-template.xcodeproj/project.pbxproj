@@ -76,11 +76,11 @@
 				2408832B22D9721200ACAF13 /* AppDelegate.swift */,
 				2408832D22D9721200ACAF13 /* SceneDelegate.swift */,
 				2408832F22D9721200ACAF13 /* ContentView.swift */,
+				24A95580244BBDDA004818C9 /* RickAndMortyVmObserver.swift */,
 				2408833122D9721400ACAF13 /* Assets.xcassets */,
 				2408833622D9721400ACAF13 /* LaunchScreen.storyboard */,
 				2408833922D9721400ACAF13 /* Info.plist */,
 				2408833322D9721400ACAF13 /* Preview Content */,
-				24A95580244BBDDA004818C9 /* RickAndMortyVmObserver.swift */,
 				2408832922D9721200ACAF13 /* Products */,
 			);
 			path = "multiplatform-template";

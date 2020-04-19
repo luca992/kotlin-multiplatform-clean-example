@@ -64,7 +64,6 @@ kotlin {
 
         val commonTest by getting {
             dependencies {
-                //implementation(project(":domain"))
                 implementation("io.mockk:mockk-common:_")
                 implementation("org.jetbrains.kotlin:kotlin-test-common:_")
                 implementation("org.jetbrains.kotlin:kotlin-test-annotations-common:_")

@@ -10,9 +10,12 @@ import SwiftUI
 import app
 
 struct ContentView : View {
-    @State private var imgs = "NONE"
+    @ObservedObject private var vm = RickAndMortyVmObserver()
+    
     var body: some View {
-        Text(imgs)
+        List(vm.imgs, id: \.self) { img in
+            Text(img.url)
+        }
     }
 }
 
