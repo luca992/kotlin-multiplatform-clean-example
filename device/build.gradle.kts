@@ -1,7 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    BuildPlugins.testLoggerPlugin(this)
+    id("com.adarshr.test-logger")
 }
 
 android {
@@ -20,7 +20,7 @@ android {
         }
     }
     sourceSets {
-        val main by getting
+        val main by getting {}
         main.java.srcDirs("src/androidMain/kotlin")
         main.manifest.srcFile("src/androidMain/AndroidManifest.xml")
     }

@@ -1,6 +1,6 @@
 plugins {
     kotlin("multiplatform")
-    BuildPlugins.testLoggerPlugin(this)
+    id("com.adarshr.test-logger")
 }
 
 kotlin {

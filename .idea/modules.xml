@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/multiplatform-template.iml" filepath="$PROJECT_DIR$/.idea/modules/multiplatform-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/multiplatform-template.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/multiplatform-template.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/multiplatform-template.app.androidAndroidTestRelease.iml" filepath="$PROJECT_DIR$/.idea/modules/app/multiplatform-template.app.androidAndroidTestRelease.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/multiplatform-template.app.commonMain.iml" filepath="$PROJECT_DIR$/.idea/modules/app/multiplatform-template.app.commonMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/multiplatform-template.app.commonTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/multiplatform-template.app.commonTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/multiplatform-template.app.iosArm64Main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/multiplatform-template.app.iosArm64Main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/multiplatform-template.app.iosArm64Test.iml" filepath="$PROJECT_DIR$/.idea/modules/app/multiplatform-template.app.iosArm64Test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/multiplatform-template.app.iosX64Main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/multiplatform-template.app.iosX64Main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/multiplatform-template.app.iosX64Test.iml" filepath="$PROJECT_DIR$/.idea/modules/app/multiplatform-template.app.iosX64Test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/multiplatform-template.buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/multiplatform-template.buildSrc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/data/multiplatform-template.data.iml" filepath="$PROJECT_DIR$/.idea/modules/data/multiplatform-template.data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/data/multiplatform-template.data.androidAndroidTestRelease.iml" filepath="$PROJECT_DIR$/.idea/modules/data/multiplatform-template.data.androidAndroidTestRelease.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/data/multiplatform-template.data.commonMain.iml" filepath="$PROJECT_DIR$/.idea/modules/data/multiplatform-template.data.commonMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/data/multiplatform-template.data.commonTest.iml" filepath="$PROJECT_DIR$/.idea/modules/data/multiplatform-template.data.commonTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/data/multiplatform-template.data.iosArm64Main.iml" filepath="$PROJECT_DIR$/.idea/modules/data/multiplatform-template.data.iosArm64Main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/data/multiplatform-template.data.iosArm64Test.iml" filepath="$PROJECT_DIR$/.idea/modules/data/multiplatform-template.data.iosArm64Test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/data/multiplatform-template.data.iosX64Main.iml" filepath="$PROJECT_DIR$/.idea/modules/data/multiplatform-template.data.iosX64Main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/data/multiplatform-template.data.iosX64Test.iml" filepath="$PROJECT_DIR$/.idea/modules/data/multiplatform-template.data.iosX64Test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/data/multiplatform-template.data.nativeCommonMain.iml" filepath="$PROJECT_DIR$/.idea/modules/data/multiplatform-template.data.nativeCommonMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/data/multiplatform-template.data.nativeCommonTest.iml" filepath="$PROJECT_DIR$/.idea/modules/data/multiplatform-template.data.nativeCommonTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/device/multiplatform-template.device.iml" filepath="$PROJECT_DIR$/.idea/modules/device/multiplatform-template.device.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/device/multiplatform-template.device.androidAndroidTestRelease.iml" filepath="$PROJECT_DIR$/.idea/modules/device/multiplatform-template.device.androidAndroidTestRelease.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/device/multiplatform-template.device.commonMain.iml" filepath="$PROJECT_DIR$/.idea/modules/device/multiplatform-template.device.commonMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/device/multiplatform-template.device.commonTest.iml" filepath="$PROJECT_DIR$/.idea/modules/device/multiplatform-template.device.commonTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/device/multiplatform-template.device.iosArm64Main.iml" filepath="$PROJECT_DIR$/.idea/modules/device/multiplatform-template.device.iosArm64Main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/device/multiplatform-template.device.iosArm64Test.iml" filepath="$PROJECT_DIR$/.idea/modules/device/multiplatform-template.device.iosArm64Test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/device/multiplatform-template.device.iosX64Main.iml" filepath="$PROJECT_DIR$/.idea/modules/device/multiplatform-template.device.iosX64Main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/device/multiplatform-template.device.iosX64Test.iml" filepath="$PROJECT_DIR$/.idea/modules/device/multiplatform-template.device.iosX64Test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.iml" filepath="$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.commonMain.iml" filepath="$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.commonMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.commonTest.iml" filepath="$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.commonTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.iosArm64Main.iml" filepath="$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.iosArm64Main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.iosArm64Test.iml" filepath="$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.iosArm64Test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.iosX64Main.iml" filepath="$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.iosX64Main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.iosX64Test.iml" filepath="$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.iosX64Test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.jvmMain.iml" filepath="$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.jvmMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.jvmTest.iml" filepath="$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.jvmTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.nativeCommonMain.iml" filepath="$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.nativeCommonMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.nativeCommonTest.iml" filepath="$PROJECT_DIR$/.idea/modules/domain/multiplatform-template.domain.nativeCommonTest.iml" />
+    </modules>
+  </component>
+</project>
