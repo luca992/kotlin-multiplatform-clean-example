@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/mainFragment">
+
+    <fragment
+            android:id="@+id/rickandmortyFragment"
+            android:name="co.lucaspinazzola.example.ui.rickandmorty.RickAndMortyCharactersFragment"
+            tools:layout="@layout/fragment_rickandmorty">
+    </fragment>
+
+    <fragment
+        android:id="@+id/giphyFragment"
+        android:name="co.lucaspinazzola.example.ui.giphy.GiphyFragment"
+        tools:layout="@layout/fragment_giphy">
+    </fragment>
+
+    <fragment android:id="@+id/mainFragment"
+              android:name="co.lucaspinazzola.example.ui.main.MainFragment"
+              android:label="MainFragment"
+              tools:layout="@layout/fragment_main">
+        <action android:id="@+id/action_mainFragment_to_giphyFragment" app:destination="@id/giphyFragment"/>
+        <action android:id="@+id/action_mainFragment_to_rickandmortyFragment"
+                app:destination="@id/rickandmortyFragment"/>
+    </fragment>
+
+</navigation>

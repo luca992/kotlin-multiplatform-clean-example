@@ -1,0 +1,7 @@
+DROP TABLE GifData;
+
+CREATE TABLE ImgData(
+    id TEXT PRIMARY KEY,
+    resultIndex INTEGER NOT NULL,
+    url TEXT NOT NULL
+);

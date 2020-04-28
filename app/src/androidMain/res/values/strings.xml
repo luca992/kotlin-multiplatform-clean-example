@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Example Application</string>
+
+    <string name="search_hint">Search...</string>
+    <string name="rick_and_morty">Rick And Morty</string>
+    <string name="giphy">Giphy</string>
+</resources>

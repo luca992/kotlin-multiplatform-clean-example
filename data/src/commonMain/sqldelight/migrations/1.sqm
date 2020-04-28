@@ -1,0 +1,6 @@
+DROP TABLE SessionData;
+
+CREATE TABLE SessionData(
+    id TEXT PRIMARY KEY,
+    lastGiphySearchQuery TEXT
+    );

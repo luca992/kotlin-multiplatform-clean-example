@@ -1,0 +1,23 @@
+PODS:
+  - app (1.0)
+  - URLImage (0.9.14)
+
+DEPENDENCIES:
+  - app (from `../app`)
+  - URLImage
+
+SPEC REPOS:
+  trunk:
+    - URLImage
+
+EXTERNAL SOURCES:
+  app:
+    :path: "../app"
+
+SPEC CHECKSUMS:
+  app: 1cf957384ab91fd1e1e32cb8b7e5850a0fb95d76
+  URLImage: 634c547bc7e9b2ad23c255bb4022b5426f528f01
+
+PODFILE CHECKSUM: 6d665842909d35debad77d88f849d4ad5cfa1bf3
+
+COCOAPODS: 1.8.4

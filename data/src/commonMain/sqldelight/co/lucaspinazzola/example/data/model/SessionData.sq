@@ -1,0 +1,31 @@
+CREATE TABLE SessionData(
+    id TEXT PRIMARY KEY,
+    lastGiphySearchQuery TEXT
+    );
+
+insert:
+INSERT OR REPLACE INTO SessionData(id, lastGiphySearchQuery)
+VALUES (?, ?)
+;
+
+count:
+SELECT COUNT(id)
+FROM SessionData
+;
+
+getAll:
+SELECT *
+FROM SessionData
+;
+
+getById:
+SELECT * FROM SessionData WHERE id = ?
+;
+
+deleteAll:
+DELETE FROM SessionData
+;
+
+deleteById:
+DELETE FROM SessionData WHERE id = ?
+;
