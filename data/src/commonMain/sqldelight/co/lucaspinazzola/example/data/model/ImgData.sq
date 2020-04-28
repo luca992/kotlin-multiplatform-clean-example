@@ -1,0 +1,35 @@
+CREATE TABLE ImgData(
+    id TEXT PRIMARY KEY,
+    resultIndex INTEGER NOT NULL,
+    url TEXT NOT NULL
+);
+
+insert:
+INSERT OR REPLACE INTO ImgData(id,
+resultIndex,
+url
+)
+VALUES (?, ?, ?)
+;
+
+getById:
+SELECT * FROM ImgData WHERE id = ?;
+
+count:
+SELECT COUNT(id)
+FROM ImgData
+;
+
+getAll:
+SELECT *
+FROM ImgData
+ORDER BY
+ resultIndex ASC
+;
+
+deleteById:
+DELETE FROM ImgData WHERE id = ?;
+
+deleteAll:
+DELETE FROM ImgData
+;

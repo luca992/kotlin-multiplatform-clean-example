@@ -1,5 +1,6 @@
 import java.util.Properties
 import org.gradle.api.internal.artifacts.dependencies.DefaultExternalModuleDependency
+
 plugins {
     id("kotlin-multiplatform")
     id("org.jetbrains.kotlin.native.cocoapods")
@@ -20,7 +21,6 @@ val giphyApiKey : String
     }
     return local.getProperty("giphyApiKey") ?: "Add giphyApiKey to local.properties"
 }
-
 
 
 android {
@@ -75,6 +75,9 @@ android {
     dataBinding {
         isEnabled = true
     }
+    viewBinding {
+        isEnabled = true
+    }
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java) {
@@ -105,11 +108,15 @@ kotlin {
     }
 
 
-    /*targets.filterIsInstance<KotlinNativeTarget>().forEach{
-        it.binaries {
-                sharedLib {}
-        }
-    }*/
+    targets.filterIsInstance<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget>().forEach{
+        it.binaries.filterIsInstance<org.jetbrains.kotlin.gradle.plugin.mpp.Framework>()
+            .forEach { lib ->
+                lib.export(project(":domain"))
+                lib.export(project(":data"))
+                lib.export(project(":device"))
+                //lib.transitiveExport = true
+            }
+    }
 
     sourceSets {
         val commonMain by getting {
@@ -118,9 +125,9 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:_")
                 implementation("dev.icerock.moko:mvvm:_")
 
-                implementation(project(":domain"))
-                implementation(project(":data"))
-                implementation(project(":device"))
+                api(project(":domain"))
+                api(project(":data"))
+                api(project(":device"))
             }
         }
 
@@ -142,7 +149,7 @@ kotlin {
                 implementation("io.coil-kt:coil-gif:_")
 
                 configurations["kapt"].dependencies
-                    .add(DefaultExternalModuleDependency("com.google.dagger","dagger-compiler","_"))
+                        .add(DefaultExternalModuleDependency("com.google.dagger", "dagger-compiler", "_"))
             }
         }
 

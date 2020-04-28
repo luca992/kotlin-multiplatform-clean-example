@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
-import co.lucaspinazzola.example.NamesSupplier
 import co.lucaspinazzola.example.R
 import co.lucaspinazzola.example.databinding.ActivityMainBinding
 

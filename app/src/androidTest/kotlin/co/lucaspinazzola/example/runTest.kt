@@ -13,18 +13,18 @@ import org.junit.Rule
 private val dispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()
 
 @ExperimentalCoroutinesApi
-actual fun <T> runTest(block: suspend () -> T) {
+/*actual */fun <T> runTest(block: suspend () -> T) {
     Dispatchers.setMain(dispatcher)
     runBlocking { block() }
     Dispatchers.resetMain() // reset main dispatcher to the original Main dispatcher
     dispatcher.cleanupTestCoroutines()
 }
 
-actual typealias Rule = Rule
+/*actual */typealias Rule = Rule
 
 
 
 
-actual typealias InstantTaskExecutorRule = InstantTaskExecutorRule
+/*actual */typealias InstantTaskExecutorRule = InstantTaskExecutorRule
 
 

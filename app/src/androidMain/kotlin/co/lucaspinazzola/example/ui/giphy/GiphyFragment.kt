@@ -11,6 +11,7 @@ import co.lucaspinazzola.example.R
 import co.lucaspinazzola.example.databinding.FragmentGiphyBinding
 import co.lucaspinazzola.example.ui.base.BaseFragment
 import co.lucaspinazzola.example.ui.utils.EndlessRecyclerGridLayoutManager
+import co.lucaspinazzola.example.ui.utils.ImgAdapter
 import co.lucaspinazzola.example.ui.utils.OnLastItemVisible
 import co.lucaspinazzola.example.ui.utils.Visibility
 import dev.icerock.moko.mvvm.livedata.asFlow
@@ -31,7 +32,7 @@ class GiphyFragment constructor(private val factory: ViewModelProvider.Factory) 
         val view: View = binding.root
         binding.vm = viewModel
         binding.lifecycleOwner = this
-        binding.recyclerView.adapter = GiphyAdapter()
+        binding.recyclerView.adapter = ImgAdapter()
         val layoutManager = (binding.recyclerView.layoutManager as EndlessRecyclerGridLayoutManager)
         layoutManager.setOnLastItemVisible(this)
         lifecycleScope.launch {

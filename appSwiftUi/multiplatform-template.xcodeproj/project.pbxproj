@@ -3,21 +3,22 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		053251D0824F76A220E92FAF /* Pods_multiplatform_template.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC711B94AD30627547A4953 /* Pods_multiplatform_template.framework */; };
 		2408832C22D9721200ACAF13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2408832B22D9721200ACAF13 /* AppDelegate.swift */; };
 		2408832E22D9721200ACAF13 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2408832D22D9721200ACAF13 /* SceneDelegate.swift */; };
 		2408833022D9721200ACAF13 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2408832F22D9721200ACAF13 /* ContentView.swift */; };
 		2408833222D9721400ACAF13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2408833122D9721400ACAF13 /* Assets.xcassets */; };
 		2408833522D9721400ACAF13 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2408833422D9721400ACAF13 /* Preview Assets.xcassets */; };
 		2408833822D9721400ACAF13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2408833622D9721400ACAF13 /* LaunchScreen.storyboard */; };
+		24A95581244BBDDA004818C9 /* RickAndMortyVmObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A95580244BBDDA004818C9 /* RickAndMortyVmObserver.swift */; };
+		24A95584244C20E2004818C9 /* Grid in Frameworks */ = {isa = PBXBuildFile; productRef = 24A95583244C20E2004818C9 /* Grid */; };
+		42DD73FC668F57F57FCB7479 /* libPods-multiplatform-template.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3510AA3248906AD625B8C6DC /* libPods-multiplatform-template.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1AC711B94AD30627547A4953 /* Pods_multiplatform_template.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_multiplatform_template.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2408832822D9721200ACAF13 /* multiplatform-template.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "multiplatform-template.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2408832B22D9721200ACAF13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2408832D22D9721200ACAF13 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +27,8 @@
 		2408833422D9721400ACAF13 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2408833722D9721400ACAF13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2408833922D9721400ACAF13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24A95580244BBDDA004818C9 /* RickAndMortyVmObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyVmObserver.swift; sourceTree = "<group>"; };
+		3510AA3248906AD625B8C6DC /* libPods-multiplatform-template.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-multiplatform-template.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D71ED130DCE102F287401B2 /* Pods-multiplatform-template.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-multiplatform-template.release.xcconfig"; path = "Target Support Files/Pods-multiplatform-template/Pods-multiplatform-template.release.xcconfig"; sourceTree = "<group>"; };
 		F6593D43B29B505294C91A4F /* Pods-multiplatform-template.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-multiplatform-template.debug.xcconfig"; path = "Target Support Files/Pods-multiplatform-template/Pods-multiplatform-template.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -35,7 +38,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				053251D0824F76A220E92FAF /* Pods_multiplatform_template.framework in Frameworks */,
+				24A95584244C20E2004818C9 /* Grid in Frameworks */,
+				42DD73FC668F57F57FCB7479 /* libPods-multiplatform-template.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,7 +49,7 @@
 		15051B489FD05723BBF26E4E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1AC711B94AD30627547A4953 /* Pods_multiplatform_template.framework */,
+				3510AA3248906AD625B8C6DC /* libPods-multiplatform-template.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -54,7 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				2408832A22D9721200ACAF13 /* multiplatform-template */,
-				2408832922D9721200ACAF13 /* Products */,
 				7E1F919C8FB6F3B2E7294415 /* Pods */,
 				15051B489FD05723BBF26E4E /* Frameworks */,
 			);
@@ -66,6 +69,7 @@
 				2408832822D9721200ACAF13 /* multiplatform-template.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		2408832A22D9721200ACAF13 /* multiplatform-template */ = {
@@ -74,10 +78,12 @@
 				2408832B22D9721200ACAF13 /* AppDelegate.swift */,
 				2408832D22D9721200ACAF13 /* SceneDelegate.swift */,
 				2408832F22D9721200ACAF13 /* ContentView.swift */,
+				24A95580244BBDDA004818C9 /* RickAndMortyVmObserver.swift */,
 				2408833122D9721400ACAF13 /* Assets.xcassets */,
 				2408833622D9721400ACAF13 /* LaunchScreen.storyboard */,
 				2408833922D9721400ACAF13 /* Info.plist */,
 				2408833322D9721400ACAF13 /* Preview Content */,
+				2408832922D9721200ACAF13 /* Products */,
 			);
 			path = "multiplatform-template";
 			sourceTree = "<group>";
@@ -96,7 +102,6 @@
 				F6593D43B29B505294C91A4F /* Pods-multiplatform-template.debug.xcconfig */,
 				4D71ED130DCE102F287401B2 /* Pods-multiplatform-template.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -117,6 +122,9 @@
 			dependencies = (
 			);
 			name = "multiplatform-template";
+			packageProductDependencies = (
+				24A95583244C20E2004818C9 /* Grid */,
+			);
 			productName = "multiplatform-template";
 			productReference = 2408832822D9721200ACAF13 /* multiplatform-template.app */;
 			productType = "com.apple.product-type.application";
@@ -145,6 +153,9 @@
 				Base,
 			);
 			mainGroup = 2408831F22D9721200ACAF13;
+			packageReferences = (
+				24A95582244C20E2004818C9 /* XCRemoteSwiftPackageReference "swiftui-grid" */,
+			);
 			productRefGroup = 2408832922D9721200ACAF13 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -198,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2408832C22D9721200ACAF13 /* AppDelegate.swift in Sources */,
+				24A95581244BBDDA004818C9 /* RickAndMortyVmObserver.swift in Sources */,
 				2408832E22D9721200ACAF13 /* SceneDelegate.swift in Sources */,
 				2408833022D9721200ACAF13 /* ContentView.swift in Sources */,
 			);
@@ -344,6 +356,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-framework",
+					"\"app\"",
+					"-l\"sqlite3\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "co.example.multiplatform-template";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -363,6 +383,14 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-framework",
+					"\"app\"",
+					"-l\"sqlite3\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "co.example.multiplatform-template";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -393,6 +421,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		24A95582244C20E2004818C9 /* XCRemoteSwiftPackageReference "swiftui-grid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/spacenation/swiftui-grid";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		24A95583244C20E2004818C9 /* Grid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 24A95582244C20E2004818C9 /* XCRemoteSwiftPackageReference "swiftui-grid" */;
+			productName = Grid;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2408832022D9721200ACAF13 /* Project object */;
 }

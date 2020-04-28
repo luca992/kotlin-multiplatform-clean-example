@@ -10,8 +10,7 @@ import kotlinx.serialization.internal.StringDescriptor
 object DateSerializer: KSerializer<Date> {
     val df = DateFormat("yyyy-MM-dd HH:mm:ss")
 
-    override val descriptor: SerialDescriptor =
-            StringDescriptor.withName("WithCustomDefault")
+    override val descriptor: SerialDescriptor = PrimitiveDescriptor("WithCustomDefault", PrimitiveKind.STRING)
 
     override fun serialize(encoder: Encoder, obj: Date) {
         //output.encode(df.format(obj))

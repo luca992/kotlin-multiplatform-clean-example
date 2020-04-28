@@ -17,6 +17,7 @@ buildscript {
         }
         versions
     }
+    val kotlinVersion = "${versionsProperties["version.kotlin"]}"
 
 
     repositories {
@@ -25,10 +26,10 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies{
-        classpath("de.fayard:dependencies:0.5.7")
-        classpath ("com.android.tools.build:gradle:3.6.0")
-        classpath ("org.jetbrains.kotlin:kotlin-gradle-plugin:${versionsProperties["version.kotlin"]}")
-        classpath("org.jetbrains.kotlin:kotlin-serialization:${versionsProperties["version.kotlin"]}")
+        classpath("de.fayard:dependencies:0.5.8")
+        classpath ("com.android.tools.build:gradle:3.6.3")
+        classpath(kotlin("gradle-plugin", version = kotlinVersion))
+        classpath(kotlin("serialization", version = kotlinVersion))
         classpath("com.squareup.sqldelight:gradle-plugin:${versionsProperties["version.sqldelight"]}")
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:${versionsProperties["version.androidx.navigation"]}")
     }

@@ -6,7 +6,7 @@ import co.lucaspinazzola.example.domain.interactor.gif.GetGifsAndListenForUpdate
 import co.lucaspinazzola.example.domain.interactor.gif.UpdateGifsUseCase
 import co.lucaspinazzola.example.domain.interactor.session.GetLastGifQueryUseCase
 import co.lucaspinazzola.example.domain.interactor.session.SetLastGifQueryUseCase
-import co.lucaspinazzola.example.domain.model.Gif
+import co.lucaspinazzola.example.domain.model.Img
 import co.lucaspinazzola.example.ui.utils.Visibility
 import dev.icerock.moko.mvvm.livedata.MutableLiveData
 import dev.icerock.moko.mvvm.livedata.asFlow
@@ -34,7 +34,7 @@ class GiphyViewModel(
     var lastQuery : String? = null
     val loadingIndicatorVisibility = MutableLiveData<Visibility>(Visibility.GONE)
     val gifs by lazy {
-        MutableLiveData<List<Gif>>(listOf()).apply {
+        MutableLiveData<List<Img>>(listOf()).apply {
             viewModelScope.launch {
                 query.asFlow().collect { query ->
                     if (lastQuery != query) {

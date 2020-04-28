@@ -1,13 +1,13 @@
 package co.lucaspinazzola.example.domain.repo
 
-import co.lucaspinazzola.example.domain.model.Gif
+import co.lucaspinazzola.example.domain.model.Img
 import kotlinx.coroutines.flow.Flow
 
 interface GiphyRepository {
 
-    suspend fun getGifs(): List<Gif>
+    suspend fun getGifs(): List<Img>
     suspend fun updateGifs(query: String, offset: Long)
 
-    fun listenForGifUpdates(onChangePublisherSubscribed: suspend ()->Unit) : Flow<List<Gif>>
+    fun listenForGifUpdates(): Flow<List<Img>>
 
 }
