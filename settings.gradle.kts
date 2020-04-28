@@ -32,6 +32,7 @@ buildscript {
         classpath(kotlin("serialization", version = kotlinVersion))
         classpath("com.squareup.sqldelight:gradle-plugin:${versionsProperties["version.sqldelight"]}")
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:${versionsProperties["version.androidx.navigation"]}")
+        classpath("com.adarshr:gradle-test-logger-plugin:2.0.0")
     }
 }
 

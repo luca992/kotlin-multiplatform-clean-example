@@ -8,7 +8,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android-extensions")
     id("androidx.navigation.safeargs.kotlin")
-    BuildPlugins.testLoggerPlugin(this)
+    id("com.adarshr.test-logger")
 }
 
 
@@ -50,15 +50,15 @@ android {
         }
     }
     sourceSets {
-        val main by getting
+        val main by getting {}
         main.setRoot("src/androidMain")
         main.java.srcDir("src/androidMain/kotlin")
         main.manifest.srcFile("src/androidMain/AndroidManifest.xml")
         main.res.srcDir("src/androidMain/res")
         main.assets.srcDir("src/androidMain/assets")
-        val test by getting
+        val test by getting {}
         test.java.srcDir("src/androidTest/kotlin")
-        val androidTest by getting
+        val androidTest by getting {}
         androidTest.java.srcDir("src/androidAndroidTest/kotlin")
     }
     lintOptions {
