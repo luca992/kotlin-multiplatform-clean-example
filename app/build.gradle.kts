@@ -11,15 +11,23 @@ plugins {
     id("com.adarshr.test-logger")
 }
 
+fun getProperties(path: String) : Properties {
+    val properties = Properties()
+    val file: File = rootProject.file("local.properties")
+    if (file.exists()) {
+        file.inputStream().use { properties.load(it) }
+    }
+    return properties
+}
 
 val giphyApiKey : String
     get() {
-    val local = Properties()
-    val localProperties: File = rootProject.file("local.properties")
-    if (localProperties.exists()) {
-        localProperties.inputStream().use { local.load(it) }
-    }
+    val local = getProperties("local.properties")
     return local.getProperty("giphyApiKey") ?: "Add giphyApiKey to local.properties"
+}
+
+val versionsProperties : Properties by lazy {
+    getProperties("versions.properties")
 }
 
 
@@ -68,15 +76,20 @@ android {
         pickFirst("META-INF/*.kotlin_module")
         pickFirst("META-INF/*.kotlin_metadata")
     }
+
+    buildFeatures {
+        // Enables Jetpack Compose for this module
+        compose = true
+        dataBinding = true
+        viewBinding = true
+    }
+
     compileOptions {
         targetCompatibility = JavaVersion.VERSION_1_8
         sourceCompatibility = JavaVersion.VERSION_1_8
     }
-    dataBinding {
-        isEnabled = true
-    }
-    viewBinding {
-        isEnabled = true
+    composeOptions {
+        kotlinCompilerExtensionVersion = "${versionsProperties["version.androidx.ui="]}"
     }
 }
 
@@ -141,6 +154,12 @@ kotlin {
                 implementation("androidx.constraintlayout:constraintlayout:_")
                 implementation("androidx.navigation:navigation-fragment-ktx:_")
                 implementation("androidx.navigation:navigation-ui-ktx:_")
+
+                implementation("androidx.ui:ui-framework:_")
+                implementation("androidx.ui:ui-tooling:_")
+                implementation("androidx.ui:ui-layout:_")
+                implementation("androidx.ui:ui-material:_")
+
                 implementation("com.google.dagger:dagger:_")
                 implementation("androidx.lifecycle:lifecycle-livedata:_")
                 implementation("androidx.lifecycle:lifecycle-common-java8:_")
