@@ -6,7 +6,6 @@ plugins {
     id("org.jetbrains.kotlin.native.cocoapods")
     id("kotlin-kapt")
     id("com.android.application")
-    id("kotlin-android-extensions")
     id("androidx.navigation.safeargs.kotlin")
     id("com.adarshr.test-logger")
 }

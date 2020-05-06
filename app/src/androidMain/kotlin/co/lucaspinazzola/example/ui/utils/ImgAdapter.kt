@@ -1,14 +1,13 @@
 package co.lucaspinazzola.example.ui.utils
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import co.lucaspinazzola.example.R
+import co.lucaspinazzola.example.databinding.ItemGifBinding
 import co.lucaspinazzola.example.domain.model.Img
 import co.lucaspinazzola.example.ui.base.ListClickAdapter
-import coil.api.load
-import kotlinx.android.synthetic.main.item_gif.view.*
+import coil.Coil
+import coil.request.LoadRequest
 
 class ImgAdapter: ListClickAdapter<Img, ImgAdapter.ViewHolder>(
     ItemDiffUtil()
@@ -16,15 +15,17 @@ class ImgAdapter: ListClickAdapter<Img, ImgAdapter.ViewHolder>(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_gif, parent, false))
+        val itemBinding = ItemGifBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(itemBinding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val i = getItem(position)
-        holder.itemView.apply {
-
-            gifIv.load(i.url)
-        }
+        val request = LoadRequest.Builder(holder.itemView.context)
+            .data(i.url)
+            .target(holder.binding.gifIv)
+            .build()
+        Coil.imageLoader(holder.binding.root.context).execute(request)
     }
 
 
@@ -41,13 +42,13 @@ class ImgAdapter: ListClickAdapter<Img, ImgAdapter.ViewHolder>(
 
 
 
-    inner class ViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(val binding: ItemGifBinding) : androidx.recyclerview.widget.RecyclerView.ViewHolder(binding.root){
         init {
-            itemView.setOnClickListener {
+            binding.root.setOnClickListener {
                 val item = getItem(adapterPosition)!!
                 onItemClick.offer(item)
             }
-            itemView.setOnLongClickListener{
+            binding.root.setOnLongClickListener{
                 longClickSubject.offer(getItem(adapterPosition)!!)
                 true
             }

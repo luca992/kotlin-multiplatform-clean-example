@@ -8,13 +8,14 @@ import co.lucaspinazzola.example.di.component.AppComponent
 import co.lucaspinazzola.example.ui.utils.LoadingDrawable
 import coil.Coil
 import coil.ImageLoader
+import coil.ImageLoaderFactory
 import coil.decode.GifDecoder
 import coil.decode.ImageDecoderDecoder
 import coil.util.CoilUtils
 import okhttp3.OkHttpClient
 
 
-class ExampleApplication: Application(){
+class ExampleApplication: Application(), ImageLoaderFactory{
 
     val mainComponent by lazy {
         AppComponent.init(this)
@@ -23,26 +24,25 @@ class ExampleApplication: Application(){
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
         initData(this)
+    }
 
-        Coil.setDefaultImageLoader {
-            ImageLoader(base) {
-                crossfade(true)
-                this.placeholder(LoadingDrawable(base))
-                okHttpClient {
-                    OkHttpClient.Builder()
-                        .cache(CoilUtils.createDefaultCache(base))
-                        .build()
-                }
-                componentRegistry {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                        add(ImageDecoderDecoder())
-                    } else {
-                        add(GifDecoder())
-                    }
+    override fun newImageLoader(): ImageLoader =
+        ImageLoader.Builder(applicationContext)
+            .crossfade(true)
+            .okHttpClient {
+                OkHttpClient.Builder()
+                    .cache(CoilUtils.createDefaultCache(this))
+                    .build()
+            }
+            .componentRegistry {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    add(ImageDecoderDecoder())
+                } else {
+                    add(GifDecoder())
                 }
             }
-        }
-    }
+            .build()
+
 
 }
 
