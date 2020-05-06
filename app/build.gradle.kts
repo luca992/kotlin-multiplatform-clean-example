@@ -1,11 +1,13 @@
 import java.util.Properties
 import org.gradle.api.internal.artifacts.dependencies.DefaultExternalModuleDependency
 
+
 plugins {
-    id("kotlin-multiplatform")
+    id("com.android.application")
+    //id("kotlin-multiplatform")
+    id("kotlin-android")
     id("org.jetbrains.kotlin.native.cocoapods")
     id("kotlin-kapt")
-    id("com.android.application")
     id("androidx.navigation.safeargs.kotlin")
     id("com.adarshr.test-logger")
 }
@@ -59,7 +61,7 @@ android {
     sourceSets {
         val main by getting {}
         main.setRoot("src/androidMain")
-        main.java.srcDir("src/androidMain/kotlin")
+        main.java.srcDirs("src/androidMain/kotlin", "src/commonMain/kotlin")
         main.manifest.srcFile("src/androidMain/AndroidManifest.xml")
         main.res.srcDir("src/androidMain/res")
         main.assets.srcDir("src/androidMain/assets")
@@ -89,120 +91,161 @@ android {
     }
     composeOptions {
         composeOptions.kotlinCompilerVersion = "1.3.70-dev-withExperimentalGoogleExtensions-20200424"
-        kotlinCompilerExtensionVersion = "${versionsProperties["version.androidx.ui"]}"
+        kotlinCompilerExtensionVersion = "0.1.0-dev10"
     }
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java) {
     kotlinOptions {
         jvmTarget = "1.8"
+        useIR= true
     }
 }
 
-
-
-
-
+/*
 //for CocoaPods
-version = "1.0"
+    version = "1.0"
+
+    kotlin {
+        cocoapods {
+            // Configure fields required by CocoaPods.
+            summary = "Common kotlin code for SwiftUi hello world app"
+            homepage = "https://github.com/luca992/kotlin-multiplatform-clean-template"
+        }
 
 
-kotlin {
-    cocoapods {
-        // Configure fields required by CocoaPods.
-        summary = "Common kotlin code for SwiftUi hello world app"
-        homepage = "https://github.com/luca992/kotlin-multiplatform-clean-template"
+        targets {
+            android()
+            //macosX64()
+            iosX64()
+            iosArm64()
+        }
+
+
+        targets.filterIsInstance<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget>()
+            .forEach {
+                it.binaries.filterIsInstance<org.jetbrains.kotlin.gradle.plugin.mpp.Framework>()
+                    .forEach { lib ->
+                        lib.export(project(":domain"))
+                        lib.export(project(":data"))
+                        lib.export(project(":device"))
+                        //lib.transitiveExport = true
+                    }
+            }
+
+        sourceSets {
+            val commonMain by getting {
+                dependencies {
+                    implementation("org.jetbrains.kotlin:kotlin-stdlib-common:_")
+                    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:_")
+                    implementation("dev.icerock.moko:mvvm:_")
+
+                    api(project(":domain"))
+                    api(project(":data"))
+                    api(project(":device"))
+                }
+            }
+
+            val androidMain by getting {
+                dependencies {
+                    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:_")
+                    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:_")
+
+                    implementation("androidx.appcompat:appcompat:_")
+                    implementation("androidx.core:core-ktx:_")
+                    implementation("androidx.constraintlayout:constraintlayout:_")
+                    implementation("androidx.navigation:navigation-fragment-ktx:_")
+                    implementation("androidx.navigation:navigation-ui-ktx:_")
+                    implementation("com.github.zsoltk:compose-router:_")
+
+                    implementation("androidx.ui:ui-framework:_")
+                    implementation("androidx.ui:ui-tooling:_")
+                    implementation("androidx.ui:ui-layout:_")
+                    implementation("androidx.ui:ui-material:_")
+
+
+                    implementation("com.google.dagger:dagger:_")
+                    implementation("androidx.lifecycle:lifecycle-livedata:_")
+                    implementation("androidx.lifecycle:lifecycle-common-java8:_")
+                    implementation("javax.annotation:jsr250-api:_")
+                    implementation("io.coil-kt:coil:_")
+                    implementation("io.coil-kt:coil-gif:_")
+
+                    configurations["kapt"].dependencies
+                        .add(
+                            org.gradle.api.internal.artifacts.dependencies.DefaultExternalModuleDependency(
+                                "com.google.dagger",
+                                "dagger-compiler",
+                                "_"
+                            )
+                        )
+                }
+            }
+
+            val commonTest by getting {
+                dependencies {
+                    implementation("org.jetbrains.kotlin:kotlin-test-common:_")
+                    implementation("org.jetbrains.kotlin:kotlin-test-annotations-common:_")
+                    implementation("io.mockk:mockk-common:_")
+                }
+            }
+
+            val androidTest by getting {
+                dependencies {
+                    implementation("org.jetbrains.kotlin:kotlin-test:_")
+                    implementation("org.jetbrains.kotlin:kotlin-test-junit:_")
+                    implementation("io.mockk:mockk:_")
+                    implementation("androidx.arch.core:core-testing:_")
+                    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:_")
+                }
+            }
+
+            val androidAndroidTest by getting {
+                dependencies {
+                    implementation("org.jetbrains.kotlin:kotlin-test:_")
+                    implementation("androidx.test.ext:junit-ktx:_")
+                    implementation("androidx.test.espresso:espresso-core:_")
+                    implementation("io.mockk:mockk-android:_")
+                }
+            }
+
+        }
+
     }
 
 
-    targets {
-        android()
-        //macosX64()
-        iosX64()
-        iosArm64()
-    }
+*/
 
 
-    targets.filterIsInstance<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget>().forEach{
-        it.binaries.filterIsInstance<org.jetbrains.kotlin.gradle.plugin.mpp.Framework>()
-            .forEach { lib ->
-                lib.export(project(":domain"))
-                lib.export(project(":data"))
-                lib.export(project(":device"))
-                //lib.transitiveExport = true
-            }
-    }
+dependencies {
+    implementation("dev.icerock.moko:mvvm:_")
 
-    sourceSets {
-        val commonMain by getting {
-            dependencies {
-                implementation("org.jetbrains.kotlin:kotlin-stdlib-common:_")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:_")
-                implementation("dev.icerock.moko:mvvm:_")
+    implementation(project(":domain"))
+    implementation(project(":data"))
+    implementation(project(":device"))
 
-                api(project(":domain"))
-                api(project(":data"))
-                api(project(":device"))
-            }
-        }
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:_")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:_")
 
-        val androidMain by getting {
-            dependencies {
-                implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:_")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:_")
+    implementation("androidx.appcompat:appcompat:_")
+    implementation("androidx.core:core-ktx:_")
+    implementation("androidx.constraintlayout:constraintlayout:_")
+    implementation("androidx.navigation:navigation-fragment-ktx:_")
+    implementation("androidx.navigation:navigation-ui-ktx:_")
+    implementation("com.github.zsoltk:compose-router:_")
 
-                implementation("androidx.appcompat:appcompat:_")
-                implementation("androidx.core:core-ktx:_")
-                implementation("androidx.constraintlayout:constraintlayout:_")
-                implementation("androidx.navigation:navigation-fragment-ktx:_")
-                implementation("androidx.navigation:navigation-ui-ktx:_")
-                implementation("com.github.zsoltk:compose-router:_")
-
-                implementation("androidx.ui:ui-framework:_")
-                implementation("androidx.ui:ui-tooling:_")
-                implementation("androidx.ui:ui-layout:_")
-                implementation("androidx.ui:ui-material:_")
+    implementation("androidx.ui:ui-framework:_")
+    implementation("androidx.ui:ui-tooling:_")
+    implementation("androidx.ui:ui-layout:_")
+    implementation("androidx.ui:ui-material:_")
 
 
-                implementation("com.google.dagger:dagger:_")
-                implementation("androidx.lifecycle:lifecycle-livedata:_")
-                implementation("androidx.lifecycle:lifecycle-common-java8:_")
-                implementation("javax.annotation:jsr250-api:_")
-                implementation("io.coil-kt:coil:_")
-                implementation("io.coil-kt:coil-gif:_")
 
-                configurations["kapt"].dependencies
-                        .add(DefaultExternalModuleDependency("com.google.dagger", "dagger-compiler", "_"))
-            }
-        }
-
-        val commonTest by getting {
-            dependencies {
-                implementation("org.jetbrains.kotlin:kotlin-test-common:_")
-                implementation("org.jetbrains.kotlin:kotlin-test-annotations-common:_")
-                implementation("io.mockk:mockk-common:_")
-            }
-        }
-
-        val androidTest by getting {
-            dependencies {
-                implementation("org.jetbrains.kotlin:kotlin-test:_")
-                implementation("org.jetbrains.kotlin:kotlin-test-junit:_")
-                implementation("io.mockk:mockk:_")
-                implementation("androidx.arch.core:core-testing:_")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:_")
-            }
-        }
-
-        val androidAndroidTest by getting {
-            dependencies {
-                implementation("org.jetbrains.kotlin:kotlin-test:_")
-                implementation("androidx.test.ext:junit-ktx:_")
-                implementation("androidx.test.espresso:espresso-core:_")
-                implementation("io.mockk:mockk-android:_")
-            }
-        }
-
-    }
-
+    implementation("com.google.dagger:dagger:_")
+    implementation("androidx.lifecycle:lifecycle-livedata:_")
+    implementation("androidx.lifecycle:lifecycle-common-java8:_")
+    implementation("javax.annotation:jsr250-api:_")
+    implementation("io.coil-kt:coil:_")
+    implementation("io.coil-kt:coil-gif:_")
+    kapt ("com.google.dagger:dagger-compiler:_")
 }
