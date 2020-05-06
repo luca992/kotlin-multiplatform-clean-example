@@ -118,11 +118,9 @@ kotlin {
 
     targets {
         android()
-        if (rootProject.extra["buildForNative"].toString() == "true") {
-            //macosX64()
-            iosX64()
-            iosArm64()
-        }
+        //macosX64()
+        iosX64()
+        iosArm64()
     }
 
 

@@ -36,11 +36,9 @@ kotlin {
         android {
             publishLibraryVariants("release", "debug")
         }
-        if (rootProject.extra["buildForNative"].toString() == "true") {
-            //macosX64()
-            iosX64()
-            iosArm64()
-        }
+        //macosX64()
+        iosX64()
+        iosArm64()
     }
     sourceSets {
         val commonMain by getting {
@@ -103,45 +101,44 @@ kotlin {
             }
         }
 
-        if (rootProject.extra["buildForNative"].toString() == "true") {
-            val nativeCommonMain by creating {
-                dependsOn(commonMain)
-                dependencies {
-                    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:_")
-                    implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:_")
-                    implementation("io.ktor:ktor-client-core-native:_")
-                    implementation("io.ktor:ktor-client-logging-native:_")
-                    implementation("io.ktor:ktor-client-json-native:_")
-                    implementation("io.ktor:ktor-client-serialization-native:_")
-                    implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:_")
-                    implementation("io.ktor:ktor-client-auth-native:_")
-                    implementation("io.ktor:ktor-utils-native:_")
-                    implementation("com.squareup.sqldelight:native-driver:_")
-                }
-            }
-            val nativeCommonTest by creating {}
-            val iosX64Main by getting {}
-            val iosArm64Main by getting {}
-            val iosX64Test by getting {}
-            val iosArm64Test by getting {}
-            /*val macosX64Main by getting {
-                dependsOn(nativeMain)
-                dependencies {
-                    implementation("io.ktor:ktor-client-curl:_")
-                }
-            }*/
-
-
-            configure(listOf(iosX64Main, iosArm64Main)) {
-                dependsOn(nativeCommonMain)
-                dependencies {
-                    implementation("io.ktor:ktor-client-ios:_")
-                }
-            }
-            configure(listOf(iosX64Test, iosArm64Test)) {
-                dependsOn(nativeCommonTest)
+        val nativeCommonMain by creating {
+            dependsOn(commonMain)
+            dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:_")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:_")
+                implementation("io.ktor:ktor-client-core-native:_")
+                implementation("io.ktor:ktor-client-logging-native:_")
+                implementation("io.ktor:ktor-client-json-native:_")
+                implementation("io.ktor:ktor-client-serialization-native:_")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:_")
+                implementation("io.ktor:ktor-client-auth-native:_")
+                implementation("io.ktor:ktor-utils-native:_")
+                implementation("com.squareup.sqldelight:native-driver:_")
             }
         }
+        val nativeCommonTest by creating {}
+        val iosX64Main by getting {}
+        val iosArm64Main by getting {}
+        val iosX64Test by getting {}
+        val iosArm64Test by getting {}
+        /*val macosX64Main by getting {
+            dependsOn(nativeMain)
+            dependencies {
+                implementation("io.ktor:ktor-client-curl:_")
+            }
+        }*/
+
+
+        configure(listOf(iosX64Main, iosArm64Main)) {
+            dependsOn(nativeCommonMain)
+            dependencies {
+                implementation("io.ktor:ktor-client-ios:_")
+            }
+        }
+        configure(listOf(iosX64Test, iosArm64Test)) {
+            dependsOn(nativeCommonTest)
+        }
+
     }
 }
 

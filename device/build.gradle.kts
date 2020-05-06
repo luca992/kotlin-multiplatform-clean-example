@@ -31,11 +31,9 @@ kotlin {
         android() {
             publishLibraryVariants("release", "debug")
         }
-        if (rootProject.extra["buildForNative"].toString() == "true") {
-            //macosX64()
-            iosX64()
-            iosArm64()
-        }
+        //macosX64()
+        iosX64()
+        iosArm64()
     }
     sourceSets {
         val commonMain by getting {
