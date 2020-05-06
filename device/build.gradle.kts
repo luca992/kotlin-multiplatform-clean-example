@@ -5,10 +5,10 @@ plugins {
 }
 
 android {
-    compileSdkVersion(AndroidSdk.compile)
+    compileSdkVersion(rootProject.extra["AndroidSdk_compile"] as Int)
     defaultConfig {
-        minSdkVersion(AndroidSdk.min)
-        targetSdkVersion(AndroidSdk.target)
+        minSdkVersion(rootProject.extra["AndroidSdk_min"] as Int)
+        targetSdkVersion(rootProject.extra["AndroidSdk_target"] as Int)
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -31,7 +31,7 @@ kotlin {
         android() {
             publishLibraryVariants("release", "debug")
         }
-        if (buildForNative) {
+        if (rootProject.extra["buildForNative"].toString() == "true") {
             //macosX64()
             iosX64()
             iosArm64()

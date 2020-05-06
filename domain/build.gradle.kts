@@ -6,7 +6,7 @@ plugins {
 kotlin {
     targets {
         jvm()
-        if (buildForNative) {
+        if (rootProject.extra["buildForNative"].toString() == "true") {
             //macosX64()
             iosX64()
             iosArm64()
@@ -44,7 +44,7 @@ kotlin {
                 runtimeOnly("net.bytebuddy:byte-buddy:_") //https://github.com/mockk/mockk/issues/376
             }
         }
-        if (buildForNative) {
+        if (rootProject.extra["buildForNative"].toString() == "true") {
             val nativeCommonMain by creating {
                 dependsOn(commonMain)
                 dependencies {

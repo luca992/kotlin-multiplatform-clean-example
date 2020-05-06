@@ -32,11 +32,11 @@ val versionsProperties : Properties by lazy {
 
 
 android {
-    compileSdkVersion(AndroidSdk.compile)
+    compileSdkVersion(rootProject.extra["AndroidSdk_compile"] as Int)
     defaultConfig {
         applicationId = "co.lucaspinazzola.example"
-        minSdkVersion(AndroidSdk.min)
-        targetSdkVersion(AndroidSdk.target)
+        minSdkVersion(rootProject.extra["AndroidSdk_min"] as Int)
+        targetSdkVersion(rootProject.extra["AndroidSdk_target"] as Int)
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -79,9 +79,9 @@ android {
 
     buildFeatures {
         // Enables Jetpack Compose for this module
-        compose = true
         dataBinding = true
         viewBinding = true
+        compose = true
     }
 
     compileOptions {
@@ -89,7 +89,8 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "${versionsProperties["version.androidx.ui="]}"
+        composeOptions.kotlinCompilerVersion = "1.3.70-dev-withExperimentalGoogleExtensions-20200424"
+        kotlinCompilerExtensionVersion = "${versionsProperties["version.androidx.ui"]}"
     }
 }
 
@@ -98,6 +99,10 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java) {
         jvmTarget = "1.8"
     }
 }
+
+
+
+
 
 //for CocoaPods
 version = "1.0"
@@ -113,7 +118,7 @@ kotlin {
 
     targets {
         android()
-        if (buildForNative) {
+        if (rootProject.extra["buildForNative"].toString() == "true") {
             //macosX64()
             iosX64()
             iosArm64()
@@ -154,11 +159,13 @@ kotlin {
                 implementation("androidx.constraintlayout:constraintlayout:_")
                 implementation("androidx.navigation:navigation-fragment-ktx:_")
                 implementation("androidx.navigation:navigation-ui-ktx:_")
+                implementation("com.github.zsoltk:compose-router:_")
 
                 implementation("androidx.ui:ui-framework:_")
                 implementation("androidx.ui:ui-tooling:_")
                 implementation("androidx.ui:ui-layout:_")
                 implementation("androidx.ui:ui-material:_")
+
 
                 implementation("com.google.dagger:dagger:_")
                 implementation("androidx.lifecycle:lifecycle-livedata:_")

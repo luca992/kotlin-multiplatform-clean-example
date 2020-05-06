@@ -1,9 +1,16 @@
+buildscript {
+    extra["buildForNative"] = "true"
+    extra["AndroidSdk_min"] = 29
+    extra["AndroidSdk_compile"] = 29
+    extra["AndroidSdk_target"] = extra["AndroidSdk_compile"]
+}
 
 allprojects {
     repositories {
         google()
         jcenter()
         maven { setUrl("https://dl.bintray.com/icerockdev/moko") }
+        maven { setUrl("https://jitpack.io") }
     }
 }
 
@@ -15,8 +22,8 @@ task("setBuildForNative") {
     gradle.startParameter.taskNames.forEach { taskName ->
         when (taskName) {
             "migrateToRefreshVersionsDependenciesConstants", "refreshVersions", "dependencyUpdates" -> {
-                buildForNative = true
-                println("Set buildForNative: $buildForNative")
+                rootProject.extra["buildForNative"] = true
+                println("Set buildForNative: ${rootProject.extra["buildForNative"]}")
             }
             else -> {}
         }

@@ -4,7 +4,6 @@ import co.lucaspinazzola.example.domain.utils.Date
 import com.soywiz.klock.DateFormat
 import com.soywiz.klock.parse
 import kotlinx.serialization.*
-import kotlinx.serialization.internal.StringDescriptor
 
 @Serializer(forClass = Date::class)
 object DateSerializer: KSerializer<Date> {
