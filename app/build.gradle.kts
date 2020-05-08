@@ -28,7 +28,12 @@ val giphyApiKey : String
 }
 
 val versionsProperties : Properties by lazy {
-    getProperties("versions.properties")
+        val versions = Properties()
+        val localProperties: File = File(rootProject.projectDir.absoluteFile.absolutePath+"/versions.properties")
+        if (localProperties.exists()) {
+            localProperties.inputStream().use { versions.load(it) }
+        }
+        versions
 }
 
 
@@ -91,7 +96,7 @@ android {
     }
     composeOptions {
         composeOptions.kotlinCompilerVersion = "1.3.70-dev-withExperimentalGoogleExtensions-20200424"
-        kotlinCompilerExtensionVersion = "0.1.0-dev10"
+        kotlinCompilerExtensionVersion = versionsProperties["version.androidx.ui"].toString()
     }
 }
 
@@ -219,6 +224,7 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java) {
 
 dependencies {
     implementation("dev.icerock.moko:mvvm:_")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:_")
 
     implementation(project(":domain"))
     implementation(project(":data"))
@@ -232,7 +238,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:_")
     implementation("androidx.navigation:navigation-fragment-ktx:_")
     implementation("androidx.navigation:navigation-ui-ktx:_")
-    implementation("com.github.zsoltk:compose-router:_")
+    implementation("com.github.luca992:compose-router:1c2f420737")
 
     implementation("androidx.ui:ui-framework:_")
     implementation("androidx.ui:ui-tooling:_")

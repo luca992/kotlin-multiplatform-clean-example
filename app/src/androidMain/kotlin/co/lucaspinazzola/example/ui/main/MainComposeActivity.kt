@@ -2,25 +2,29 @@ package co.lucaspinazzola.example.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.Composable
 import androidx.compose.Providers
 import androidx.ui.core.setContent
-import androidx.ui.foundation.Text
 import androidx.ui.material.MaterialTheme
-import androidx.ui.tooling.preview.Preview
 import com.github.zsoltk.compose.backpress.AmbientBackPressHandler
 import com.github.zsoltk.compose.backpress.BackPressHandler
+import com.github.zsoltk.compose.savedinstancestate.BundleScope
+import com.github.zsoltk.compose.savedinstancestate.saveAmbient
 
 class MainComposeActivity : AppCompatActivity() {
     private val backPressHandler = BackPressHandler()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
-            Providers(
-                AmbientBackPressHandler provides backPressHandler
-            ) {
-                Greeting("Android")
+            MaterialTheme {
+                Providers(
+                    AmbientBackPressHandler provides backPressHandler
+                ) {
+                    BundleScope(savedInstanceState) {
+                        Root.Content(Root.Routing.Select)
+                    }
+                }
             }
         }
     }
@@ -30,17 +34,9 @@ class MainComposeActivity : AppCompatActivity() {
             super.onBackPressed()
         }
     }
-}
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview
-@Composable
-fun DefaultPreview() {
-    MaterialTheme {
-        Greeting("Android")
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.saveAmbient()
     }
 }
