@@ -20,6 +20,6 @@ data class RickAndMortySearchResponse(
         @SerialName("count") val count: Int,
         @SerialName("pages") val pages: Int,
         @SerialName("next") val next: String,
-        @SerialName("prev") val previous: String
+        @SerialName("prev") val previous: String?
     )
 }

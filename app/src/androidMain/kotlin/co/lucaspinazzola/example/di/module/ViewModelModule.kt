@@ -62,5 +62,9 @@ abstract class ViewModelModule {
 
     }
 
+    interface Exposes {
+        val factory: ViewModelFactory
+    }
 
-}
+
+    }

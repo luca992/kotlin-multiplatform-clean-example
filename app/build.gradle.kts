@@ -167,6 +167,7 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java) {
                     implementation("androidx.ui:ui-tooling:_")
                     implementation("androidx.ui:ui-layout:_")
                     implementation("androidx.ui:ui-material:_")
+                    implementation("androidx.ui:ui-livedata:_")
 
 
                     implementation("com.google.dagger:dagger:_")
@@ -244,6 +245,7 @@ dependencies {
     implementation("androidx.ui:ui-tooling:_")
     implementation("androidx.ui:ui-layout:_")
     implementation("androidx.ui:ui-material:_")
+    implementation("androidx.ui:ui-livedata:_")
 
 
 

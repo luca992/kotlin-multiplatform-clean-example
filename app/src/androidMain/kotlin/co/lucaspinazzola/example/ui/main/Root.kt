@@ -1,6 +1,7 @@
 package co.lucaspinazzola.example.ui.main
 
 import androidx.compose.Composable
+import co.lucaspinazzola.example.ui.rickandmorty.RickAndMortyCharacters
 import com.github.zsoltk.compose.router.Router
 
 interface Root {
@@ -23,7 +24,7 @@ interface Root {
                         navigateToGiphy = currentRouting.navigateTo(Routing.Giphy),
                         navigateToRickAndMorty = currentRouting.navigateTo(Routing.RickAndMorty)
                     )
-                    Routing.Giphy -> null
+                    Routing.Giphy -> RickAndMortyCharacters.Content()
                     Routing.RickAndMorty -> null
                 }
             }
