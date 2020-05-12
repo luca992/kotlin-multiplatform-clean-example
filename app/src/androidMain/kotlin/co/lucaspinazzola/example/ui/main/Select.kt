@@ -16,7 +16,7 @@ interface Select {
 
     companion object {
         @Composable
-        fun Content() {
+        fun Content(navigateToGiphy: () -> Unit, navigateToRickAndMorty: () -> Unit) {
             Column(
                 modifier = Modifier.fillMaxHeight().fillMaxWidth().padding(40.dp),
                 verticalArrangement = Arrangement.SpaceAround
@@ -24,11 +24,11 @@ interface Select {
                 Box(backgroundColor = Color.Red,
                     modifier = Modifier.fillMaxWidth().preferredHeight(40.dp)
                 )
-                Button(onClick = {},
+                Button(onClick = { navigateToRickAndMorty() },
                     modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
                     Text(text = "Giphy")
                 }
-                Button(onClick = {},
+                Button(onClick = { navigateToGiphy() },
                     modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
                     Text(text = "Rick And Morty")
                 }
@@ -43,5 +43,5 @@ interface Select {
 @Preview
 @Composable
 fun ProfilePreview() {
-    Select.Content()
+    Select.Content({},{})
 }
