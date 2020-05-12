@@ -23,6 +23,7 @@ class ImgAdapter: ListClickAdapter<Img, ImgAdapter.ViewHolder>(
         val i = getItem(position)
         val request = LoadRequest.Builder(holder.itemView.context)
             .data(i.url)
+            .placeholder(LoadingDrawable(holder.itemView.context))
             .target(holder.binding.gifIv)
             .build()
         Coil.imageLoader(holder.binding.root.context).execute(request)
