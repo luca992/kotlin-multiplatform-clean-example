@@ -1,10 +1,14 @@
 package co.lucaspinazzola.example.ui.rickandmorty
 
-import androidx.compose.Composable
+import androidx.animation.AnimationClockObservable
+import androidx.compose.*
 import androidx.core.content.res.ResourcesCompat
+import androidx.ui.core.AnimationClockAmbient
 import androidx.ui.core.ContextAmbient
 import androidx.ui.core.Modifier
+import androidx.ui.foundation.ScrollerPosition
 import androidx.ui.foundation.VerticalScroller
+import androidx.ui.foundation.animation.FlingConfig
 import androidx.ui.layout.Column
 import androidx.ui.layout.Table
 import androidx.ui.layout.height
@@ -22,12 +26,21 @@ import co.lucaspinazzola.example.ui.utils.LoadingDrawable
 interface RickAndMortyCharacters {
 
     companion object {
+        val ScrollerPosition.isAtEndOfList: Boolean get() = value >= maxPosition
         @Composable
         fun Content() {
             val context = ContextAmbient.current
             val vm = FragmentComponent.Initializer.init((context.applicationContext as ExampleApplication).mainComponent).factory.create(RickAndMortyCharactersViewModel::class.java)
             val imgs = vm.imgs.ld().observeAsState()
-            VerticalScroller {
+            val scrollerPosition = ScrollerPosition()
+            Observe {
+                onCommit(scrollerPosition.isAtEndOfList) {
+                    if (scrollerPosition.isAtEndOfList){
+                        vm.loadNextPage()
+                    }
+                }
+            }
+            VerticalScroller( scrollerPosition = scrollerPosition) {
                 if (imgs.value!!.isNotEmpty()) {
                     Table(columns = 2) {
                         for (i in 0 until imgs.value!!.size / 2) {
@@ -58,4 +71,3 @@ interface RickAndMortyCharacters {
 fun ProfilePreview() {
     RickAndMortyCharacters.Content()
 }
-
