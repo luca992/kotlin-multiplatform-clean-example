@@ -14,7 +14,7 @@ plugins {
 
 fun getProperties(path: String) : Properties {
     val properties = Properties()
-    val file: File = rootProject.file("local.properties")
+    val file: File = rootProject.file(path)
     if (file.exists()) {
         file.inputStream().use { properties.load(it) }
     }
@@ -23,17 +23,13 @@ fun getProperties(path: String) : Properties {
 
 val giphyApiKey : String
     get() {
-    val local = getProperties("local.properties")
-    return local.getProperty("giphyApiKey") ?: "Add giphyApiKey to local.properties"
-}
+        val local = getProperties("local.properties")
+        return local.getProperty("giphyApiKey") ?: "Add giphyApiKey to local.properties"
+    }
 
 val versionsProperties : Properties by lazy {
-        val versions = Properties()
-        val localProperties: File = File(rootProject.projectDir.absoluteFile.absolutePath+"/versions.properties")
-        if (localProperties.exists()) {
-            localProperties.inputStream().use { versions.load(it) }
-        }
-        versions
+    val versions = getProperties("versions.properties")
+    versions
 }
 
 
@@ -168,6 +164,7 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java) {
                     implementation("androidx.ui:ui-layout:_")
                     implementation("androidx.ui:ui-material:_")
                     implementation("androidx.ui:ui-livedata:_")
+                    implementation("com.github.luca992:coil-composable:_")
 
 
                     implementation("com.google.dagger:dagger:_")
@@ -246,7 +243,7 @@ dependencies {
     implementation("androidx.ui:ui-layout:_")
     implementation("androidx.ui:ui-material:_")
     implementation("androidx.ui:ui-livedata:_")
-
+    implementation("com.github.luca992:coil-composable:_")
 
 
     implementation("com.google.dagger:dagger:_")
