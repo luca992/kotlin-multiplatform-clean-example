@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import co.lucaspinazzola.example.ExampleApplication
-import co.lucaspinazzola.example.di.component.FragmentComponent
+import co.lucaspinazzola.example.di.component.ViewComponent
 import co.lucaspinazzola.example.ui.factory.InjectingFragmentFactory
 import javax.inject.Inject
 
@@ -15,7 +15,7 @@ class InjectingNavHostFragment : NavHostFragment() {
 
     override fun onAttach(context: Context) {
         val mainComponent = (context.applicationContext as ExampleApplication).mainComponent
-        FragmentComponent.Initializer.init(mainComponent).inject(this)
+        ViewComponent.Initializer.init(mainComponent).inject(this)
         super.onAttach(context)
     }
 

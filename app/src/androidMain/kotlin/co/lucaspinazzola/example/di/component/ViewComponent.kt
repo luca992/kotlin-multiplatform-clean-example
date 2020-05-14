@@ -10,15 +10,15 @@ import dagger.Component
 @FragmentScope
 @Component(dependencies = [AppComponent::class],
     modules = [FragmentModule::class, ViewModelModule::class])
-interface FragmentComponent : ViewModelModule.Exposes {
+interface ViewComponent : ViewModelModule.Exposes {
 
 
     fun inject(service: InjectingNavHostFragment)
 
     object Initializer {
 
-        fun init(applicationComponent: AppComponent): FragmentComponent {
-            return DaggerFragmentComponent.builder()
+        fun init(applicationComponent: AppComponent): ViewComponent {
+            return DaggerViewComponent.builder()
                     .appComponent(applicationComponent)
                     .build()
         }

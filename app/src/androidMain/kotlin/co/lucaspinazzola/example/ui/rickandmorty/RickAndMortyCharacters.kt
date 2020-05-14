@@ -10,7 +10,7 @@ import androidx.ui.livedata.observeAsState
 import androidx.ui.tooling.preview.Preview
 import co.lucaspinazzola.example.ExampleApplication
 import co.lucaspinazzola.example.R
-import co.lucaspinazzola.example.di.component.FragmentComponent
+import co.lucaspinazzola.example.di.component.ViewComponent
 import com.luca992.compose.image.CoilImage
 
 
@@ -21,7 +21,7 @@ interface RickAndMortyCharacters {
         @Composable
         fun Content() {
             val context = ContextAmbient.current
-            val vm = FragmentComponent.Initializer.init((context.applicationContext as ExampleApplication).mainComponent).factory.create(RickAndMortyCharactersViewModel::class.java)
+            val vm = ViewComponent.Initializer.init((context.applicationContext as ExampleApplication).mainComponent).factory.create(RickAndMortyCharactersViewModel::class.java)
             val imgs = vm.imgs.ld().observeAsState()
             val scrollerPosition = ScrollerPosition()
             Observe {
