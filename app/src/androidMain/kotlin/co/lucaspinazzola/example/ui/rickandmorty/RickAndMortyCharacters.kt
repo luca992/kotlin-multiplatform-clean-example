@@ -11,17 +11,19 @@ import androidx.ui.tooling.preview.Preview
 import co.lucaspinazzola.example.ExampleApplication
 import co.lucaspinazzola.example.R
 import co.lucaspinazzola.example.di.component.ViewComponent
+import co.lucaspinazzola.example.ui.base.ComposableView
+import co.lucaspinazzola.example.ui.factory.ViewModelFactory
 import com.luca992.compose.image.CoilImage
+import com.squareup.inject.assisted.AssistedInject
 
 
-interface RickAndMortyCharacters {
+class RickAndMortyCharacters(val vm: RickAndMortyCharactersViewModel): ComposableView {
 
-    companion object {
         val ScrollerPosition.isAtEndOfList: Boolean get() = value >= maxPosition
+
         @Composable
-        fun Content() {
+        override fun Content() {
             val context = ContextAmbient.current
-            val vm = ViewComponent.Initializer.init((context.applicationContext as ExampleApplication).mainComponent).factory.create(RickAndMortyCharactersViewModel::class.java)
             val imgs = vm.imgs.ld().observeAsState()
             val scrollerPosition = ScrollerPosition()
             Observe {
@@ -54,11 +56,13 @@ interface RickAndMortyCharacters {
                 }
             }
         }
-    }
+
 }
 
 @Preview
 @Composable
 fun ProfilePreview() {
-    RickAndMortyCharacters.Content()
+    val context = ContextAmbient.current
+    //val rmc = ViewComponent.Initializer.init((context.applicationContext as ExampleApplication).mainComponent).rickAndMortyCharacters
+    //rmc.Content()
 }

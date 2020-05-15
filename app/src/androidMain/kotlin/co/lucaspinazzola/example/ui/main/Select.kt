@@ -24,11 +24,11 @@ interface Select {
                 Box(backgroundColor = Color.Red,
                     modifier = Modifier.fillMaxWidth().preferredHeight(40.dp)
                 )
-                Button(onClick = { navigateToRickAndMorty() },
+                Button(onClick = { navigateToGiphy() },
                     modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
                     Text(text = "Giphy")
                 }
-                Button(onClick = { navigateToGiphy() },
+                Button(onClick = { navigateToRickAndMorty() },
                     modifier = Modifier.gravity(Alignment.CenterHorizontally)) {
                     Text(text = "Rick And Morty")
                 }

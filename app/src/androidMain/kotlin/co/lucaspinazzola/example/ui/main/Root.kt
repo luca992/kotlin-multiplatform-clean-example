@@ -1,7 +1,11 @@
 package co.lucaspinazzola.example.ui.main
 
 import androidx.compose.Composable
+import androidx.ui.core.ContextAmbient
+import co.lucaspinazzola.example.ExampleApplication
+import co.lucaspinazzola.example.di.component.ViewComponent
 import co.lucaspinazzola.example.ui.rickandmorty.RickAndMortyCharacters
+import co.lucaspinazzola.example.ui.rickandmorty.RickAndMortyCharactersViewModel
 import com.github.zsoltk.compose.router.Router
 
 interface Root {
@@ -15,6 +19,8 @@ interface Root {
     companion object {
         @Composable
         fun Content(defaultRouting: Routing) {
+            val context = ContextAmbient.current
+            val composables = ViewComponent.Initializer.init((context.applicationContext as ExampleApplication).mainComponent).composableViewByClass()
             Router(defaultRouting) { backStack ->
                 fun Routing.navigateTo(routing: Routing) : () -> Unit = {
                     backStack.push(routing)
@@ -24,8 +30,8 @@ interface Root {
                         navigateToGiphy = currentRouting.navigateTo(Routing.Giphy),
                         navigateToRickAndMorty = currentRouting.navigateTo(Routing.RickAndMorty)
                     )
-                    Routing.Giphy -> RickAndMortyCharacters.Content()
-                    Routing.RickAndMorty -> null
+                    Routing.Giphy -> null
+                    Routing.RickAndMorty -> composables[RickAndMortyCharacters::class.java]?.get()?.Content()
                 }
             }
         }
