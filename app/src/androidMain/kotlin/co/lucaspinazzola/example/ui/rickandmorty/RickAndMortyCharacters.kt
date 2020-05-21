@@ -33,7 +33,7 @@ class RickAndMortyCharacters(val vm: RickAndMortyCharactersViewModel): Composabl
                 AdapterList(
                     data = imgs.value!!,
                     itemCallback = { img ->
-                        CoilImage2(img.url) {
+                        CoilImage(img.url) {
                             placeholder(
                                 ResourcesCompat.getDrawable(
                                     context.resources,
