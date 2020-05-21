@@ -31,7 +31,7 @@ interface Root {
                         navigateToRickAndMorty = currentRouting.navigateTo(Routing.RickAndMorty)
                     )
                     Routing.Giphy -> null
-                    Routing.RickAndMorty -> composables[RickAndMortyCharacters::class.java]?.get()?.Content()
+                    Routing.RickAndMorty -> composables[RickAndMortyCharacters::class.java]?.Content()
                 }
             }
         }

@@ -236,9 +236,9 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:_")
     implementation("androidx.navigation:navigation-fragment-ktx:_")
     implementation("androidx.navigation:navigation-ui-ktx:_")
-    implementation("com.github.luca992:compose-router:1c2f420737")
+    implementation("com.github.zsoltk:compose-router:_")
 
-    implementation("androidx.ui:ui-framework:_")
+    implementation("androidx.ui:ui-core:_")
     implementation("androidx.ui:ui-tooling:_")
     implementation("androidx.ui:ui-layout:_")
     implementation("androidx.ui:ui-material:_")
@@ -247,10 +247,13 @@ dependencies {
 
 
     implementation("com.google.dagger:dagger:_")
+    kapt ("com.google.dagger:dagger-compiler:_")
+    compileOnly("com.squareup.inject:assisted-inject-annotations-dagger2:0.5.2")
+    kapt("com.squareup.inject:assisted-inject-processor-dagger2:0.5.2")
     implementation("androidx.lifecycle:lifecycle-livedata:_")
     implementation("androidx.lifecycle:lifecycle-common-java8:_")
     implementation("javax.annotation:jsr250-api:_")
     implementation("io.coil-kt:coil:_")
     implementation("io.coil-kt:coil-gif:_")
-    kapt ("com.google.dagger:dagger-compiler:_")
+
 }
