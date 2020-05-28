@@ -248,8 +248,6 @@ dependencies {
 
     implementation("com.google.dagger:dagger:_")
     kapt ("com.google.dagger:dagger-compiler:_")
-    compileOnly("com.squareup.inject:assisted-inject-annotations-dagger2:0.5.2")
-    kapt("com.squareup.inject:assisted-inject-processor-dagger2:0.5.2")
     implementation("androidx.lifecycle:lifecycle-livedata:_")
     implementation("androidx.lifecycle:lifecycle-common-java8:_")
     implementation("javax.annotation:jsr250-api:_")
