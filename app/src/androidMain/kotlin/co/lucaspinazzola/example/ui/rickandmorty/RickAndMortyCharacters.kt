@@ -53,8 +53,7 @@ class RickAndMortyCharacters(val vm: RickAndMortyCharactersViewModel): Composabl
                 itemCallback = { imgPair ->
                     WithConstraints {
                         Row {
-                            val w =
-                                with(DensityAmbient.current) { (constraints.maxWidth.toDp().value / 2).dp }
+                            val w = with(DensityAmbient.current) { (constraints.maxWidth.toDp().value / 2).dp }
                             CoilImage(imgPair.first.url, Modifier.width(w)) {
                                 placeholder(
                                     ResourcesCompat.getDrawable(

@@ -236,7 +236,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:_")
     implementation("androidx.navigation:navigation-fragment-ktx:_")
     implementation("androidx.navigation:navigation-ui-ktx:_")
-    implementation("com.github.zsoltk:compose-router:_")
+    implementation("com.github.luca992:compose-router:master-SNAPSHOT")
 
     implementation("androidx.ui:ui-core:_")
     implementation("androidx.ui:ui-tooling:_")
