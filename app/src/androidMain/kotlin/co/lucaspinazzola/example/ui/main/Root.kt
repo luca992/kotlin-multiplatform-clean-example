@@ -4,6 +4,7 @@ import androidx.compose.Composable
 import androidx.ui.core.ContextAmbient
 import co.lucaspinazzola.example.ExampleApplication
 import co.lucaspinazzola.example.di.component.ViewComponent
+import co.lucaspinazzola.example.ui.giphy.GiphyComp
 import co.lucaspinazzola.example.ui.rickandmorty.RickAndMortyCharacters
 import co.lucaspinazzola.example.ui.rickandmorty.RickAndMortyCharactersViewModel
 import com.github.zsoltk.compose.router.Router
@@ -30,7 +31,7 @@ interface Root {
                         navigateToGiphy = currentRouting.navigateTo(Routing.Giphy),
                         navigateToRickAndMorty = currentRouting.navigateTo(Routing.RickAndMorty)
                     )
-                    Routing.Giphy -> null
+                    Routing.Giphy -> composables[GiphyComp::class.java]?.Content()
                     Routing.RickAndMorty -> composables[RickAndMortyCharacters::class.java]?.Content()
                 }
             }
