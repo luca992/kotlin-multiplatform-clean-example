@@ -39,14 +39,14 @@ abstract class BaseFragment : Fragment() {
         if (Looper.myLooper() == Looper.getMainLooper()) {
             // Current Thread is Main Thread.
             val toast = Toast.makeText(activity, message, Toast.LENGTH_LONG)
-            val v : TextView = toast.view.findViewById(android.R.id.message)
-            v.gravity = Gravity.CENTER
+            val v : TextView? = toast.view?.findViewById(android.R.id.message)
+            v?.gravity = Gravity.CENTER
             toast.show()
         } else {
             handler.post {
                 val toast = Toast.makeText(activity, message, Toast.LENGTH_LONG)
-                val v : TextView = toast.view.findViewById(android.R.id.message)
-                v.gravity = Gravity.CENTER
+                val v : TextView? = toast.view?.findViewById(android.R.id.message)
+                v?.gravity = Gravity.CENTER
                 toast.show()
             }
         }

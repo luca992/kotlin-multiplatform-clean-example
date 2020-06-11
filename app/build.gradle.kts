@@ -99,10 +99,20 @@ android {
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java) {
     kotlinOptions {
         jvmTarget = "1.8"
-        useIR= true
+        //useIR= true
     }
 }
-
+/*
+configurations.all {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "org.jetbrains.kotlin" && requested.module.name == "kotlin-compiler-embeddable") {
+            useVersion("1.3.70-dev-withExperimentalGoogleExtensions-20200424")
+        }
+        if (requested.group == "androidx.compose" && requested.module.name == "compose-compiler") {
+            useVersion("0.1.0-dev13")
+        }
+    }
+}*/
 /*
 //for CocoaPods
     version = "1.0"
@@ -157,9 +167,9 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java) {
                     implementation("androidx.constraintlayout:constraintlayout:_")
                     implementation("androidx.navigation:navigation-fragment-ktx:_")
                     implementation("androidx.navigation:navigation-ui-ktx:_")
-                    implementation("com.github.zsoltk:compose-router:_")
+                    implementation("com.github.luca992:compose-router:81428811b5")
 
-                    implementation("androidx.ui:ui-framework:_")
+                    implementation("androidx.ui:ui-core:_")
                     implementation("androidx.ui:ui-tooling:_")
                     implementation("androidx.ui:ui-layout:_")
                     implementation("androidx.ui:ui-material:_")
@@ -215,9 +225,9 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class.java) {
         }
 
     }
-
-
 */
+
+
 
 
 dependencies {
@@ -236,7 +246,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:_")
     implementation("androidx.navigation:navigation-fragment-ktx:_")
     implementation("androidx.navigation:navigation-ui-ktx:_")
-    implementation("com.github.luca992:compose-router:master-SNAPSHOT")
+    implementation("com.github.luca992:compose-router:81428811b5")
 
     implementation("androidx.ui:ui-core:_")
     implementation("androidx.ui:ui-tooling:_")
