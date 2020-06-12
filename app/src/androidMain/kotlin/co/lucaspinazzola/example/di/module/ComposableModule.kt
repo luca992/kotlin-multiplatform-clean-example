@@ -6,7 +6,6 @@ import co.lucaspinazzola.example.ui.base.ComposableView
 import co.lucaspinazzola.example.ui.factory.ViewModelFactory
 import co.lucaspinazzola.example.ui.giphy.GiphyComp
 import co.lucaspinazzola.example.ui.giphy.GiphyViewModel
-import co.lucaspinazzola.example.ui.rickandmorty.RickAndMortyCharacters
 import co.lucaspinazzola.example.ui.rickandmorty.RickAndMortyCharactersViewModel
 import dagger.Module
 import dagger.Provides
@@ -16,13 +15,13 @@ import dagger.multibindings.IntoMap
 abstract class ComposableModule {
 
     companion object {
-        @FragmentScope
+        /*@FragmentScope
         @IntoMap
         @ComposableViewKey(RickAndMortyCharacters::class)
         @Provides
         @JvmStatic
         fun provideRickAndMortyCharacters(vmf: ViewModelFactory): ComposableView =
-            RickAndMortyCharacters(vmf.create(RickAndMortyCharactersViewModel::class.java))
+            RickAndMortyCharacters(vmf.create(RickAndMortyCharactersViewModel::class.java))*/
 
 
         @FragmentScope

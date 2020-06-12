@@ -18,7 +18,7 @@ import okhttp3.OkHttpClient
 class ExampleApplication: Application(), ImageLoaderFactory{
 
     val mainComponent by lazy {
-        AppComponent.init(this)
+        AppComponent.init()
     }
 
     override fun attachBaseContext(base: Context) {

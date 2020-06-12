@@ -6,7 +6,6 @@ import co.lucaspinazzola.example.di.module.ViewModelModule
 import co.lucaspinazzola.example.di.scope.FragmentScope
 import co.lucaspinazzola.example.ui.base.ComposableView
 import co.lucaspinazzola.example.ui.main.InjectingNavHostFragment
-import co.lucaspinazzola.example.ui.rickandmorty.RickAndMortyCharacters
 import dagger.Component
 import javax.inject.Provider
 

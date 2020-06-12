@@ -24,8 +24,8 @@ import androidx.ui.text.TextStyle
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
-import co.lucaspinazzola.example.ExampleApplication
 import co.lucaspinazzola.example.R
+import co.lucaspinazzola.example.di.component.AppComponent
 import co.lucaspinazzola.example.di.component.ViewComponent
 import co.lucaspinazzola.example.domain.model.Img
 import co.lucaspinazzola.example.ui.base.ComposableView
@@ -112,7 +112,7 @@ class GiphyComp(val vm: GiphyViewModel): ComposableView {
 @Preview
 @Composable
 fun ProfilePreview() {
-    val context = ContextAmbient.current
-    val view = ViewComponent.Initializer.init((context.applicationContext as ExampleApplication).mainComponent).composableViewByClass()[GiphyComp::class.java]
-    view?.Content()
+    val mainComponent = AppComponent.init()
+    val view = ViewComponent.Initializer.init(mainComponent).composableViewByClass()[GiphyComp::class.java]
+    view!!.Content()
 }

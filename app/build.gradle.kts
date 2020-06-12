@@ -178,6 +178,7 @@ configurations.all {
 
 
                     implementation("com.google.dagger:dagger:_")
+                    lintChecks("com.google.dagger:dagger-lint:_")
                     implementation("androidx.lifecycle:lifecycle-livedata:_")
                     implementation("androidx.lifecycle:lifecycle-common-java8:_")
                     implementation("javax.annotation:jsr250-api:_")
@@ -257,6 +258,7 @@ dependencies {
 
 
     implementation("com.google.dagger:dagger:_")
+    lintChecks("com.google.dagger:dagger-lint:${versionsProperties["version.com.google.dagger..dagger"].toString()}")
     kapt ("com.google.dagger:dagger-compiler:_")
     implementation("androidx.lifecycle:lifecycle-livedata:_")
     implementation("androidx.lifecycle:lifecycle-common-java8:_")
