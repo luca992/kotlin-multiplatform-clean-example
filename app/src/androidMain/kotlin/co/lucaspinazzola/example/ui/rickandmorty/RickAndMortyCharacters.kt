@@ -18,6 +18,7 @@ import co.lucaspinazzola.example.R
 import co.lucaspinazzola.example.di.component.AppComponent
 import co.lucaspinazzola.example.di.component.ViewComponent
 import co.lucaspinazzola.example.domain.model.Img
+import co.lucaspinazzola.example.ui.utils.LoadingDrawable
 import com.luca992.compose.image.CoilImage
 
 
@@ -25,33 +26,21 @@ import com.luca992.compose.image.CoilImage
 fun RickAndMortyCharactersComp(vm: RickAndMortyCharactersViewModel) {
     val context = ContextAmbient.current
     val imgs =  vm.imgs.ld().observeAsState(emptyList())
-    val chunked = imgs.value.chunked(2)
-    LazyColumnItems(chunked) { imgPair ->
+    val columns = 2
+    val chunked = imgs.value.chunked(columns)
+    LazyColumnItems(chunked) { imgs ->
         WithConstraints {
             Row {
-                val w = with(DensityAmbient.current) { (constraints.maxWidth.toDp().value / 2).dp }
-                CoilImage(imgPair[0].url, Modifier.width(w)) {
-                    placeholder(
-                        ResourcesCompat.getDrawable(
-                            context.resources,
-                            R.drawable.ic_search_black_24dp,
-                            null
-                        )
-                    )
-                }
-                CoilImage(imgPair[1].url, Modifier.width(w)) {
-                    placeholder(
-                        ResourcesCompat.getDrawable(
-                            context.resources,
-                            R.drawable.ic_search_black_24dp,
-                            null
-                        )
-                    )
+                val w = with(DensityAmbient.current) { (constraints.maxWidth.toDp().value / columns).dp }
+                imgs.forEach {
+                    CoilImage(it.url, Modifier.width(w)) {
+                        placeholder(LoadingDrawable(context))
+                    }
                 }
             }
         }
         onActive {
-            if (chunked.lastOrNull() === imgPair) {
+            if (chunked.lastOrNull() === imgs) {
                 //at end of list
                 vm.loadNextPage()
             }

@@ -3,6 +3,7 @@ package co.lucaspinazzola.example.ui.utils
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Rect
+import android.graphics.drawable.Animatable
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
@@ -10,7 +11,8 @@ import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import co.lucaspinazzola.example.R
 import kotlin.math.min
 
-class LoadingDrawable(context: Context) : ColorDrawable(ContextCompat.getColor(context, android.R.color.white)), Drawable.Callback {
+class LoadingDrawable(context: Context) : ColorDrawable(ContextCompat.getColor(context, android.R.color.white)), Drawable.Callback,
+    Animatable {
 
     private val animatedDrawable = CircularProgressDrawable(context)
 
@@ -46,5 +48,17 @@ class LoadingDrawable(context: Context) : ColorDrawable(ContextCompat.getColor(c
 
     override fun scheduleDrawable(who: Drawable, what: Runnable, `when`: Long) {
         scheduleSelf(what, `when`)
+    }
+
+    override fun isRunning(): Boolean {
+        return animatedDrawable.isRunning
+    }
+
+    override fun start() {
+        animatedDrawable.start()
+    }
+
+    override fun stop() {
+        animatedDrawable.stop()
     }
 }

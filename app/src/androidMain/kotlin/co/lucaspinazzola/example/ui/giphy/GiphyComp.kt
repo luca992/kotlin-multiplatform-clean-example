@@ -11,10 +11,10 @@ import androidx.ui.core.Modifier
 import androidx.ui.core.WithConstraints
 import androidx.ui.foundation.AdapterList
 import androidx.ui.foundation.TextField
-import androidx.ui.foundation.TextFieldValue
 import androidx.ui.foundation.lazy.LazyColumnItems
 import androidx.ui.graphics.Color
 import androidx.ui.input.KeyboardType
+import androidx.ui.input.TextFieldValue
 import androidx.ui.layout.Column
 import androidx.ui.layout.Row
 import androidx.ui.layout.padding
@@ -30,6 +30,7 @@ import co.lucaspinazzola.example.di.component.AppComponent
 import co.lucaspinazzola.example.di.component.ViewComponent
 import co.lucaspinazzola.example.domain.model.Img
 import co.lucaspinazzola.example.ui.base.ComposableView
+import co.lucaspinazzola.example.ui.utils.LoadingDrawable
 import com.luca992.compose.image.CoilImage
 import dev.icerock.moko.mvvm.livedata.asFlow
 import kotlinx.coroutines.Dispatchers
@@ -43,17 +44,9 @@ class GiphyComp(val vm: GiphyViewModel): ComposableView {
         @Composable
         override fun Content() {
             val context = ContextAmbient.current
-            val pairedImgs = remember { ModelList<Pair<Img, Img>>() }
-            remember {
-                GlobalScope.launch(Dispatchers.Main) {
-                    vm.gifs.asFlow().collect { imgs: List<Img> ->
-                        pairedImgs.clear()
-                        for (i in imgs.indices step 2) {
-                            pairedImgs.add(Pair(imgs[i], imgs[i + 1]))
-                        }
-                    }
-                }
-            }
+            val gifs =  vm.gifs.ld().observeAsState(emptyList())
+            val columns = 2
+            val chunked = gifs.value.chunked(columns)
             val query = vm.query.ld().observeAsState()
 
             Column {
@@ -71,33 +64,19 @@ class GiphyComp(val vm: GiphyViewModel): ComposableView {
                     ),
                     keyboardType = KeyboardType.Text
                 )
-                LazyColumnItems(pairedImgs) { imgPair ->
+                LazyColumnItems(chunked) { imgs ->
                     WithConstraints {
                         Row {
-                            val w =
-                                with(DensityAmbient.current) { (constraints.maxWidth.toDp().value / 2).dp }
-                            CoilImage(imgPair.first.url, Modifier.width(w)) {
-                                placeholder(
-                                    ResourcesCompat.getDrawable(
-                                        context.resources,
-                                        R.drawable.ic_search_black_24dp,
-                                        null
-                                    )
-                                )
-                            }
-                            CoilImage(imgPair.second.url, Modifier.width(w)) {
-                                placeholder(
-                                    ResourcesCompat.getDrawable(
-                                        context.resources,
-                                        R.drawable.ic_search_black_24dp,
-                                        null
-                                    )
-                                )
+                            val w = with(DensityAmbient.current) { (constraints.maxWidth.toDp().value / columns).dp }
+                            imgs.forEach {
+                                CoilImage(it.url, Modifier.width(w)) {
+                                    placeholder(LoadingDrawable(context))
+                                }
                             }
                         }
                     }
                     onActive {
-                        if (pairedImgs.last() === imgPair) {
+                        if (chunked.lastOrNull() === imgs) {
                             //at end of list
                             vm.loadNextPage()
                         }
