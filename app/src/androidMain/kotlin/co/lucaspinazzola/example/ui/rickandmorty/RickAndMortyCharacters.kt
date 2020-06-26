@@ -53,7 +53,7 @@ fun RickAndMortyCharactersComp(vm: RickAndMortyCharactersViewModel) {
         onActive {
             if (chunked.lastOrNull() === imgPair) {
                 //at end of list
-               // vm.loadNextPage()
+                vm.loadNextPage()
             }
         }
     }
