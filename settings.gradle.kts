@@ -27,7 +27,7 @@ buildscript {
     }
     dependencies{
         classpath("de.fayard:dependencies:0.5.8")
-        classpath ("com.android.tools.build:gradle:4.2.0-alpha01")
+        classpath ("com.android.tools.build:gradle:4.2.0-alpha02")
         classpath(kotlin("gradle-plugin", version = kotlinVersion))
         classpath(kotlin("serialization", version = kotlinVersion))
         classpath("com.squareup.sqldelight:gradle-plugin:${versionsProperties["version.sqldelight"]}")

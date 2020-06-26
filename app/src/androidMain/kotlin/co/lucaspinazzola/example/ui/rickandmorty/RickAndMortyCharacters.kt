@@ -7,6 +7,7 @@ import androidx.ui.core.DensityAmbient
 import androidx.ui.core.Modifier
 import androidx.ui.core.WithConstraints
 import androidx.ui.foundation.AdapterList
+import androidx.ui.foundation.lazy.LazyColumnItems
 import androidx.ui.layout.Row
 import androidx.ui.layout.width
 import androidx.ui.livedata.observeAsState
@@ -25,40 +26,37 @@ fun RickAndMortyCharactersComp(vm: RickAndMortyCharactersViewModel) {
     val context = ContextAmbient.current
     val imgs =  vm.imgs.ld().observeAsState(emptyList())
     val chunked = imgs.value.chunked(2)
-    AdapterList(
-        data = chunked,
-        itemCallback = { imgPair ->
-            WithConstraints {
-                Row {
-                    val w = with(DensityAmbient.current) { (constraints.maxWidth.toDp().value / 2).dp }
-                    CoilImage(imgPair[0].url, Modifier.width(w)) {
-                        placeholder(
-                            ResourcesCompat.getDrawable(
-                                context.resources,
-                                R.drawable.ic_search_black_24dp,
-                                null
-                            )
+    LazyColumnItems(chunked) { imgPair ->
+        WithConstraints {
+            Row {
+                val w = with(DensityAmbient.current) { (constraints.maxWidth.toDp().value / 2).dp }
+                CoilImage(imgPair[0].url, Modifier.width(w)) {
+                    placeholder(
+                        ResourcesCompat.getDrawable(
+                            context.resources,
+                            R.drawable.ic_search_black_24dp,
+                            null
                         )
-                    }
-                    CoilImage(imgPair[1].url, Modifier.width(w)) {
-                        placeholder(
-                            ResourcesCompat.getDrawable(
-                                context.resources,
-                                R.drawable.ic_search_black_24dp,
-                                null
-                            )
-                        )
-                    }
+                    )
                 }
-            }
-            onActive {
-                if (chunked.lastOrNull() === imgPair) {
-                    //at end of list
-                   // vm.loadNextPage()
+                CoilImage(imgPair[1].url, Modifier.width(w)) {
+                    placeholder(
+                        ResourcesCompat.getDrawable(
+                            context.resources,
+                            R.drawable.ic_search_black_24dp,
+                            null
+                        )
+                    )
                 }
             }
         }
-    )
+        onActive {
+            if (chunked.lastOrNull() === imgPair) {
+                //at end of list
+               // vm.loadNextPage()
+            }
+        }
+    }
 }
 
 

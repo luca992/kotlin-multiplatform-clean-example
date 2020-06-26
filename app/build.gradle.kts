@@ -247,7 +247,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:_")
     implementation("androidx.navigation:navigation-fragment-ktx:_")
     implementation("androidx.navigation:navigation-ui-ktx:_")
-    implementation("com.github.luca992:compose-router:81428811b5")
+    implementation("com.github.luca992:compose-router:ae7e61d0c3")
 
     implementation("androidx.ui:ui-core:_")
     implementation("androidx.ui:ui-tooling:_")

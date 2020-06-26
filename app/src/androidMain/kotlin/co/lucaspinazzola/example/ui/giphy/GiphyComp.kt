@@ -12,6 +12,7 @@ import androidx.ui.core.WithConstraints
 import androidx.ui.foundation.AdapterList
 import androidx.ui.foundation.TextField
 import androidx.ui.foundation.TextFieldValue
+import androidx.ui.foundation.lazy.LazyColumnItems
 import androidx.ui.graphics.Color
 import androidx.ui.input.KeyboardType
 import androidx.ui.layout.Column
@@ -70,41 +71,39 @@ class GiphyComp(val vm: GiphyViewModel): ComposableView {
                     ),
                     keyboardType = KeyboardType.Text
                 )
-                AdapterList(
-                    data = pairedImgs,
-                    itemCallback = { imgPair ->
-                        WithConstraints {
-                            Row {
-                                val w =
-                                    with(DensityAmbient.current) { (constraints.maxWidth.toDp().value / 2).dp }
-                                CoilImage(imgPair.first.url, Modifier.width(w)) {
-                                    placeholder(
-                                        ResourcesCompat.getDrawable(
-                                            context.resources,
-                                            R.drawable.ic_search_black_24dp,
-                                            null
-                                        )
+                LazyColumnItems(pairedImgs) { imgPair ->
+                    WithConstraints {
+                        Row {
+                            val w =
+                                with(DensityAmbient.current) { (constraints.maxWidth.toDp().value / 2).dp }
+                            CoilImage(imgPair.first.url, Modifier.width(w)) {
+                                placeholder(
+                                    ResourcesCompat.getDrawable(
+                                        context.resources,
+                                        R.drawable.ic_search_black_24dp,
+                                        null
                                     )
-                                }
-                                CoilImage(imgPair.second.url, Modifier.width(w)) {
-                                    placeholder(
-                                        ResourcesCompat.getDrawable(
-                                            context.resources,
-                                            R.drawable.ic_search_black_24dp,
-                                            null
-                                        )
-                                    )
-                                }
+                                )
                             }
-                        }
-                        onActive {
-                            if (pairedImgs.last() === imgPair) {
-                                //at end of list
-                                vm.loadNextPage()
+                            CoilImage(imgPair.second.url, Modifier.width(w)) {
+                                placeholder(
+                                    ResourcesCompat.getDrawable(
+                                        context.resources,
+                                        R.drawable.ic_search_black_24dp,
+                                        null
+                                    )
+                                )
                             }
                         }
                     }
-                )
+                    onActive {
+                        if (pairedImgs.last() === imgPair) {
+                            //at end of list
+                            vm.loadNextPage()
+                        }
+                    }
+                }
+
             }
         }
 }
